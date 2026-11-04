@@ -1,0 +1,25 @@
+{
+  "name": "@travellers-click/api",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "check-types": "tsc -b"
+  },
+  "dependencies": {
+    "@orpc/client": "catalog:",
+    "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/zod": "catalog:",
+    "@travellers-click/auth": "workspace:*",
+    "@travellers-click/db": "workspace:*",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@travellers-click/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
