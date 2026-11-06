@@ -1,0 +1,18 @@
+{
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "files": [
+          "apps/web/src/styles/home-wireframe.css"
+        ],
+        "createdAt": "2026-11-06T14:20:24.535Z",
+        "reason": "Agent: low fidelity home wireframe moved from static HTML to the React home route; Arial preserves neutral prototype typography, with final brand fonts undecided."
+      }
+    ]
+  }
+}
