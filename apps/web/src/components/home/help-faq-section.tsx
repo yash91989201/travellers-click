@@ -1,6 +1,6 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import { BUTTON, CONTROL, PAGE_WIDTH, PRIMARY } from "./classes";
+import { BUTTON, CONTROL, PAGE_WIDTH } from "./classes";
 
 const FAQS = [
 	{
@@ -37,7 +37,7 @@ export function HelpFaqSection() {
 			className={cn(PAGE_WIDTH, "grid gap-[50px] pt-16 pb-20")}
 			id="services"
 		>
-			<div className="flex items-center justify-between gap-10 border-[#282828] border-b-2 pb-[43px] max-[860px]:flex-col max-[860px]:items-start">
+			<div className="flex items-center justify-between gap-10 border-foreground border-b-2 pb-[43px] max-[860px]:flex-col max-[860px]:items-start">
 				<div>
 					<h2
 						className="mb-[10px] text-balance font-bold text-[clamp(26px,2.8vw,36px)] leading-[1.15] tracking-[-0.02em]"
@@ -45,7 +45,7 @@ export function HelpFaqSection() {
 					>
 						Need help with flights or hotels?
 					</h2>
-					<p className="m-0 max-w-[46ch] text-[#444] text-[17px]">
+					<p className="m-0 max-w-[46ch] text-[17px] text-muted-foreground">
 						Include transport, stays, visa, or insurance questions in your trip
 						request.
 					</p>
@@ -54,8 +54,7 @@ export function HelpFaqSection() {
 					className={cn(
 						CONTROL,
 						BUTTON,
-						PRIMARY,
-						"flex-none px-6 py-[14px] focus-visible:outline-current",
+						"flex-none border-slate px-6 py-[14px] font-semibold",
 					)}
 					href="#plan"
 				>
@@ -71,13 +70,13 @@ export function HelpFaqSection() {
 			<div className="grid grid-cols-2 gap-x-[72px] max-[860px]:grid-cols-1">
 				{FAQS.map((faq) => (
 					<details
-						className="group border-[#ccc] border-t py-[22px]"
+						className="group border-border border-t py-[22px]"
 						key={faq.question}
 					>
-						<summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-bold text-[18px] leading-[1.35] after:h-[18px] after:w-[18px] after:flex-none after:transition-[transform] after:duration-[450ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-current focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] group-open:after:[transform:rotate(90deg)] [&::-webkit-details-marker]:hidden">
+						<summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-bold text-[18px] leading-[1.35] after:h-[18px] after:w-[18px] after:flex-none after:transition-[transform] after:duration-[450ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] group-open:after:[transform:rotate(90deg)] [&::-webkit-details-marker]:hidden">
 							{faq.question}
 						</summary>
-						<p className="mt-[14px] mb-0 max-w-[52ch] text-[#444] text-base leading-[1.6]">
+						<p className="mt-[14px] mb-0 max-w-[52ch] text-base text-muted-foreground leading-[1.6]">
 							{faq.answer}
 						</p>
 					</details>

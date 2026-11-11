@@ -29,9 +29,9 @@ function positionOf(index: number, active: number): Position {
 }
 
 const SLOT_POSITION: Record<Position, string> = {
-	"0": "data-[pos=0]:z-[4] data-[pos=0]:shadow-[0_22px_36px_-16px_rgba(40,40,40,0.55)] data-[pos=0]:[transform:translate(0,0)_rotate(-1deg)_scale(1.06)] data-[pos=0]:[transition:transform_1.3s_var(--spring),opacity_0.7s_ease,box-shadow_1.1s_var(--ease)]",
-	"1": "data-[pos=1]:z-[3] data-[pos=1]:bg-[#f3f3f3] data-[pos=1]:shadow-[0_10px_20px_-12px_rgba(40,40,40,0.4)] data-[pos=1]:[transform:translate(104px,-58px)_rotate(6.5deg)_scale(0.92)] max-[860px]:data-[pos=1]:[transform:translate(36px,-48px)_rotate(5deg)_scale(0.92)]",
-	"2": "data-[pos=2]:z-[2] data-[pos=2]:bg-[#ececec] data-[pos=2]:shadow-[0_6px_14px_-10px_rgba(40,40,40,0.35)] data-[pos=2]:[transform:translate(-98px,-106px)_rotate(-7.5deg)_scale(0.84)] max-[860px]:data-[pos=2]:[transform:translate(-34px,-88px)_rotate(-6deg)_scale(0.84)]",
+	"0": "data-[pos=0]:z-[4] data-[pos=0]:shadow-[0_22px_36px_-16px_rgba(23,62,73,0.45)] data-[pos=0]:[transform:translate(0,0)_rotate(-1deg)_scale(1.06)] data-[pos=0]:[transition:transform_1.3s_var(--spring),opacity_0.7s_ease,box-shadow_1.1s_var(--ease)]",
+	"1": "data-[pos=1]:z-[3] data-[pos=1]:bg-muted data-[pos=1]:shadow-[0_10px_20px_-12px_rgba(23,62,73,0.35)] data-[pos=1]:[transform:translate(104px,-58px)_rotate(6.5deg)_scale(0.92)] max-[860px]:data-[pos=1]:[transform:translate(36px,-48px)_rotate(5deg)_scale(0.92)]",
+	"2": "data-[pos=2]:z-[2] data-[pos=2]:bg-muted data-[pos=2]:shadow-[0_6px_14px_-10px_rgba(23,62,73,0.3)] data-[pos=2]:[transform:translate(-98px,-106px)_rotate(-7.5deg)_scale(0.84)] max-[860px]:data-[pos=2]:[transform:translate(-34px,-88px)_rotate(-6deg)_scale(0.84)]",
 	gone: "data-[pos=gone]:pointer-events-none data-[pos=gone]:z-[5] data-[pos=gone]:opacity-0 data-[pos=gone]:[transform:translate(calc(var(--exit,1)*120%),30px)_rotate(calc(var(--exit,1)*12deg))_scale(1)]",
 	out: "data-[pos=out]:pointer-events-none data-[pos=out]:z-0 data-[pos=out]:opacity-0 data-[pos=out]:[transform:translate(0,-80px)_rotate(0)_scale(0.8)]",
 };
@@ -180,9 +180,9 @@ export function ReviewStack() {
 						<figure
 							aria-hidden={index === active ? undefined : true}
 							className={cn(
-								"relative col-start-1 row-start-1 m-0 w-[min(100%,540px)] justify-self-center border border-[#777] bg-white [transform-origin:50%_100%] [transition:transform_1.1s_var(--ease),opacity_0.7s_ease,box-shadow_1.1s_var(--ease)] after:pointer-events-none after:absolute after:inset-0 after:bg-[#282828] after:opacity-0 after:content-[''] data-[pos=0]:cursor-grab data-[pos=1]:after:opacity-5 data-[pos=2]:after:opacity-10 group-data-[dragging=true]:data-[pos=0]:cursor-grabbing motion-reduce:transition-none motion-reduce:after:transition-none after:[transition:opacity_1.1s_var(--ease)]",
+								"relative col-start-1 row-start-1 m-0 w-[min(100%,540px)] justify-self-center border border-input bg-card [transform-origin:50%_100%] [transition:transform_1.1s_var(--ease),opacity_0.7s_ease,box-shadow_1.1s_var(--ease)] after:pointer-events-none after:absolute after:inset-0 after:bg-foreground after:opacity-0 after:content-[''] data-[pos=0]:cursor-grab data-[pos=1]:after:opacity-5 data-[pos=2]:after:opacity-10 group-data-[dragging=true]:data-[pos=0]:cursor-grabbing motion-reduce:transition-none motion-reduce:after:transition-none after:[transition:opacity_1.1s_var(--ease)]",
 								SLOT_POSITION[position],
-								"group-data-[engaged=true]:data-[pos=0]:shadow-[0_30px_44px_-18px_rgba(40,40,40,0.6)] group-data-[engaged=true]:data-[pos=0]:[transform:translate(0,0)_rotate(0)_scale(1.25)]",
+								"group-data-[engaged=true]:data-[pos=0]:shadow-[0_30px_44px_-18px_rgba(23,62,73,0.5)] group-data-[engaged=true]:data-[pos=0]:[transform:translate(0,0)_rotate(0)_scale(1.25)]",
 							)}
 							data-pos={position}
 							key={id}
@@ -208,46 +208,46 @@ export function ReviewStack() {
 								>
 									<i
 										className={cn(
-											"mt-[14px] block h-[3px] origin-left bg-[#999]",
+											"mt-[14px] block h-[3px] origin-left bg-border",
 											front && "animate-[review-line_0.8s_var(--ease)_both]",
 											"motion-reduce:animate-none",
 										)}
 									/>
 									<i
 										className={cn(
-											"mt-[14px] block h-[3px] origin-left bg-[#999] [&:nth-child(2)]:[animation-delay:0.12s]",
+											"mt-[14px] block h-[3px] origin-left bg-border [&:nth-child(2)]:[animation-delay:0.12s]",
 											front && "animate-[review-line_0.8s_var(--ease)_both]",
 											"motion-reduce:animate-none",
 										)}
 									/>
 									<i
 										className={cn(
-											"mt-[14px] block h-[3px] w-[60%] origin-left bg-[#999] [&:nth-child(3)]:[animation-delay:0.24s]",
+											"mt-[14px] block h-[3px] w-[60%] origin-left bg-border [&:nth-child(3)]:[animation-delay:0.24s]",
 											front && "animate-[review-line_0.8s_var(--ease)_both]",
 											"motion-reduce:animate-none",
 										)}
 									/>
 								</div>
 								<div className="col-start-1 row-start-2 flex items-end justify-between gap-3">
-									<p className="m-0 text-[#555] text-[12px] uppercase tracking-[0.06em]">
+									<p className="m-0 text-[12px] text-muted-foreground uppercase tracking-[0.06em]">
 										Verified review
 									</p>
 									<span
 										className={cn(
-											"font-bold text-[13px] tabular-nums transition-opacity duration-500",
+											"font-bold text-[13px] text-slate tabular-nums transition-opacity duration-500",
 											front ? "opacity-100" : "opacity-0",
 										)}
 									>
 										{index + 1} / {SLOT_COUNT}
 									</span>
 								</div>
-								<figcaption className="col-start-2 row-span-2 grid content-between justify-items-end gap-[6px] border-[#777] border-l-2 border-dotted pl-5 text-right text-[13px]">
+								<figcaption className="col-start-2 row-span-2 grid content-between justify-items-end gap-[6px] border-input border-l-2 border-dotted pl-5 text-right text-[13px]">
 									<span
 										aria-hidden="true"
-										className="h-[76px] w-16 rounded-[3px] border-2 border-[#777] border-dashed bg-[repeating-linear-gradient(45deg,#fff_0_6px,#eee_6px_7px)]"
+										className="h-[76px] w-16 rounded-[3px] border-2 border-input border-dashed bg-[repeating-linear-gradient(45deg,var(--card)_0_6px,var(--muted)_6px_7px)]"
 									/>
 									<span className="font-bold">Traveler name</span>
-									<span className="text-[#555]">Source</span>
+									<span className="text-muted-foreground">Source</span>
 								</figcaption>
 							</div>
 						</figure>

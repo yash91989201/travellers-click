@@ -52,7 +52,7 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 				>
 					What kind of trip do you have in mind?
 				</h2>
-				<p className="m-0 max-w-[30ch] text-[#555] text-[15px] max-[800px]:mt-5">
+				<p className="m-0 max-w-[30ch] text-[15px] text-muted-foreground max-[800px]:mt-5">
 					A change of pace. A shared adventure. A little time for yourself.
 				</p>
 			</div>
@@ -61,7 +61,7 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 					<a
 						className={cn(
 							FOCUS_INK,
-							"relative flex flex-col border border-[#bbb] bg-[#f5f5f5] no-underline hover:border-[#333] hover:bg-[#eee]",
+							"group relative flex flex-col border border-border bg-card no-underline hover:border-slate",
 							style.layout === "featured" &&
 								"row-span-2 max-[480px]:col-auto max-[800px]:col-span-full max-[800px]:row-auto",
 							style.layout === "wide" &&
@@ -75,7 +75,7 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 						<span
 							aria-hidden="true"
 							className={cn(
-								"grid min-h-[165px] place-items-center bg-[#e6e6e6] p-6 text-[#606060] text-[12px]",
+								"grid min-h-[165px] place-items-center bg-muted p-6 text-[12px] text-muted-foreground",
 								style.layout === "wide"
 									? "min-h-[100px] flex-none basis-[30%] max-[800px]:min-h-[132px] max-[800px]:flex-1"
 									: "flex-1",
@@ -94,11 +94,11 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 							>
 								{style.label}
 							</strong>
-							<span className="text-[#555] text-[14px]">{style.copy}</span>
+							<span className="text-[14px] text-muted-foreground">{style.copy}</span>
 						</span>
 						<svg
 							aria-hidden="true"
-							className="absolute right-4 bottom-6 h-5 w-5 fill-none stroke-current [stroke-width:1.5]"
+							className="absolute right-4 bottom-6 h-5 w-5 fill-none stroke-slate transition-transform group-hover:translate-x-1 motion-reduce:transition-none [stroke-width:1.5]"
 							focusable="false"
 							viewBox="0 0 24 24"
 						>

@@ -28,12 +28,12 @@ export function SiteHeader() {
 			<a
 				className={cn(
 					FOCUS_INK,
-					"whitespace-nowrap font-bold text-[22px] no-underline max-[600px]:text-[20px]",
+					"whitespace-nowrap font-bold text-[22px] text-foreground no-underline max-[600px]:text-[20px]",
 				)}
 				href="#main"
 			>
 				Travellers Click
-				<span className="block font-normal text-[#626262] text-[12px]">
+				<span className="block font-normal text-[12px] text-muted-foreground">
 					Logo placeholder
 				</span>
 			</a>
@@ -52,24 +52,24 @@ export function SiteHeader() {
 				</summary>
 				<nav
 					aria-label="Main navigation"
-					className="flex flex-wrap gap-x-5 gap-y-3 text-[13px] max-[960px]:flex-col max-[960px]:gap-[18px] max-[960px]:py-4"
+					className="flex flex-wrap gap-x-5 gap-y-3 text-[13px] text-foreground max-[960px]:flex-col max-[960px]:gap-[18px] max-[960px]:py-4"
 				>
-					<a className={cn(FOCUS_INK, "no-underline")} href="#destinations">
+					<a className={cn(FOCUS_INK, "no-underline hover:underline hover:decoration-slate hover:decoration-2 hover:underline-offset-4")} href="#destinations">
 						Destinations
 					</a>
-					<a className={cn(FOCUS_INK, "no-underline")} href="#packages">
+					<a className={cn(FOCUS_INK, "no-underline hover:underline hover:decoration-slate hover:decoration-2 hover:underline-offset-4")} href="#packages">
 						Holiday packages
 					</a>
-					<a className={cn(FOCUS_INK, "no-underline")} href="#plan">
+					<a className={cn(FOCUS_INK, "no-underline hover:underline hover:decoration-slate hover:decoration-2 hover:underline-offset-4")} href="#plan">
 						Custom tours
 					</a>
-					<a className={cn(FOCUS_INK, "no-underline")} href="#services">
+					<a className={cn(FOCUS_INK, "no-underline hover:underline hover:decoration-slate hover:decoration-2 hover:underline-offset-4")} href="#services">
 						Flights &amp; hotels
 					</a>
-					<a className={cn(FOCUS_INK, "no-underline")} href="#how">
+					<a className={cn(FOCUS_INK, "no-underline hover:underline hover:decoration-slate hover:decoration-2 hover:underline-offset-4")} href="#how">
 						About our process
 					</a>
-					<a className={cn(FOCUS_INK, "no-underline")} href="#contact">
+					<a className={cn(FOCUS_INK, "no-underline hover:underline hover:decoration-slate hover:decoration-2 hover:underline-offset-4")} href="#contact">
 						Contact
 					</a>
 				</nav>

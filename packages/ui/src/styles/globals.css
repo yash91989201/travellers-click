@@ -31,6 +31,9 @@
   --chart-3: oklch(0.562888 0.050849 217.237);
   --chart-4: oklch(0.481420 0.091620 33.248);
   --chart-5: oklch(0.341144 0.047484 219.294);
+  /* DESIGN.md slate (structure, selected filters) and coral hover. */
+  --slate: oklch(0.437444 0.049807 223.232);
+  --primary-hover: oklch(0.746749 0.104147 32.207);
   --radius: 0.625rem;
   --sidebar: oklch(1 0 0);
   --sidebar-foreground: oklch(0.341144 0.047484 219.294);
@@ -92,6 +95,8 @@
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+  --color-slate: var(--slate);
+  --color-primary-hover: var(--primary-hover);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);

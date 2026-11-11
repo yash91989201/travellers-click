@@ -1,15 +1,16 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import { BUTTON, CONTROL, LINK, PAGE_WIDTH, PRIMARY } from "./classes";
+import { BUTTON, CONTROL, FOCUS_PAPER, PAGE_WIDTH, PRIMARY } from "./classes";
 
 const columnHeading =
-	"mb-3 text-[13px] font-bold uppercase leading-[1.15] tracking-[0.06em]";
+	"mb-3 text-[13px] font-bold uppercase leading-[1.15] tracking-[0.06em] text-border";
 const line = "mb-2 block text-[13px]";
-const note = "text-[12px] leading-[1.6] text-[#606060]";
+const note = "text-[12px] leading-[1.6] text-border";
+const LINK_ON_INK = `${FOCUS_PAPER} underline underline-offset-4 hover:decoration-2`;
 
 export function SiteFooter() {
 	return (
-		<footer className="bg-[#f3f3f3]" id="contact">
+		<footer className="bg-foreground text-card" id="contact">
 			<div
 				className={cn(
 					PAGE_WIDTH,
@@ -20,13 +21,13 @@ export function SiteFooter() {
 					<strong className="mb-2 block text-[32px] leading-[1.1] tracking-[-0.02em]">
 						Travellers Click
 					</strong>
-					<p className="mb-5 text-[15px]">Trips planned around you.</p>
+					<p className="mb-5 text-[15px] text-muted">Trips planned around you.</p>
 					<a
 						className={cn(
 							CONTROL,
 							BUTTON,
 							PRIMARY,
-							"inline-block px-6 py-3",
+							"inline-block px-6 py-3 focus-visible:outline-card",
 						)}
 						href="#plan"
 					>
@@ -37,13 +38,13 @@ export function SiteFooter() {
 				<div className="grid content-start grid-cols-2 gap-x-10 max-[600px]:grid-cols-1">
 					<section className="py-[25px]">
 						<h2 className={columnHeading}>Explore</h2>
-						<a className={cn(LINK, line)} href="#destinations">
+						<a className={cn(LINK_ON_INK, line)} href="#destinations">
 							Destinations
 						</a>
-						<a className={cn(LINK, line)} href="#packages">
+						<a className={cn(LINK_ON_INK, line)} href="#packages">
 							Holiday packages
 						</a>
-						<a className={cn(LINK, line)} href="#plan">
+						<a className={cn(LINK_ON_INK, line)} href="#plan">
 							Customize your trip
 						</a>
 					</section>
@@ -68,11 +69,10 @@ export function SiteFooter() {
 			<div
 				className={cn(
 					PAGE_WIDTH,
-					"border-[#bbb] border-t py-[18px] text-[#555] text-[12px]",
+					"border-slate border-t py-[18px] text-[12px] text-border",
 				)}
 			>
-				Low fidelity prototype · Review content order and actions before visual
-				design.
+				Prototype · Sample content, no live bookings or enquiries.
 			</div>
 		</footer>
 	);

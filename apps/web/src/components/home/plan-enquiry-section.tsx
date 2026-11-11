@@ -4,9 +4,9 @@ import { type FormEvent, useState } from "react";
 import { BUTTON, CONTROL, PAGE_WIDTH, PRIMARY } from "./classes";
 
 const INPUT =
-	"h-12 w-full min-w-0 rounded-[3px] border border-[#777] bg-white px-4 py-[14px] text-base font-normal text-[#282828] transition-[border-color,box-shadow] duration-[250ms] focus:border-[#282828] focus:shadow-[0_0_0_1px_#282828] focus:outline-none";
+	"h-12 w-full min-w-0 rounded-[3px] border border-input bg-card px-4 py-[14px] font-normal text-base text-foreground transition-[border-color] duration-[250ms] placeholder:text-muted-foreground focus:border-slate focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-2";
 
-const NOTE = "m-0 border border-[#777] bg-white px-4 py-[14px] text-[14px]";
+const NOTE = "m-0 border border-border bg-card px-4 py-[14px] text-[14px]";
 
 interface PlanEnquirySectionProps {
 	destination: string;
@@ -31,7 +31,7 @@ export function PlanEnquirySection({
 	return (
 		<section
 			aria-labelledby="plan-title"
-			className="bg-[#f3f3f3] py-[88px]"
+			className="bg-muted py-[88px]"
 			id="plan"
 		>
 			<div
@@ -49,7 +49,7 @@ export function PlanEnquirySection({
 						<br />
 						Your way.
 					</h2>
-					<p className="m-0 text-[#444] text-[17px]">
+					<p className="m-0 text-[17px] text-muted-foreground">
 						Tell us a little about your plans. A travel adviser can help with
 						the details.
 					</p>
@@ -60,13 +60,13 @@ export function PlanEnquirySection({
 					>
 						{selectedTrip}
 					</p>
-					<p className="m-0 text-[#606060] text-[12px] leading-[1.6]">
+					<p className="m-0 text-[12px] text-muted-foreground leading-[1.6]">
 						Prototype only. Do not enter real personal details. This form does
 						not send or save data.
 					</p>
 				</div>
 				<form
-					className="relative grid gap-10 before:absolute before:top-6 before:bottom-6 before:left-[19px] before:border-[#777] before:border-l-2 before:border-dotted before:content-['']"
+					className="relative grid gap-10 before:absolute before:top-6 before:bottom-6 before:left-[19px] before:border-input before:border-l-2 before:border-dotted before:content-['']"
 					id="enquiry"
 					onSubmit={previewEnquiry}
 				>
@@ -77,7 +77,7 @@ export function PlanEnquirySection({
 					>
 						<span
 							aria-hidden="true"
-							className="absolute -top-1 left-0 grid h-10 w-10 place-items-center rounded-full bg-[#303030] font-bold text-white tabular-nums"
+							className="absolute -top-1 left-0 grid h-10 w-10 place-items-center rounded-full bg-slate font-bold text-card tabular-nums"
 						>
 							1
 						</span>
@@ -116,7 +116,7 @@ export function PlanEnquirySection({
 					>
 						<span
 							aria-hidden="true"
-							className="absolute -top-1 left-0 grid h-10 w-10 place-items-center rounded-full bg-[#303030] font-bold text-white tabular-nums"
+							className="absolute -top-1 left-0 grid h-10 w-10 place-items-center rounded-full bg-slate font-bold text-card tabular-nums"
 						>
 							2
 						</span>
@@ -156,7 +156,7 @@ export function PlanEnquirySection({
 					>
 						<span
 							aria-hidden="true"
-							className="absolute -top-1 left-0 grid h-10 w-10 place-items-center rounded-full bg-[#303030] font-bold text-white tabular-nums"
+							className="absolute -top-1 left-0 grid h-10 w-10 place-items-center rounded-full bg-slate font-bold text-card tabular-nums"
 						>
 							3
 						</span>
@@ -184,13 +184,13 @@ export function PlanEnquirySection({
 								CONTROL,
 								BUTTON,
 								PRIMARY,
-								"justify-self-start px-8 py-4 text-base focus-visible:outline-[#282828] focus-visible:outline-offset-[2px]",
+								"justify-self-start px-8 py-4 text-base focus-visible:outline-offset-[2px]",
 							)}
 							type="submit"
 						>
 							Preview trip enquiry
 						</button>
-						<p className="m-0 text-[#606060] text-[12px] leading-[1.6]">
+						<p className="m-0 text-[12px] text-muted-foreground leading-[1.6]">
 							Final form needs confirmed enquiry delivery and privacy terms.
 						</p>
 						<p

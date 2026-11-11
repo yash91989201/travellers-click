@@ -17,7 +17,7 @@ import homeCss from "../styles/home-motion.css?url";
 
 export const Route = createFileRoute("/")({
 	head: () => ({
-		meta: [{ title: "Travellers Click — Home wireframe" }],
+		meta: [{ title: "Travellers Click — Home" }],
 		links: [{ rel: "stylesheet", href: homeCss }],
 	}),
 	component: HomeComponent,
@@ -57,7 +57,7 @@ export function HomeComponent() {
 
 	return (
 		<div
-			className="overflow-x-clip bg-white font-[Arial,sans-serif] text-[#282828] text-[16px] leading-[1.5] [color-scheme:light]"
+			className="overflow-x-clip bg-background font-[Arial,sans-serif] text-[16px] text-foreground leading-[1.5] [color-scheme:light]"
 			data-home
 		>
 			<PrototypeBar />
