@@ -1,9 +1,11 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import { LINK, PAGE_WIDTH } from "./classes";
+import { BUTTON, CONTROL, LINK, PAGE_WIDTH, PRIMARY } from "./classes";
 
 const columnHeading =
-	"mb-[18px] text-balance text-[16px] font-bold leading-[1.15] tracking-[-0.02em]";
+	"mb-3 text-[13px] font-bold uppercase leading-[1.15] tracking-[0.06em]";
+const line = "mb-2 block text-[13px]";
+const note = "text-[12px] leading-[1.6] text-[#606060]";
 
 export function SiteFooter() {
 	return (
@@ -11,60 +13,56 @@ export function SiteFooter() {
 			<div
 				className={cn(
 					PAGE_WIDTH,
-					"grid grid-cols-[1.1fr_0.8fr_1fr_1fr] gap-8 py-11 max-[960px]:grid-cols-2 max-[600px]:gap-x-5 max-[600px]:gap-y-7",
+					"grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-[70px] py-[70px] max-[960px]:grid-cols-1 max-[960px]:gap-8",
 				)}
 			>
-				<div className="max-[600px]:col-span-full">
-					<strong className="mb-3 block font-bold text-[20px]">
+				<div>
+					<strong className="mb-2 block text-[32px] leading-[1.1] tracking-[-0.02em]">
 						Travellers Click
 					</strong>
-					<p className="mb-[10px] block text-[13px]">
-						Trips planned around you.
-					</p>
-					<p className="mt-[18px] mb-[10px] block text-[#606060] text-[12px] leading-[1.6]">
-						Brand name and logo to confirm.
-					</p>
-				</div>
-				<div>
-					<h2 className={columnHeading}>Explore</h2>
+					<p className="mb-5 text-[15px]">Trips planned around you.</p>
 					<a
-						className={cn(LINK, "mb-[10px] block text-[13px]")}
-						href="#destinations"
+						className={cn(
+							CONTROL,
+							BUTTON,
+							PRIMARY,
+							"inline-block px-6 py-3",
+						)}
+						href="#plan"
 					>
-						Destinations
+						Plan my trip
 					</a>
-					<a
-						className={cn(LINK, "mb-[10px] block text-[13px]")}
-						href="#packages"
-					>
-						Holiday packages
-					</a>
-					<a className={cn(LINK, "mb-[10px] block text-[13px]")} href="#plan">
-						Customize your trip
-					</a>
+					<p className={cn(note, "mt-5")}>Brand name and logo to confirm.</p>
 				</div>
-				<div>
-					<h2 className={columnHeading}>Contact</h2>
-					<p className="mb-[10px] block text-[13px]">
-						Phone / WhatsApp: to confirm
-					</p>
-					<p className="mb-[10px] block text-[13px]">
-						Email and office: to confirm
-					</p>
-					<p className="mb-[10px] block text-[13px]">
-						Working hours: to confirm
-					</p>
-				</div>
-				<div className="max-[600px]:col-span-full">
-					<h2 className={columnHeading}>Policies &amp; social</h2>
-					<p className="mb-[10px] block text-[13px]">Privacy · Terms</p>
-					<p className="mb-[10px] block text-[13px]">
-						Cancellation &amp; refunds · Disclaimer
-					</p>
-					<p className="mt-[18px] mb-[10px] block text-[#606060] text-[12px] leading-[1.6]">
-						Policy routes, social accounts, and payment methods need
-						confirmation.
-					</p>
+				<div className="grid content-start grid-cols-2 gap-x-10 max-[600px]:grid-cols-1">
+					<section className="py-[25px]">
+						<h2 className={columnHeading}>Explore</h2>
+						<a className={cn(LINK, line)} href="#destinations">
+							Destinations
+						</a>
+						<a className={cn(LINK, line)} href="#packages">
+							Holiday packages
+						</a>
+						<a className={cn(LINK, line)} href="#plan">
+							Customize your trip
+						</a>
+					</section>
+					<section className="py-[25px]">
+						<h2 className={columnHeading}>Contact</h2>
+						<p className={line}>Phone / WhatsApp: to confirm</p>
+						<p className={line}>Email and office: to confirm</p>
+						<p className={line}>Working hours: to confirm</p>
+					</section>
+					<section className="col-span-full py-[25px]">
+						<h2 className={columnHeading}>Policies &amp; social</h2>
+						<p className={line}>
+							Privacy · Terms · Cancellation &amp; refunds · Disclaimer
+						</p>
+						<p className={note}>
+							Policy routes, social accounts, and payment methods need
+							confirmation.
+						</p>
+					</section>
 				</div>
 			</div>
 			<div
