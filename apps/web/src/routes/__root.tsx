@@ -17,6 +17,7 @@ import type { orpc } from "@/utils/orpc";
 import Header from "../components/header";
 
 import appCss from "../index.css?url";
+import ImpeccableLiveRoot from '../impeccable/ImpeccableLiveRoot';
 export interface RouterAppContext {
 	orpc: typeof orpc;
 	queryClient: QueryClient;
@@ -70,7 +71,10 @@ function RootDocument() {
 				{!isHome && (
 					<ReactQueryDevtools position="bottom" buttonPosition="bottom-right" />
 				)}
-				<Scripts />
+				{/* impeccable-live-tanstack-start */}
+        <ImpeccableLiveRoot />
+        {/* impeccable-live-tanstack-end */}
+        <Scripts />
 			</body>
 		</html>
 	);
