@@ -13,13 +13,15 @@ colors:
   line: "#6B858C"
   line-soft: "#AABDC2"
 typography:
+  heading:
+    fontFamily: '"Lora Variable", serif'
   body:
-    fontFamily: "Arial, sans-serif"
+    fontFamily: '"Figtree Variable", sans-serif'
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.5
   button:
-    fontFamily: "Arial, sans-serif"
+    fontFamily: '"Figtree Variable", sans-serif'
     fontWeight: 600
 rounded:
   control: "3px"
@@ -53,7 +55,7 @@ components:
 
 On 2026-11-11, the user chose palette 6, **slate and coral**, after comparing it with teal and sand on homepage previews. They liked its refreshing character but found the preview too generic ("vibe coded"). The palette is approved; the preview's visual treatment is not.
 
-This file merges that decision into the existing system. Its color tokens define the next implementation pass. Typography, shape, and spacing tokens retain the current wireframe defaults until that pass resolves them. The live home page remains a grayscale wireframe with placeholder photos; these docs do not claim the palette has shipped.
+This file merges that decision into the existing system. Its color tokens define the next implementation pass. Typography uses Lora headings and Figtree body text; shape and spacing tokens retain the current wireframe defaults until that pass resolves them. The live home page remains a grayscale wireframe with placeholder photos; these docs do not claim the palette has shipped.
 
 The intended expression is a carefully composed travel itinerary: clear information, memorable destination photography, confident type, and a restrained route-and-pin motif. The next pass should establish character through composition and image selection. Applying a uniform tint to the current wireframe is insufficient.
 
@@ -96,8 +98,9 @@ Verified solid-color pairings: ink on canvas 10.59:1, ink on coral 5.62:1, ink o
 
 ## Typography
 
-**Current font:** Arial, sans-serif is a wireframe placeholder, not approved brand typography. No final font family was chosen with the palette. Resolve the display and body relationship in the next design pass.
+**Font pairing:** Lora for headings; Figtree for body text, navigation, forms, and buttons. Both variable fonts are self-hosted through Fontsource, installed with shadcn's font registry items. The shared Tailwind stylesheet owns `--font-heading` and `--font-sans`; `components.json` points to that stylesheet rather than storing font-family fields.
 
+- **Heading:** Lora, using the existing heading sizes and weights.
 - **Body** (400, 1rem, 1.5): all copy.
 - **Button** (600): primary actions.
 
