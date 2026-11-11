@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
+import Header from "../components/header";
 import { BenefitsSection } from "../components/home/benefits-section";
 import { HelpFaqSection } from "../components/home/help-faq-section";
 import { HeroSection } from "../components/home/hero-section";
@@ -10,7 +11,6 @@ import { ProcessSection } from "../components/home/process-section";
 import { PrototypeBar } from "../components/home/prototype-bar";
 import { ReviewsSection } from "../components/home/reviews-section";
 import { SiteFooter } from "../components/home/site-footer";
-import { SiteHeader } from "../components/home/site-header";
 import { TripStylesSection } from "../components/home/trip-styles-section";
 import type { DiscoverySelection, Region } from "../components/home/types";
 import homeCss from "../styles/home-motion.css?url";
@@ -57,11 +57,11 @@ export function HomeComponent() {
 
 	return (
 		<div
-			className="overflow-x-clip bg-background font-[Arial,sans-serif] text-[16px] text-foreground leading-[1.5] [color-scheme:light]"
+			className="overflow-x-clip bg-background font-sans text-[16px] text-foreground leading-[1.5] [color-scheme:light]"
 			data-home
 		>
 			<PrototypeBar />
-			<SiteHeader />
+			<Header account={false} />
 			<main id="main">
 				<HeroSection onExplore={explorePackages} />
 				<BenefitsSection />

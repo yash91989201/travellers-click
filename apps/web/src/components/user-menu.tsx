@@ -39,6 +39,10 @@ export default function UserMenu() {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>{session.user.email}</DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => navigate({ to: "/dashboard" })}>
+            Dashboard
+          </DropdownMenuItem>
           <DropdownMenuItem
             variant="destructive"
             onClick={() => {

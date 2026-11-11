@@ -26,7 +26,7 @@ The main action is **Plan my trip**. There is no instant booking or payment flow
 9. Custom enquiry: destination, flexible dates, traveler count, budget basis, and sample phone number.
 10. Flight/hotel assistance, FAQs, and contact/legal footer.
 
-On mobile, navigation collapses into a native disclosure. Destination controls sit
+On mobile, navigation opens a full-screen panel. Destination controls sit
 below the headline. Packages, process, enquiry, and FAQs become a single column.
 The discovery form sits half inside the hero image and half outside, at every width.
 The current implementation uses grayscale blocks and system type to review
@@ -42,7 +42,7 @@ photos, and the detailed visual and motion implementation remain open.
 - Four illustrative hero destinations rotate every nine seconds. Manual selection pauses rotation.
 - Pause controls, reduced motion, offscreen detection, and tab visibility stop automatic motion.
 - Travel style links show the selected preference beside the enquiry.
-- FAQs and mobile navigation open with native disclosure controls.
+- FAQs use native disclosure controls; mobile navigation opens a full-screen panel.
 - The enquiry uses browser validation, then shows a preview notice. Nothing is sent or saved.
 - Legal and contact details remain text placeholders, not broken routes.
 

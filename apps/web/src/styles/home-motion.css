@@ -1,16 +1,8 @@
 /*
  * Home page motion.
- * Only keyframes, the native <details> desktop rule, and descendant selection
- * colors live here; Tailwind expresses every other declaration as a utility.
+ * Only keyframes and descendant selection colors live here; Tailwind expresses
+ * every other declaration as a utility.
  */
-
-/* Desktop navigation must show before hydration sets <details open>.
-   960px matches Tailwind's exclusive max-[960px] mobile range. */
-@media (min-width: 960px) {
-	details[data-navigation]:not([open]) > nav {
-		display: flex;
-	}
-}
 
 @keyframes hero-zoom {
 	0% {
