@@ -29,8 +29,10 @@ The main action is **Plan my trip**. There is no instant booking or payment flow
 On mobile, navigation collapses into a native disclosure. Destination controls sit
 below the headline. Packages, process, enquiry, and FAQs become a single column.
 The discovery form sits half inside the hero image and half outside, at every width.
-Use grayscale blocks and system type to review hierarchy rather than branding.
-Final fonts, colors, photos, and motion remain open.
+The current implementation uses grayscale blocks and system type to review
+hierarchy rather than branding. Slate and coral was approved on 2026-11-11;
+see the palette decision below and root `DESIGN.md`. Final fonts, production
+photos, and the detailed visual and motion implementation remain open.
 
 ## Prototype behavior
 
@@ -55,6 +57,29 @@ About and itinerary detail pages remain separate work. This prototype uses in-pa
 process and enquiry destinations instead of adding unfinished routes.
 Optional blog, language, currency, and payment badges are omitted pending need and evidence.
 This prototype replaces the starter home route. It does not establish a final design system.
+
+## Approved palette direction — 2026-11-11
+
+The user chose **palette 6: slate and coral** after comparing two color studies
+on snapshots of this homepage. They found the palette refreshing, but described
+the preview's execution as too generic ("vibe coded"). The palette is approved;
+the static preview treatment is not a final design approval.
+
+- Root `DESIGN.md` owns exact colors, roles, contrast pairings, and implementation
+  guidance. `PRODUCT.md` records the durable brand decision.
+- This pass updates documentation only. The application remains a grayscale
+  wireframe until the next design pass.
+- Preserve the accepted layout, travel-style mosaic, hero destination browsing,
+  and discovery form overlap. Improve typography, image selection, crops,
+  spacing, and hierarchy within that structure.
+- Give coral priority on the main enquiry action. Use slate for structural
+  emphasis and selected controls; use ivory, white, and ink for clear reading.
+- Replace placeholder photography with confirmed assets. The comparison's sample
+  photos, blanket ivory hero wash, and flat recoloring are not the final treatment.
+- Final typography remains undecided. The current system type is a wireframe
+  placeholder, not approved brand typography.
+- Preserve the motion direction and corrections below. Revisit the supplied
+  recording with real photographs before implementing the final transitions.
 
 
 ## Reminder for the color and photo pass
