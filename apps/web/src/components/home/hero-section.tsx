@@ -1,16 +1,44 @@
 import { cn } from "@travellers-click/ui/lib/utils";
+import { Pause, Play } from "lucide-react";
 import { type FormEvent, useEffect, useRef, useState } from "react";
 
 import { BUTTON, CONTROL, FOCUS_INK, PAGE_WIDTH, SLATE } from "./classes";
 import type { DiscoverySelection, Region } from "./types";
 
 const HERO_DESTINATIONS = [
-	{ name: "Kerala", landmark: "Alleppey backwaters", region: "India" },
-	{ name: "Rajasthan", landmark: "Amer Fort", region: "India" },
-	{ name: "Bali", landmark: "Ulun Danu temple", region: "International" },
-	{ name: "Vietnam", landmark: "Ha Long Bay", region: "International" },
+	{
+		name: "Kerala",
+		landmark: "Alleppey backwaters",
+		region: "India",
+		image: "/images/hero/kerala",
+		position: "object-[72%_85%]",
+		alt: "Palm-lined backwaters in Alleppey, Kerala",
+	},
+	{
+		name: "Rajasthan",
+		landmark: "Amer Fort",
+		region: "India",
+		image: "/images/hero/rajasthan",
+		position: "object-[55%_70%]",
+		alt: "Amer Fort overlooking the hills of Rajasthan",
+	},
+	{
+		name: "Bali",
+		landmark: "Ulun Danu temple",
+		region: "International",
+		image: "/images/hero/bali",
+		position: "object-[60%_65%]",
+		alt: "Palm trees and stepped rice terraces in Tegallalang, Bali",
+	},
+	{
+		name: "Vietnam",
+		landmark: "Ha Long Bay",
+		region: "International",
+		image: "/images/hero/vietnam",
+		position: "object-[55%_75%]",
+		alt: "Limestone islands rising from the water in Ha Long Bay, Vietnam",
+	},
 ] as const;
-const HERO_SLIDE_MS = 9000;
 
 interface HeroSectionProps {
 	onExplore: (selection: DiscoverySelection) => void;
@@ -25,9 +53,11 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 	const [discoveryDestination, setDiscoveryDestination] = useState("");
 	const activeDestination = HERO_DESTINATIONS[heroIndex];
 	const heroRunning = !heroPaused && heroVisible && !reducedMotion;
-	let pauseLabel = heroPaused ? "Play slideshow" : "Pause slideshow";
+	const nextDestination =
+		HERO_DESTINATIONS[(heroIndex + 1) % HERO_DESTINATIONS.length];
+	let pauseLabel = heroPaused ? "Resume animation" : "Pause animation";
 	if (reducedMotion) {
-		pauseLabel = "Motion off";
+		pauseLabel = "Motion disabled";
 	}
 
 	useEffect(() => {
@@ -56,17 +86,6 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 		};
 	}, []);
 
-	useEffect(() => {
-		if (!heroRunning) {
-			return;
-		}
-		const timer = window.setTimeout(
-			() => setHeroIndex((index) => (index + 1) % HERO_DESTINATIONS.length),
-			HERO_SLIDE_MS,
-		);
-		return () => window.clearTimeout(timer);
-	}, [heroIndex, heroRunning]);
-
 	function explorePackages(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
@@ -92,77 +111,147 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 	return (
 		<section
 			aria-labelledby="hero-title"
-			className="group relative grid grid-cols-[minmax(0,1fr)] grid-rows-[var(--hero-height)_1fr_1fr] [--hero-height:max(480px,calc(85vh_-_160px))] max-[600px]:[--hero-height:max(570px,calc(85vh_-_230px))]"
+			className="group relative grid grid-cols-[minmax(0,1fr)] grid-rows-[var(--hero-height)_1fr_1fr] bg-[linear-gradient(to_bottom,transparent_var(--hero-height),var(--muted)_var(--hero-height))] [--hero-height:max(480px,calc(85vh_-_160px))] max-[600px]:[--hero-height:max(570px,calc(85vh_-_230px))]"
 			data-paused={heroPaused}
 			data-running={heroRunning}
+			data-static={reducedMotion}
 			id="destinations"
 			ref={hero}
 		>
+			<link
+				as="image"
+				fetchPriority="low"
+				href={`${nextDestination.image}-1920.webp`}
+				imageSizes="100vw"
+				imageSrcSet={`${nextDestination.image}-960.webp 960w, ${nextDestination.image}-1920.webp 1920w, ${nextDestination.image}-2880.webp 2880w`}
+				rel="preload"
+			/>
+			<link
+				as="image"
+				href={`${nextDestination.image}-motion.webp`}
+				rel="prefetch"
+			/>
+			<link
+				as="image"
+				href={`${nextDestination.image}-pin.webp`}
+				rel="prefetch"
+			/>
 			<div className="relative isolate col-start-1 row-[1/3]">
-				<div className="absolute inset-0 -z-10 overflow-hidden bg-linear-to-br from-muted via-muted to-border">
-					<span className="absolute top-7 right-8 z-[1] text-[12px] text-muted-foreground max-[600px]:top-3 max-[600px]:right-[18px]">
-						{activeDestination.name} · Destination image placeholder
-					</span>
-					<div
-						className="absolute inset-0 animate-[hero-zoom_9s_cubic-bezier(0.16,1,0.3,1)_both] group-data-[paused=true]:animate-none motion-reduce:animate-none group-data-[running=false]:[animation-play-state:paused]"
-						key={activeDestination.name}
-					>
-						<div className="pointer-events-none absolute inset-0 grid animate-[hero-sweep_9s_ease-in-out_both] content-center gap-5 group-data-[paused=true]:hidden motion-reduce:hidden group-data-[running=false]:[animation-play-state:paused]">
-							<i className="ml-auto block h-[3px] w-[70%] bg-card/50 even:h-[7px] even:w-[48%] [&:nth-child(3)]:w-[86%]" />
-							<i className="ml-auto block h-[3px] w-[70%] bg-card/50 even:h-[7px] even:w-[48%] [&:nth-child(3)]:w-[86%]" />
-							<i className="ml-auto block h-[3px] w-[70%] bg-card/50 even:h-[7px] even:w-[48%] [&:nth-child(3)]:w-[86%]" />
-							<i className="ml-auto block h-[3px] w-[70%] bg-card/50 even:h-[7px] even:w-[48%] [&:nth-child(3)]:w-[86%]" />
-							<i className="ml-auto block h-[3px] w-[70%] bg-card/50 even:h-[7px] even:w-[48%] [&:nth-child(3)]:w-[86%]" />
-						</div>
+				<div className="absolute inset-0 -z-10 overflow-hidden bg-slate">
+					<div className="absolute inset-0" key={activeDestination.name}>
+						<img
+							alt={activeDestination.alt}
+							className={cn(
+								"absolute inset-0 h-full w-full scale-[1.02] object-cover",
+								activeDestination.position
+							)}
+							fetchPriority="high"
+							height={1080}
+							sizes="100vw"
+							src={`${activeDestination.image}-1920.webp`}
+							srcSet={`${activeDestination.image}-960.webp 960w, ${activeDestination.image}-1920.webp 1920w, ${activeDestination.image}-2880.webp 2880w`}
+							width={1920}
+						/>
+						<img
+							alt=""
+							aria-hidden="true"
+							className={cn(
+								"absolute inset-0 h-full w-full animate-[hero-zoom_9s_linear_both] object-cover group-data-[static=true]:animate-none motion-reduce:animate-none group-data-[running=false]:[animation-play-state:paused]",
+								activeDestination.position
+							)}
+							height={1080}
+							onAnimationEnd={(event) => {
+								// The photo is the clock, so pausing never desynchronizes the scene.
+								if (event.animationName === "hero-zoom" && heroRunning) {
+									setHeroIndex(
+										(index) => (index + 1) % HERO_DESTINATIONS.length
+									);
+								}
+							}}
+							sizes="100vw"
+							src={`${activeDestination.image}-1920.webp`}
+							srcSet={`${activeDestination.image}-960.webp 960w, ${activeDestination.image}-1920.webp 1920w, ${activeDestination.image}-2880.webp 2880w`}
+							width={1920}
+						/>
+						<img
+							alt=""
+							aria-hidden="true"
+							className={cn(
+								"pointer-events-none absolute -inset-x-[30%] inset-y-0 h-full w-[160%] max-w-none animate-[hero-pan_9s_linear_both] object-cover group-data-[static=true]:hidden motion-reduce:hidden group-data-[running=false]:[animation-play-state:paused]",
+								activeDestination.position
+							)}
+							height={540}
+							src={`${activeDestination.image}-motion.webp`}
+							width={960}
+						/>
 					</div>
+					<div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,27,31,0.78)_0%,rgba(8,27,31,0.55)_36%,rgba(8,27,31,0.08)_72%),linear-gradient(0deg,rgba(8,27,31,0.58),transparent_42%)] max-[600px]:bg-[linear-gradient(180deg,rgba(8,27,31,0.82),rgba(8,27,31,0.18)_50%,rgba(8,27,31,0.66))]" />
 				</div>
 				<div className={cn(PAGE_WIDTH, "relative h-full")}>
 					<div className="relative z-[1] max-w-[650px] pt-[72px] max-[600px]:max-w-full max-[960px]:max-w-[58%] max-[600px]:pt-[44px]">
 						<h1
-							className="m-0 text-balance font-bold text-[clamp(40px,4.4vw,64px)] text-foreground leading-[1.1] tracking-[-0.03em] max-[600px]:text-[38px]"
+							className="m-0 text-balance font-bold text-[clamp(40px,4.4vw,64px)] text-white leading-[1.1] tracking-[-0.03em] max-[600px]:text-[36px]"
 							id="hero-title"
 						>
-							Where would you
+							What’s your next
 							<br />
-							like to go next?
+							destination?
 						</h1>
+						<p
+							className="m-0 mt-4 font-heading text-[clamp(48px,5vw,72px)] text-primary italic leading-[1.15] tracking-[-0.02em] max-[600px]:mt-3 max-[600px]:text-[46px]"
+							data-hero-destination
+						>
+							<span
+								className="-mx-[0.2em] -my-[0.12em] inline-block animate-[hero-name_9s_linear_both] px-[0.2em] py-[0.12em] group-data-[static=true]:animate-none motion-reduce:animate-none group-data-[running=false]:[animation-play-state:paused]"
+								key={activeDestination.name}
+							>
+								{activeDestination.name}?
+							</span>
+						</p>
 					</div>
 					<a
 						aria-label={`Start planning a trip to ${activeDestination.name}`}
 						className={cn(
 							FOCUS_INK,
-							"absolute top-[180px] left-[73%] grid justify-items-center gap-3 whitespace-nowrap font-semibold text-[18px] text-foreground no-underline max-[600px]:top-[242px] max-[600px]:right-2 max-[960px]:right-[4%] max-[960px]:left-auto max-[600px]:gap-2 max-[600px]:text-[15px]",
+							"absolute z-[1] top-[180px] left-[73%] grid justify-items-center gap-3 whitespace-nowrap font-semibold text-[18px] text-white no-underline focus-visible:outline-white max-[600px]:top-[242px] max-[600px]:right-2 max-[960px]:right-[4%] max-[960px]:left-auto max-[600px]:gap-2 max-[600px]:text-[15px]"
 						)}
 						href="#discovery"
-						key={activeDestination.name}
 						onClick={() => setDiscoveryDestination(activeDestination.region)}
 					>
-						<span className="relative block h-[132px] w-[104px] animate-[pin-arrive_2s_cubic-bezier(0.16,1,0.3,1)_both] group-data-[paused=true]:animate-none motion-reduce:animate-none max-[600px]:h-[108px] max-[600px]:w-[84px] group-data-[running=false]:[animation-play-state:paused]">
-							<svg
-								aria-hidden="true"
-								className="h-full w-full fill-primary stroke-foreground [stroke-width:1.5]"
-								focusable="false"
-								viewBox="0 0 104 132"
-							>
-								<path d="M52 128C44 116 5 77 5 52a47 47 0 1 1 94 0c0 25-39 64-47 76Z" />
-							</svg>
-							<span
-								className="absolute inset-x-[10px] top-[10px] grid aspect-square animate-[landmark-reveal_9s_ease_both] place-items-center overflow-hidden rounded-full border border-foreground bg-card p-2 text-foreground group-data-[paused=true]:animate-none motion-reduce:animate-none max-[600px]:inset-x-2 max-[600px]:top-2 max-[600px]:p-[6px] group-data-[running=false]:[animation-play-state:paused]"
-								title={`${activeDestination.landmark} — landmark photo placeholder`}
-							>
-								<span className="whitespace-normal text-center font-semibold text-[13px] leading-[1.25] max-[600px]:text-[12px]">
-									Landmark
-									<small className="mt-[6px] block font-normal text-[12px] max-[600px]:mt-[3px]">
-										photo
-									</small>
+						<span
+							className="grid animate-[pin-arrive_9s_linear_both] justify-items-center gap-3 group-data-[static=true]:animate-none motion-reduce:animate-none group-data-[running=false]:[animation-play-state:paused]"
+							key={activeDestination.name}
+						>
+							<span className="relative block h-[132px] w-[104px] drop-shadow-[0_8px_12px_rgba(0,0,0,0.25)] group-data-[static=true]:animate-none motion-reduce:animate-none max-[600px]:h-[108px] max-[600px]:w-[84px] group-data-[running=false]:[animation-play-state:paused]">
+								<svg
+									aria-hidden="true"
+									className="h-full w-full fill-primary stroke-white [stroke-width:1.5]"
+									focusable="false"
+									viewBox="0 0 104 132"
+								>
+									<path d="M52 128C44 116 5 77 5 52a47 47 0 1 1 94 0c0 25-39 64-47 76Z" />
+								</svg>
+								<span
+									className="absolute inset-x-[10px] top-[10px] block aspect-square animate-[landmark-reveal_9s_ease_both] overflow-hidden rounded-full border-2 border-white bg-slate group-data-[static=true]:animate-none motion-reduce:animate-none max-[600px]:inset-x-2 max-[600px]:top-2 group-data-[running=false]:[animation-play-state:paused]"
+									title={activeDestination.landmark}
+								>
+									<img
+										alt={activeDestination.landmark}
+										className="h-full w-full object-cover"
+										height={320}
+										src={`${activeDestination.image}-pin.webp`}
+										width={320}
+									/>
 								</span>
 							</span>
+							<span className="bg-[rgba(8,27,31,0.72)] px-3 py-2 font-normal text-[13px]">
+								{activeDestination.landmark}
+							</span>
 						</span>
-						<span>Find your next stop.</span>
 					</a>
 					<svg
 						aria-hidden="true"
-						className="pointer-events-none absolute inset-0 h-[var(--hero-height)] w-full overflow-visible [&_marker_path]:fill-none [&_marker_path]:stroke-slate [&_marker_path]:[stroke-linecap:round] [&_marker_path]:[stroke-linejoin:round] [&_marker_path]:[stroke-width:1.5]"
+						className="pointer-events-none absolute inset-0 h-[var(--hero-height)] w-full overflow-visible [&_marker_path]:fill-none [&_marker_path]:stroke-primary [&_marker_path]:[stroke-linecap:round] [&_marker_path]:[stroke-linejoin:round] [&_marker_path]:[stroke-width:2]"
 						focusable="false"
 						preserveAspectRatio="none"
 						viewBox="0 0 1160 480"
@@ -181,12 +270,12 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							</marker>
 						</defs>
 						<path
-							className="fill-none stroke-slate [stroke-dasharray:3_8] [stroke-linecap:round] [stroke-width:1.5] [vector-effect:non-scaling-stroke] max-[600px]:hidden"
+							className="fill-none stroke-primary [stroke-dasharray:5_6] [stroke-linecap:round] [stroke-width:2] [vector-effect:non-scaling-stroke] max-[600px]:hidden"
 							d="M935 286 C1010 346 806 374 684 334 C570 296 612 230 710 260 C820 300 622 408 424 370 S128 340 128 462"
 							markerEnd="url(#hero-arrow)"
 						/>
 						<path
-							className="hidden fill-none stroke-slate [stroke-dasharray:3_8] [stroke-linecap:round] [stroke-width:1.5] [vector-effect:non-scaling-stroke] max-[600px]:block"
+							className="hidden fill-none stroke-primary [stroke-dasharray:5_6] [stroke-linecap:round] [stroke-width:2] [vector-effect:non-scaling-stroke] max-[600px]:block"
 							d="M935 338 C1030 388 760 406 600 360 S120 340 128 462"
 							markerEnd="url(#hero-arrow)"
 						/>
@@ -194,55 +283,38 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 					<a
 						className={cn(
 							FOCUS_INK,
-							"absolute top-[calc(var(--hero-height)_-_64px)] left-[162px] font-semibold text-[20px] text-foreground no-underline max-[600px]:left-[70px] max-[600px]:text-[18px]",
+							"absolute top-[calc(var(--hero-height)_-_64px)] left-[162px] font-semibold text-[20px] text-white no-underline focus-visible:outline-white max-[600px]:left-[70px] max-[600px]:text-[18px]"
 						)}
 						href="#discovery"
 					>
 						Let’s start here.
 					</a>
-					<div
-						aria-label="Sample destinations"
-						className="absolute top-[278px] left-0 flex max-w-[450px] flex-wrap items-center gap-2 max-[600px]:top-[166px] max-[600px]:left-0 max-[600px]:max-w-full max-[600px]:gap-[6px]"
-						role="group"
+					<a
+						className="absolute top-[calc(var(--hero-height)_-_32px)] right-0 bg-[rgba(8,27,31,0.72)] px-2 py-1 text-[11px] text-white underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+						href="/images/hero/credits.html"
 					>
-						{HERO_DESTINATIONS.map((place, index) => (
-							<button
-								aria-pressed={heroIndex === index}
-								className={cn(
-									CONTROL,
-									BUTTON,
-									"border-input bg-card/70 px-3 py-2 text-[13px] hover:bg-card aria-pressed:border-slate aria-pressed:bg-slate aria-pressed:text-card max-[600px]:px-[9px] max-[600px]:py-[7px] max-[600px]:text-[12px]",
-								)}
-								key={place.name}
-								onClick={() => {
-									setHeroIndex(index);
-									setHeroPaused(true);
-								}}
-								type="button"
-							>
-								{place.name}
-							</button>
-						))}
-						<button
-							aria-pressed={heroPaused}
-							className={cn(
-								CONTROL,
-								BUTTON,
-								"border-transparent bg-transparent px-3 py-2 text-[13px] underline underline-offset-[3px] hover:bg-transparent disabled:cursor-default disabled:text-muted-foreground max-[600px]:px-[9px] max-[600px]:py-[7px] max-[600px]:text-[12px]",
-							)}
-							disabled={reducedMotion}
-							onClick={() => setHeroPaused((paused) => !paused)}
-							type="button"
-						>
-							{pauseLabel}
-						</button>
-					</div>
+						Photo credits
+					</a>
+					<button
+						aria-label={pauseLabel}
+						aria-pressed={heroPaused}
+						className="absolute top-6 right-0 grid size-10 cursor-pointer place-items-center rounded-full border border-white/60 bg-[rgba(8,27,31,0.72)] text-white hover:bg-slate focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-4 disabled:cursor-default disabled:opacity-60"
+						disabled={reducedMotion}
+						onClick={() => setHeroPaused((paused) => !paused)}
+						type="button"
+					>
+						{heroPaused ? (
+							<Play aria-hidden="true" size={16} />
+						) : (
+							<Pause aria-hidden="true" size={16} />
+						)}
+					</button>
 				</div>
 			</div>
 			<div
 				className={cn(
 					PAGE_WIDTH,
-					"relative z-[1] col-start-1 row-[2/4] self-center",
+					"relative z-[1] col-start-1 row-[2/4] self-center"
 				)}
 			>
 				<form
@@ -256,7 +328,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							className={cn(
 								CONTROL,
 								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]",
+								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]"
 							)}
 							name="destination"
 							onChange={(event) => setDiscoveryDestination(event.target.value)}
@@ -273,7 +345,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							className={cn(
 								CONTROL,
 								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]",
+								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]"
 							)}
 							name="date"
 							type="date"
@@ -285,7 +357,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							className={cn(
 								CONTROL,
 								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]",
+								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]"
 							)}
 							name="duration"
 						>
@@ -301,7 +373,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							className={cn(
 								CONTROL,
 								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]",
+								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]"
 							)}
 							name="type"
 						>
@@ -318,7 +390,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							CONTROL,
 							BUTTON,
 							SLATE,
-							"min-h-12 px-4 py-3 text-[14px] max-[960px]:col-span-full",
+							"min-h-12 px-4 py-3 text-[14px] max-[960px]:col-span-full"
 						)}
 						type="submit"
 					>

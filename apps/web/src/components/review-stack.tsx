@@ -1,6 +1,6 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import { FOCUS_INK } from "./home/classes";
+import { FOCUS_PAPER } from "./home/classes";
 import {
 	type CSSProperties,
 	type KeyboardEvent,
@@ -35,6 +35,107 @@ const SLOT_POSITION: Record<Position, string> = {
 	gone: "data-[pos=gone]:pointer-events-none data-[pos=gone]:z-[5] data-[pos=gone]:opacity-0 data-[pos=gone]:[transform:translate(calc(var(--exit,1)*120%),30px)_rotate(calc(var(--exit,1)*12deg))_scale(1)]",
 	out: "data-[pos=out]:pointer-events-none data-[pos=out]:z-0 data-[pos=out]:opacity-0 data-[pos=out]:[transform:translate(0,-80px)_rotate(0)_scale(0.8)]",
 };
+
+// Sample copy and photos only: swap for verified reviews and traveler-supplied photos with permission.
+const REVIEWS = [
+	{
+		photo: "/images/packages/kerala.webp",
+		quote:
+			"We did not know where to start. The adviser asked about our pace and budget, then sent a Kerala itinerary that fit both.",
+		name: "Sample traveler",
+		trip: "Kerala backwaters, 7 nights",
+	},
+	{
+		photo: "/images/packages/rajasthan.webp",
+		quote:
+			"Two rounds of changes to the quote, no pressure, and every inclusion written down before we agreed to anything.",
+		name: "Sample traveler",
+		trip: "Rajasthan circuit, 9 nights",
+	},
+	{
+		photo: "/images/packages/bali.webp",
+		quote:
+			"Our dates were still loose when we first wrote in. The plan came together around them instead of the other way round.",
+		name: "Sample traveler",
+		trip: "Bali escape, 6 nights",
+	},
+	{
+		photo: "/images/trips/family.webp",
+		quote:
+			"Travelling with two kids needs a gentler schedule. The itinerary left room for rest days and we never felt rushed.",
+		name: "Sample traveler",
+		trip: "Family holiday, 8 nights",
+	},
+	{
+		photo: "/images/trips/wildlife.webp",
+		quote:
+			"Clear about what was included and what was not. We knew the full cost before booking, which made the decision easy.",
+		name: "Sample traveler",
+		trip: "Wildlife safari, 5 nights",
+	},
+] as const;
+
+type Review = (typeof REVIEWS)[number];
+
+function Count({ front, index }: { front: boolean; index: number }) {
+	return (
+		<span
+			className={cn(
+				"font-bold text-[13px] text-slate tabular-nums transition-opacity duration-500",
+				front ? "opacity-100" : "opacity-0",
+			)}
+		>
+			{index + 1} / {SLOT_COUNT}
+		</span>
+	);
+}
+
+function Photo({ className, src }: { className: string; src: string }) {
+	return (
+		<img
+			alt=""
+			className={cn("object-cover", className)}
+			height={400}
+			loading="lazy"
+			src={src}
+			width={400}
+		/>
+	);
+}
+
+function CardBody({
+	front,
+	index,
+	review,
+}: {
+	front: boolean;
+	index: number;
+	review: Review;
+}) {
+	return (
+		<div className="grid">
+			<Photo
+				className="h-[190px] w-full max-[860px]:h-[130px]"
+				src={review.photo}
+			/>
+			<div className="grid gap-5 p-6">
+				<p className="m-0 min-h-[5.25rem] text-[16px] text-foreground leading-[1.55] max-[600px]:min-h-0 max-[600px]:text-[15px]">
+					{review.quote}
+				</p>
+				<div className="flex items-end justify-between gap-3 border-slate border-t-2 border-dotted pt-4 text-[13px]">
+					<div className="grid gap-[2px]">
+						<span className="font-bold">{review.name}</span>
+						<span className="text-muted-foreground">{review.trip}</span>
+					</div>
+					<p className="m-0 text-[12px] text-muted-foreground uppercase tracking-[0.06em] max-[600px]:hidden">
+						Sample review
+					</p>
+					<Count front={front} index={index} />
+				</div>
+			</div>
+		</div>
+	);
+}
 
 export function ReviewStack() {
 	const root = useRef<HTMLDivElement>(null);
@@ -148,7 +249,7 @@ export function ReviewStack() {
 				aria-live={running ? "off" : "polite"}
 				aria-roledescription="carousel"
 				className={cn(
-					FOCUS_INK,
+					FOCUS_PAPER,
 					"group relative grid touch-pan-y select-none px-24 pt-[132px] pb-5 max-[860px]:px-7 max-[860px]:pt-[104px] max-[860px]:pb-5",
 				)}
 				data-dragging={dragX !== null}
@@ -197,58 +298,15 @@ export function ReviewStack() {
 						>
 							<div
 								className={cn(
-									"grid grid-cols-[1fr_112px] grid-rows-[auto_auto] gap-x-6 gap-y-5 p-7 max-[860px]:grid-cols-[1fr_92px]",
 									front && "animate-[review-drift_9s_ease-in-out_infinite]",
 									"motion-reduce:animate-none",
 								)}
 							>
-								<div
-									aria-hidden="true"
-									className="col-start-1 grid content-start gap-[14px] pt-[6px]"
-								>
-									<i
-										className={cn(
-											"mt-[14px] block h-[3px] origin-left bg-border",
-											front && "animate-[review-line_0.8s_var(--ease)_both]",
-											"motion-reduce:animate-none",
-										)}
-									/>
-									<i
-										className={cn(
-											"mt-[14px] block h-[3px] origin-left bg-border [&:nth-child(2)]:[animation-delay:0.12s]",
-											front && "animate-[review-line_0.8s_var(--ease)_both]",
-											"motion-reduce:animate-none",
-										)}
-									/>
-									<i
-										className={cn(
-											"mt-[14px] block h-[3px] w-[60%] origin-left bg-border [&:nth-child(3)]:[animation-delay:0.24s]",
-											front && "animate-[review-line_0.8s_var(--ease)_both]",
-											"motion-reduce:animate-none",
-										)}
-									/>
-								</div>
-								<div className="col-start-1 row-start-2 flex items-end justify-between gap-3">
-									<p className="m-0 text-[12px] text-muted-foreground uppercase tracking-[0.06em]">
-										Verified review
-									</p>
-									<span
-										className={cn(
-											"font-bold text-[13px] text-slate tabular-nums transition-opacity duration-500",
-											front ? "opacity-100" : "opacity-0",
-										)}
-									>
-										{index + 1} / {SLOT_COUNT}
-									</span>
-								</div>
-								<figcaption className="col-start-2 row-span-2 grid content-between justify-items-end gap-[6px] border-input border-l-2 border-dotted pl-5 text-right text-[13px]">
-									<span
-										aria-hidden="true"
-										className="h-[76px] w-16 rounded-[3px] border-2 border-input border-dashed bg-[repeating-linear-gradient(45deg,var(--card)_0_6px,var(--muted)_6px_7px)]"
-									/>
-									<span className="font-bold">Traveler name</span>
-									<span className="text-muted-foreground">Source</span>
-								</figcaption>
+								<CardBody
+									front={front}
+									index={index}
+									review={REVIEWS[index % REVIEWS.length]}
+								/>
 							</div>
 						</figure>
 					);

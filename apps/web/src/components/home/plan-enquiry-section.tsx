@@ -1,7 +1,7 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 import { type FormEvent, useState } from "react";
 
-import { BUTTON, CONTROL, PAGE_WIDTH, PRIMARY } from "./classes";
+import { BUTTON, CONTROL, PAGE_WIDTH, PRIMARY, SECTION_PAD } from "./classes";
 
 const INPUT =
 	"h-12 w-full min-w-0 rounded-[3px] border border-input bg-card px-4 py-[14px] font-normal text-base text-foreground transition-[border-color] duration-[250ms] placeholder:text-muted-foreground focus:border-slate focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-2";
@@ -31,7 +31,7 @@ export function PlanEnquirySection({
 	return (
 		<section
 			aria-labelledby="plan-title"
-			className="bg-muted py-[88px]"
+			className={cn("bg-muted", SECTION_PAD)}
 			id="plan"
 		>
 			<div
@@ -42,7 +42,7 @@ export function PlanEnquirySection({
 			>
 				<div className="sticky top-8 grid gap-4 max-[860px]:static">
 					<h2
-						className="m-0 text-balance font-bold text-[clamp(36px,4vw,52px)] leading-[1.15] tracking-[-0.035em]"
+						className="m-0 text-balance font-bold text-[clamp(34px,4vw,48px)] leading-[1.15] tracking-[-0.02em]"
 						id="plan-title"
 					>
 						Your trip.
@@ -66,7 +66,7 @@ export function PlanEnquirySection({
 					</p>
 				</div>
 				<form
-					className="relative grid gap-10 before:absolute before:top-6 before:bottom-6 before:left-[19px] before:border-input before:border-l-2 before:border-dotted before:content-['']"
+					className="relative grid gap-10 before:absolute before:top-6 before:bottom-6 before:left-[19px] before:border-slate before:border-l-2 before:border-dotted before:content-['']"
 					id="enquiry"
 					onSubmit={previewEnquiry}
 				>

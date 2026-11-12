@@ -1,18 +1,34 @@
 import { cn } from "@travellers-click/ui/lib/utils";
+import { motion } from "motion/react";
+import { type FocusEvent, type PointerEvent, useEffect, useState } from "react";
 
-import { LINK, PAGE_WIDTH } from "./classes";
+import {
+	LINK,
+	PAGE_WIDTH,
+	SECTION_LEDE,
+	SECTION_PAD,
+	SECTION_TITLE,
+} from "./classes";
 import type { Region } from "./types";
 
 const SAMPLE_TRIPS = [
-	{ place: "Kerala", name: "Kerala at your pace", region: "India", days: 6 },
+	{
+		place: "Kerala",
+		image: "kerala",
+		name: "Kerala at your pace",
+		region: "India",
+		days: 6,
+	},
 	{
 		place: "Rajasthan",
+		image: "rajasthan",
 		name: "A Rajasthan introduction",
 		region: "India",
 		days: 5,
 	},
 	{
 		place: "Bali",
+		image: "bali",
 		name: "Time together in Bali",
 		region: "International",
 		days: 7,
@@ -27,6 +43,150 @@ const FILTERS = [
 
 const BADGE =
 	"whitespace-nowrap rounded-full border border-card px-[11px] py-[7px] text-[12px] font-semibold leading-none";
+
+const HOVER_QUERY = "(hover: hover) and (min-width: 901px)";
+const TITLE_REST = 21;
+const TITLE_OPEN_DEFAULT = 32;
+const GROW_OPEN = 4;
+const SPRING = { type: "spring", visualDuration: 0.675, bounce: 0.28 } as const;
+const FADE = { duration: 0.315, ease: "easeOut" } as const;
+const TRANSITION = {
+	default: SPRING,
+	opacity: FADE,
+} as const;
+const INSTANT = { duration: 0 } as const;
+
+interface TripCardProps {
+	hidden: boolean;
+	onChooseDestination: (place: string) => void;
+	trip: (typeof SAMPLE_TRIPS)[number];
+}
+
+// Hover accordion on desktop pointers; touch and narrow screens show every card open via CSS.
+function TripCard({ hidden, onChooseDestination, trip }: TripCardProps) {
+	// null until mounted: the CSS baseline renders first so there is no flash on hydration.
+	const [interactive, setInteractive] = useState<boolean | null>(null);
+	const [active, setActive] = useState(false);
+	const [titleOpen, setTitleOpen] = useState(TITLE_OPEN_DEFAULT);
+
+	useEffect(() => {
+		const query = window.matchMedia(HOVER_QUERY);
+		const sync = () => setInteractive(query.matches);
+		sync();
+		query.addEventListener("change", sync);
+		return () => query.removeEventListener("change", sync);
+	}, []);
+
+	const open = () => {
+		setTitleOpen(Math.min(40, Math.max(26, window.innerWidth * 0.03)));
+		setActive(true);
+	};
+	const close = () => setActive(false);
+
+	// Not interactive: park everything in the CSS "all open" pose.
+	const isOpen = interactive === false || active;
+	const driven = interactive !== null;
+	const transition = interactive ? TRANSITION : INSTANT;
+
+	return (
+		<motion.article
+			animate={driven ? { flexGrow: interactive && active ? GROW_OPEN : 1 } : undefined}
+			className="group relative min-w-0 flex-1 overflow-hidden border border-border bg-muted max-[900px]:min-h-[300px] [@media(hover:none)]:min-h-[300px]"
+			data-region={trip.region}
+			hidden={hidden}
+			initial={false}
+			// Remount once driven so initial={false} snaps straight to the right pose.
+			key={driven ? "driven" : "css"}
+			onBlur={(e: FocusEvent<HTMLElement>) => {
+				if (!e.currentTarget.contains(e.relatedTarget)) {
+					close();
+				}
+			}}
+			onFocus={(e: FocusEvent<HTMLElement>) => {
+				if (interactive && e.target.matches(":focus-visible")) {
+					open();
+				}
+			}}
+			onPointerEnter={(e: PointerEvent<HTMLElement>) => {
+				if (interactive && e.pointerType === "mouse") {
+					open();
+				}
+			}}
+			onPointerLeave={close}
+			transition={transition}
+		>
+			<motion.div
+				animate={driven ? { scale: interactive && active ? 1.06 : 1 } : undefined}
+				aria-hidden="true"
+				className="absolute inset-0 grid place-items-center bg-[repeating-linear-gradient(135deg,var(--muted)_0_14px,var(--border)_14px_15px)] text-[13px] text-muted-foreground"
+				initial={false}
+				transition={transition}
+			>
+				<img
+					alt=""
+					className="absolute inset-0 h-full w-full object-cover"
+					height={1067}
+					loading="lazy"
+					src={`/images/packages/${trip.image}.webp`}
+					width={1600}
+				/>
+			</motion.div>
+			<div className="absolute inset-0 flex flex-col justify-end bg-[linear-gradient(to_top,rgba(23,62,73,0.94)_0%,rgba(23,62,73,0.6)_45%,rgba(23,62,73,0)_75%)] p-[22px] text-card">
+				<div className="mb-3 flex flex-wrap gap-[6px]">
+					<span className={cn(BADGE, "bg-card text-foreground")}>{trip.region}</span>
+					<span className={cn(BADGE, "border-card/75 bg-transparent text-card")}>
+						{trip.days} days
+					</span>
+				</div>
+				<motion.h3
+					animate={
+						driven
+							? { fontSize: interactive && active ? titleOpen : TITLE_REST }
+							: undefined
+					}
+					className="m-0 text-balance font-bold text-[21px] text-card leading-[1.15] tracking-[-0.03em]"
+					initial={false}
+					transition={transition}
+				>
+					{trip.name}
+				</motion.h3>
+				<motion.div
+					animate={
+						driven
+							? isOpen
+								? { height: "auto", opacity: 1, y: 0 }
+								: { height: 0, opacity: 0, y: 14 }
+							: undefined
+					}
+					className="grid gap-1 overflow-hidden max-h-0 opacity-0 [transform:translateY(14px)] max-[900px]:max-h-none max-[900px]:opacity-100 max-[900px]:[transform:none] [@media(hover:none)]:max-h-none [@media(hover:none)]:opacity-100 [@media(hover:none)]:[transform:none]"
+					initial={false}
+					style={driven ? { maxHeight: "none" } : undefined}
+					transition={transition}
+				>
+					<p className="mt-[14px] mb-0 max-w-[44ch] text-[14px] text-muted">
+						Stays, transfers, and activities: details to confirm.
+					</p>
+					<div className="mt-[18px] flex flex-wrap items-end justify-between gap-x-5 gap-y-[14px] border-card/35 border-t pt-4">
+						<p className="m-0 grid gap-[3px]">
+							<span className="font-normal text-[12px] text-border uppercase tracking-[0.06em]">
+								Starting price
+							</span>
+							<strong className="font-bold text-[17px] text-card">to confirm</strong>
+						</p>
+						<a
+							className="inline-block cursor-pointer whitespace-nowrap rounded-[3px] border border-card bg-card px-[18px] py-[11px] font-bold text-[14px] text-foreground after:inline-block after:transition-[transform] after:duration-300 after:ease-[cubic-bezier(0.16,1,0.3,1)] after:content-['_→'] hover:bg-muted focus-visible:outline-[3px] focus-visible:outline-card focus-visible:outline-offset-[4px] hover:after:[transform:translateX(4px)]"
+							data-destination={trip.place}
+							href="#plan"
+							onClick={() => onChooseDestination(trip.place)}
+						>
+							Discuss this itinerary
+						</a>
+					</div>
+				</motion.div>
+			</div>
+		</motion.article>
+	);
+}
 
 interface PackagesSectionProps {
 	onChooseDestination: (place: string) => void;
@@ -52,19 +212,16 @@ export function PackagesSection({
 	return (
 		<section
 			aria-labelledby="packages-title"
-			className="scroll-mt-5 bg-card py-16 max-[600px]:py-[42px] motion-reduce:[&_*]:transition-none"
+			className="scroll-mt-5 bg-card motion-reduce:[&_*]:transition-none"
 			id="packages"
 		>
-			<div className={PAGE_WIDTH}>
-				<div className="mb-6 flex items-center justify-between gap-6 max-[600px]:block">
+			<div className={cn(PAGE_WIDTH, SECTION_PAD)}>
+				<div className="mb-8 flex items-center justify-between gap-6 max-[600px]:block">
 					<div>
-						<h2
-							className="mb-3 text-balance font-bold text-[36px] leading-[1.15] tracking-[-0.02em] max-[600px]:text-[30px]"
-							id="packages-title"
-						>
+						<h2 className={cn(SECTION_TITLE, "mb-3")} id="packages-title">
 							Find a holiday that fits
 						</h2>
-						<p className="mb-0 max-w-[65ch] text-muted-foreground">
+						<p className={cn(SECTION_LEDE, "mb-0 max-w-[65ch]")}>
 							A starting point for your own itinerary.
 						</p>
 					</div>
@@ -104,60 +261,12 @@ export function PackagesSection({
 				</p>
 				<div className="mt-2 flex h-[648px] gap-[10px] max-[900px]:h-auto max-[900px]:flex-col [@media(hover:none)]:h-auto [@media(hover:none)]:flex-col">
 					{SAMPLE_TRIPS.map((trip) => (
-						<article
-							className="group relative min-w-0 flex-1 overflow-hidden border border-border bg-muted transition-[flex-grow] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] focus-within:grow-[4] hover:grow-[4] max-[900px]:min-h-[300px] [@media(hover:none)]:min-h-[300px]"
-							data-region={trip.region}
+						<TripCard
 							hidden={region !== "all" && region !== trip.region}
 							key={trip.place}
-						>
-							<div
-								aria-hidden="true"
-								className="absolute inset-0 grid place-items-center bg-[repeating-linear-gradient(135deg,var(--muted)_0_14px,var(--border)_14px_15px)] text-[13px] text-muted-foreground transition-[transform] duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-focus-within:[transform:scale(1.06)] group-hover:[transform:scale(1.06)]"
-							>
-								<span>Package image</span>
-							</div>
-							<div className="absolute inset-0 flex flex-col justify-end bg-[linear-gradient(to_top,rgba(23,62,73,0.94)_0%,rgba(23,62,73,0.6)_45%,rgba(23,62,73,0)_75%)] p-[22px] text-card">
-								<div className="mb-3 flex flex-wrap gap-[6px]">
-									<span className={cn(BADGE, "bg-card text-foreground")}>
-										{trip.region}
-									</span>
-									<span
-										className={cn(
-											BADGE,
-											"border-card/75 bg-transparent text-card",
-										)}
-									>
-										{trip.days} days
-									</span>
-								</div>
-								<h3 className="m-0 text-balance font-bold text-[21px] text-card leading-[1.15] tracking-[-0.03em] transition-[font-size] duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-focus-within:text-[clamp(26px,3vw,40px)] group-hover:text-[clamp(26px,3vw,40px)]">
-									{trip.name}
-								</h3>
-								<div className="grid max-h-0 gap-1 overflow-hidden opacity-0 [transform:translateY(14px)] [transition:max-height_0.6s_cubic-bezier(0.16,1,0.3,1),opacity_0.4s_0.12s_cubic-bezier(0.16,1,0.3,1),transform_0.6s_cubic-bezier(0.16,1,0.3,1)] group-focus-within:max-h-[240px] group-focus-within:opacity-100 group-hover:max-h-[240px] group-hover:opacity-100 max-[900px]:max-h-none max-[900px]:opacity-100 group-focus-within:[transform:none] group-hover:[transform:none] max-[900px]:[transform:none] [@media(hover:none)]:max-h-none [@media(hover:none)]:opacity-100 [@media(hover:none)]:[transform:none]">
-									<p className="mt-[14px] mb-0 max-w-[44ch] text-[14px] text-muted">
-										Stays, transfers, and activities: details to confirm.
-									</p>
-									<div className="mt-[18px] flex flex-wrap items-end justify-between gap-x-5 gap-y-[14px] border-card/35 border-t pt-4">
-										<p className="m-0 grid gap-[3px]">
-											<span className="font-normal text-[12px] text-border uppercase tracking-[0.06em]">
-												Starting price
-											</span>
-											<strong className="font-bold text-[17px] text-card">
-												to confirm
-											</strong>
-										</p>
-										<a
-											className="inline-block cursor-pointer whitespace-nowrap rounded-[3px] border border-card bg-card px-[18px] py-[11px] font-bold text-[14px] text-foreground after:inline-block after:transition-[transform] after:duration-300 after:ease-[cubic-bezier(0.16,1,0.3,1)] after:content-['_→'] hover:bg-muted focus-visible:outline-[3px] focus-visible:outline-card focus-visible:outline-offset-[4px] hover:after:[transform:translateX(4px)]"
-											data-destination={trip.place}
-											href="#plan"
-											onClick={() => onChooseDestination(trip.place)}
-										>
-											Discuss this itinerary
-										</a>
-									</div>
-								</div>
-							</div>
-						</article>
+							onChooseDestination={onChooseDestination}
+							trip={trip}
+						/>
 					))}
 				</div>
 				<p className="mt-[18px] mb-0 max-w-[65ch] text-[12px] text-muted-foreground leading-[1.6]">

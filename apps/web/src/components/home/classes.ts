@@ -4,7 +4,17 @@
 export const PAGE_WIDTH =
 	"mx-auto w-[min(1160px,calc(100%_-_64px))] max-[600px]:w-[calc(100%_-_36px)]";
 
-const FOCUS = "focus-visible:outline-[3px] focus-visible:outline-offset-[4px]";
+// Section rhythm: every major band shares one vertical pad and one title step,
+// so background tone, not scale, tells sections apart. The enquiry title and
+// hero sit above this step; the flights/FAQ band sits below it.
+export const SECTION_PAD = "py-24 max-[600px]:py-16";
+
+export const SECTION_TITLE =
+	"text-balance font-bold text-[clamp(30px,3.4vw,40px)] leading-[1.15] tracking-[-0.02em]";
+
+export const SECTION_LEDE = "text-[17px] text-muted-foreground";
+
+const FOCUS ="focus-visible:outline-[3px] focus-visible:outline-offset-[4px]";
 
 // Slate ring on light surfaces. Use FOCUS_PAPER on ink or slate surfaces.
 export const FOCUS_INK = `${FOCUS} focus-visible:outline-slate`;

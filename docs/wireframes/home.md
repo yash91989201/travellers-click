@@ -130,3 +130,30 @@ The user chose the image mosaic through Impeccable Live: density 1.25 and a 40px
 section heading. Travel styles appear before holiday packages. Honeymoon has the
 large image slot; corporate/group travel has a full-width row. All six options
 keep their links to the custom enquiry. Images remain low fidelity placeholders.
+
+## Implemented hero photographs and motion — 2026-11-11
+
+The hero now uses self-hosted destination photographs with responsive 960px and
+1920px and 2880px WebP versions, 320px landmark crops, and small photo-derived horizontal
+motion-blur assets. Attribution, original source pages, licenses, and modification
+notes are published at `/images/hero/credits.html` and linked from the hero.
+Bali pairs Tegallalang rice terraces with Ulun Danu Beratan temple; Rajasthan
+pairs the fort exterior with its mirror-work interior. Kerala and Vietnam pair new Unsplash hero photographs with landmark crops from
+the original Commons photographs. Hero encodings use quality 92 and Lanczos
+resampling; 2880px variants serve high-density screens.
+
+Each nine-second scene begins with a fast photographic blur/pan: most of the
+travel happens in the first 360ms, then the image eases into place over the next
+1.6 seconds. A slow zoom follows, before a quick outgoing sweep into the next
+scene. The destination name reveals during the incoming image’s gentle settle. The pin stays hidden until the image settles at two seconds, bounces gently
+for about 1.8 seconds, then reveals its landmark photograph. The pin and caption
+fade away after the image starts zooming out. Headline, dotted guide,
+and overlapping discovery form remain steady. The photograph's animation-end
+event advances the scene, so pause, hidden-tab, and offscreen states freeze the
+same timeline. An icon-only pause control freezes and resumes the sequence. The current
+destination is revealed beneath “What’s your next destination?” after the incoming
+photo settles; destination buttons and visible slideshow text have been removed.
+Reduced motion keeps photographs, names, and pins static.
+
+These destinations remain sample catalogue content; photography does not establish
+live packages or availability.

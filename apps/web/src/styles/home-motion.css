@@ -4,73 +4,144 @@
  * every other declaration as a utility.
  */
 
+/* Motion images are photo-derived horizontal blurs, avoiding live full-screen filters. */
 @keyframes hero-zoom {
 	0% {
-		transform: scale(1.04);
+		opacity: 0;
+		transform: translateX(14%) scale(1.14);
+		animation-timing-function: cubic-bezier(0.12, 0.85, 0.2, 1);
 	}
-	10% {
-		transform: scale(1);
+	4% {
+		opacity: 1;
+		transform: translateX(1.8%) scale(1.045);
+		animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 	}
-	76% {
-		transform: scale(1.06);
+	22% {
+		opacity: 1;
+		transform: translateX(0) scale(1.02);
+		animation-timing-function: linear;
 	}
-	90%,
+	78% {
+		opacity: 1;
+		transform: translateX(-0.6%) scale(1.1);
+		animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+	}
+	94% {
+		opacity: 1;
+		transform: translateX(0) scale(1.02);
+		animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+	}
 	100% {
-		transform: scale(1);
+		opacity: 0;
+		transform: translateX(-18%) scale(1.04);
 	}
 }
 
-@keyframes hero-sweep {
+@keyframes hero-pan {
 	0% {
-		opacity: 0.8;
-		transform: translateX(-100%);
+		opacity: 1;
+		transform: translateX(18%) scale(1.08);
+		animation-timing-function: cubic-bezier(0.12, 0.85, 0.2, 1);
 	}
-	9% {
+	4% {
+		opacity: 0.18;
+		transform: translateX(-2%) scale(1.01);
+		animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	18% {
 		opacity: 0;
-		transform: translateX(100%);
+		transform: translateX(-5%) scale(1);
 	}
-	10%,
-	86% {
+	19%,
+	94% {
 		opacity: 0;
-		transform: translateX(-100%);
+		transform: translateX(10%) scale(1);
+		animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
 	}
-	90% {
-		opacity: 0.8;
+	97% {
+		opacity: 1;
+		transform: translateX(0) scale(1.04);
 	}
 	100% {
-		opacity: 0.8;
-		transform: translateX(100%);
+		opacity: 1;
+		transform: translateX(-14%) scale(1.08);
+	}
+}
+
+/* Reveal the destination as the incoming photograph finishes its fast pan. */
+@keyframes hero-name {
+	0%,
+	9% {
+		opacity: 0;
+		clip-path: inset(0 100% 0 0);
+		transform: translateX(28px);
+		filter: blur(5px);
+		animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+	}
+	24%,
+	85% {
+		opacity: 1;
+		clip-path: inset(0 0 0 0);
+		transform: translateX(0);
+		filter: blur(0);
+	}
+	93%,
+	100% {
+		opacity: 0;
+		clip-path: inset(0 0 0 0);
+		transform: translateX(-12px);
+		filter: blur(3px);
 	}
 }
 
 @keyframes pin-arrive {
-	0% {
-		transform: translateY(-18px);
+	0%,
+	22% {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-14px);
 	}
-	28% {
+	24% {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(-14px);
+		animation-timing-function: ease-out;
+	}
+	29% {
+		opacity: 1;
+		visibility: visible;
 		transform: translateY(0);
 	}
-	48% {
-		transform: translateY(-10px);
+	34% {
+		transform: translateY(-8px);
 	}
-	68% {
+	38% {
 		transform: translateY(0);
 	}
-	82% {
-		transform: translateY(-4px);
+	41% {
+		transform: translateY(-3px);
 	}
+	44%,
+	84% {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+	90%,
 	100% {
-		transform: translateY(0);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(8px);
 	}
 }
 
 @keyframes landmark-reveal {
 	0%,
-	22% {
+	45% {
 		opacity: 0;
 		clip-path: circle(0%);
 	}
-	28%,
+	50%,
 	100% {
 		opacity: 1;
 		clip-path: circle(50%);
