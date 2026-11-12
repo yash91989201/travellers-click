@@ -1,6 +1,4 @@
 import { cn } from "@travellers-click/ui/lib/utils";
-
-import { FOCUS_PAPER } from "./home/classes";
 import {
 	type CSSProperties,
 	type KeyboardEvent,
@@ -9,6 +7,7 @@ import {
 	useRef,
 	useState,
 } from "react";
+import { FOCUS_PAPER } from "./home/classes";
 
 // Placeholder slots only: swap for verified reviews once permissions exist.
 const SLOT_COUNT = 5;
@@ -36,42 +35,42 @@ const SLOT_POSITION: Record<Position, string> = {
 	out: "data-[pos=out]:pointer-events-none data-[pos=out]:z-0 data-[pos=out]:opacity-0 data-[pos=out]:[transform:translate(0,-80px)_rotate(0)_scale(0.8)]",
 };
 
-// Sample copy and photos only: swap for verified reviews and traveler-supplied photos with permission.
+// Non-testimonial placeholders and demo photos; publish traveler words only with verification and permission.
 const REVIEWS = [
 	{
 		photo: "/images/packages/kerala.webp",
 		quote:
-			"We did not know where to start. The adviser asked about our pace and budget, then sent a Kerala itinerary that fit both.",
-		name: "Sample traveler",
-		trip: "Kerala backwaters, 7 nights",
+			"This space is reserved for a verified traveler’s review of a Kerala trip. Their own words will appear here with permission.",
+		name: "Review awaiting approval",
+		trip: "Kerala · details to confirm",
 	},
 	{
 		photo: "/images/packages/rajasthan.webp",
 		quote:
-			"Two rounds of changes to the quote, no pressure, and every inclusion written down before we agreed to anything.",
-		name: "Sample traveler",
-		trip: "Rajasthan circuit, 9 nights",
+			"A future traveler’s experience of planning a Rajasthan trip will appear here after verification and publication permission.",
+		name: "Review awaiting approval",
+		trip: "Rajasthan · details to confirm",
 	},
 	{
 		photo: "/images/packages/bali.webp",
 		quote:
-			"Our dates were still loose when we first wrote in. The plan came together around them instead of the other way round.",
-		name: "Sample traveler",
-		trip: "Bali escape, 6 nights",
+			"Reserved for a traveler’s own account of their Bali holiday. No testimonial has been added to this preview.",
+		name: "Review awaiting approval",
+		trip: "Bali · details to confirm",
 	},
 	{
 		photo: "/images/trips/family.webp",
 		quote:
-			"Travelling with two kids needs a gentler schedule. The itinerary left room for rest days and we never felt rushed.",
-		name: "Sample traveler",
-		trip: "Family holiday, 8 nights",
+			"A verified family travel review belongs here. Traveler details and permission to publish are still to come.",
+		name: "Review awaiting approval",
+		trip: "Family travel · details to confirm",
 	},
 	{
 		photo: "/images/trips/wildlife.webp",
 		quote:
-			"Clear about what was included and what was not. We knew the full cost before booking, which made the decision easy.",
-		name: "Sample traveler",
-		trip: "Wildlife safari, 5 nights",
+			"This wildlife travel review slot is awaiting a real traveler’s feedback and permission to share their experience.",
+		name: "Review awaiting approval",
+		trip: "Wildlife travel · details to confirm",
 	},
 ] as const;
 
@@ -81,8 +80,8 @@ function Count({ front, index }: { front: boolean; index: number }) {
 	return (
 		<span
 			className={cn(
-				"font-semibold text-[14px] text-slate tabular-nums transition-opacity duration-500",
-				front ? "opacity-100" : "opacity-0",
+				"shrink-0 whitespace-nowrap font-semibold text-[14px] text-slate tabular-nums transition-opacity duration-500",
+				front ? "opacity-100" : "opacity-0"
 			)}
 		>
 			{index + 1} / {SLOT_COUNT}
@@ -113,22 +112,22 @@ function CardBody({
 	review: Review;
 }) {
 	return (
-		<div className="grid">
+		<div className="grid text-foreground">
 			<Photo
 				className="h-[190px] w-full max-[860px]:h-[130px]"
 				src={review.photo}
 			/>
-			<div className="grid gap-5 p-6">
-				<p className="m-0 min-h-[5.25rem] text-[16px] text-foreground leading-[1.55] max-[600px]:min-h-0 max-[600px]:text-[15px]">
+			<div className="grid gap-5 p-7">
+				<p className="m-0 min-h-[5.25rem] font-heading text-[22px] text-foreground leading-[1.55] max-[600px]:min-h-0 max-[600px]:text-[18px]">
 					{review.quote}
 				</p>
-				<div className="flex items-end justify-between gap-3 border-slate border-t-2 border-dotted pt-4 text-[14px]">
+				<div className="flex items-end justify-between gap-3 border-border border-t pt-4 text-[14px]">
 					<div className="grid gap-[3px]">
 						<span className="font-semibold">{review.name}</span>
 						<span className="text-muted-foreground">{review.trip}</span>
 					</div>
 					<p className="m-0 text-[12px] text-muted-foreground uppercase tracking-[0.06em] max-[600px]:hidden">
-						Sample review
+						Layout preview
 					</p>
 					<Count front={front} index={index} />
 				</div>
@@ -161,7 +160,7 @@ export function ReviewStack() {
 			typeof IntersectionObserver === "undefined"
 				? undefined
 				: new IntersectionObserver(([entry]) =>
-						setVisible(entry.isIntersecting && !document.hidden),
+						setVisible(entry.isIntersecting && !document.hidden)
 					);
 		const syncHidden = () => {
 			if (document.hidden) {
@@ -185,7 +184,7 @@ export function ReviewStack() {
 		}
 		const timer = window.setTimeout(
 			() => setActive((index) => (index + 1) % SLOT_COUNT),
-			AUTOPLAY_MS,
+			AUTOPLAY_MS
 		);
 		return () => window.clearTimeout(timer);
 	}, [active, running]);
@@ -250,7 +249,7 @@ export function ReviewStack() {
 				aria-roledescription="carousel"
 				className={cn(
 					FOCUS_PAPER,
-					"group relative grid touch-pan-y select-none px-24 pt-[132px] pb-5 max-[860px]:px-7 max-[860px]:pt-[104px] max-[860px]:pb-5",
+					"group relative grid touch-pan-y select-none px-24 pt-[132px] pb-5 max-[860px]:px-7 max-[860px]:pt-[104px] max-[860px]:pb-5"
 				)}
 				data-dragging={dragX !== null}
 				data-engaged={engaged}
@@ -281,16 +280,16 @@ export function ReviewStack() {
 						<figure
 							aria-hidden={index === active ? undefined : true}
 							className={cn(
-								"relative col-start-1 row-start-1 m-0 w-[min(100%,540px)] justify-self-center border border-input bg-card [transform-origin:50%_100%] [transition:transform_1.1s_var(--ease),opacity_0.7s_ease,box-shadow_1.1s_var(--ease)] after:pointer-events-none after:absolute after:inset-0 after:bg-foreground after:opacity-0 after:content-[''] data-[pos=0]:cursor-grab data-[pos=1]:after:opacity-5 data-[pos=2]:after:opacity-10 group-data-[dragging=true]:data-[pos=0]:cursor-grabbing motion-reduce:transition-none motion-reduce:after:transition-none after:[transition:opacity_1.1s_var(--ease)]",
+								"relative col-start-1 row-start-1 m-0 w-[min(100%,540px)] justify-self-center bg-card [transform-origin:50%_100%] [transition:transform_1.1s_var(--ease),opacity_0.7s_ease,box-shadow_1.1s_var(--ease)] after:pointer-events-none after:absolute after:inset-0 after:bg-foreground after:opacity-0 after:content-[''] data-[pos=0]:cursor-grab data-[pos=1]:after:opacity-5 data-[pos=2]:after:opacity-10 group-data-[dragging=true]:data-[pos=0]:cursor-grabbing motion-reduce:transition-none motion-reduce:after:transition-none after:[transition:opacity_1.1s_var(--ease)]",
 								SLOT_POSITION[position],
-								"group-data-[engaged=true]:data-[pos=0]:shadow-[0_30px_44px_-18px_rgba(23,62,73,0.5)] group-data-[engaged=true]:data-[pos=0]:[transform:translate(0,0)_rotate(0)_scale(1.25)]",
+								"group-data-[engaged=true]:data-[pos=0]:shadow-[0_30px_44px_-18px_rgba(23,62,73,0.5)] group-data-[engaged=true]:data-[pos=0]:[transform:translate(0,0)_rotate(0)_scale(1.08)]"
 							)}
 							data-pos={position}
 							key={id}
 							style={
 								front && dragX !== null
 									? {
-											transform: `translate(${dragX}px, ${Math.abs(dragX) * 0.06}px) rotate(${dragX * 0.04}deg) scale(1.25)`,
+											transform: `translate(${dragX}px, ${Math.abs(dragX) * 0.06}px) rotate(${dragX * 0.04}deg) scale(1.08)`,
 											transition: "none",
 										}
 									: undefined
@@ -299,7 +298,7 @@ export function ReviewStack() {
 							<div
 								className={cn(
 									front && "animate-[review-drift_9s_ease-in-out_infinite]",
-									"motion-reduce:animate-none",
+									"motion-reduce:animate-none"
 								)}
 							>
 								<CardBody

@@ -88,12 +88,7 @@ already on a trip. Confirm staffing and service hours before publishing promises
 
 The repository contains a Better-T-Stack starter: React, TanStack Start/Router,
 Tailwind CSS, shared shadcn/ui components, oRPC, Better Auth, Drizzle/PostgreSQL,
-and Bun/Nx tooling. The current home route is an interactive grayscale travel
-wireframe with hero discovery, a travel-style mosaic, sample packages, a process
-section, a reserved review slot, a prototype enquiry, FAQs, and a footer. Its
-enquiry does not send or save data. See `docs/wireframes/home.md` for behavior and
-accepted layout decisions. The slate-and-coral brand palette is documented in
-`DESIGN.md`; applying it to the application is a separate, pending design pass.
+and Bun/Nx tooling. The home route retains its established structure: hero discovery, travel-style mosaic, sample packages, process, reserved review slot, prototype enquiry, FAQs, and footer. The confirmed slate-and-coral palette and warmer, approachable adviser-led styling are documented in `DESIGN.md`. The enquiry is a prototype and does not send or save data. See `docs/wireframes/home.md` for behavior and accepted layout decisions.
 Login and dashboard routes are scaffold features, not confirmed customer requirements.
 
 Reuse `packages/ui` for shared controls and styles. Do not treat starter tokens
@@ -121,17 +116,9 @@ final public spelling and a logo remain unconfirmed. Use clear, helpful language
 about destinations, plans, inclusions, and costs. The briefs themselves do not
 supply a binding palette, font, or visual direction.
 
-On 2026-11-11, the user approved **slate and coral (palette 6)** for this website
-after reviewing homepage comparisons. They described the colors as refreshing,
-but found the preview treatment too generic ("vibe coded"). Keep the palette and
-develop a more considered implementation through typography, photography,
-composition, and restrained color roles. The preview's visual treatment and sample
-photography are not approved production design or assets.
+On 2026-11-11, the user approved **slate and coral (palette 6)** and reaffirmed it on 2026-11-12. The selected direction is warm, personal, approachable, and adviser-led. Cobalt and citron felt too sporty; forest and marigold felt generic; aubergine did not fit. Keep the palette values and build character through typography, photography, composition, and restrained color roles. Lora and Figtree remain the heading and body fonts. Sample photography remains subject to usage-rights confirmation.
 
-This is a lightweight website identity, not a full brand programme. `DESIGN.md`
-owns the exact palette and visual rules. A final font family, logo, and complete
-brand system remain open. The user requested documentation now, with homepage
-implementation deferred to the next design pass.
+This is a lightweight website identity, not a full brand programme. `DESIGN.md` owns the exact palette and visual rules. The final public brand spelling, logo, and complete identity remain open.
 
 ## Evidence on Hand
 

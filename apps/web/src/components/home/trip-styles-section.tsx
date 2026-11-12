@@ -3,7 +3,6 @@ import { motion } from "motion/react";
 import { type FocusEvent, type PointerEvent, useRef, useState } from "react";
 
 import {
-	CARD_TITLE,
 	FOCUS_INK,
 	PAGE_WIDTH,
 	SECTION_LEDE,
@@ -101,19 +100,19 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 	return (
 		<section
 			aria-labelledby="style-title"
-			className="scroll-mt-5 bg-background"
+			className="scroll-mt-24 bg-background"
 		>
 			<div className={cn(PAGE_WIDTH, SECTION_PAD)}>
 				<div className="mb-12 max-w-[620px]">
 					<h2 className={cn(SECTION_TITLE, "m-0")} id="style-title">
 						What kind of trip do you have in mind?
 					</h2>
-					<p className={cn(SECTION_LEDE, "mt-4 mb-0 max-w-[46ch]")}>
+					<p className={cn(SECTION_LEDE, "mt-4 mb-0 max-w-[44ch]")}>
 						A change of pace. A shared adventure. A little time for yourself.
 					</p>
 				</div>
 				<div
-					className="grid grid-cols-[1.2fr_1fr_1fr] gap-[25px] max-[480px]:grid-cols-1 max-[800px]:grid-cols-2"
+					className="grid grid-cols-[1.2fr_1fr_1fr] gap-6 max-[480px]:grid-cols-1 max-[800px]:grid-cols-2"
 					ref={gridRef}
 				>
 					{TRIP_STYLES.map((style) => {
@@ -128,7 +127,7 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 										"row-span-2 min-h-0 max-[480px]:col-auto max-[800px]:col-span-full max-[800px]:row-auto max-[800px]:min-h-[360px]",
 									style.layout === "wide" &&
 										"col-span-full min-h-[150px] max-[800px]:col-auto max-[800px]:min-h-[290px]",
-									isActive && "z-20",
+									isActive && "z-20"
 								)}
 								data-open={isActive}
 								data-style={style.label}
@@ -162,9 +161,9 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 										opacity: isDimmed ? 0.4 : 1,
 									}}
 									className={cn(
-										"absolute flex flex-col border border-border bg-card group-hover:border-slate",
+										"absolute flex flex-col bg-background",
 										style.layout === "wide" &&
-											"flex-row items-center max-[800px]:flex-col max-[800px]:items-stretch",
+											"flex-row items-center gap-7 max-[800px]:flex-col max-[800px]:items-stretch max-[800px]:gap-0"
 									)}
 									initial={false}
 									transition={EXPAND_TRANSITION}
@@ -176,8 +175,7 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 											style.layout === "wide"
 												? "min-h-[100px] flex-none basis-[30%] transition-[flex-basis] duration-[600ms] ease-[cubic-bezier(0.34,1.4,0.64,1)] group-data-[open=true]:basis-[60%] max-[800px]:min-h-[132px] max-[800px]:flex-1"
 												: "flex-1",
-											style.layout === "featured" &&
-												"max-[800px]:min-h-[180px]",
+											style.layout === "featured" && "max-[800px]:min-h-[180px]"
 										)}
 									>
 										<img
@@ -189,14 +187,13 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 											width={1200}
 										/>
 									</span>
-									<span className="grid gap-[6px] py-[25px] pr-11 pl-5">
+									<span className="grid gap-2 py-5 pr-9 group-data-[open=true]:py-6 group-data-[open=true]:pr-14 group-data-[open=true]:pl-6">
 										<strong
-											className={cn(
-												CARD_TITLE,
+											className={
 												style.layout === "featured"
-													? "text-[24px] leading-[1.2]"
-													: "text-[20px] leading-[1.25]",
-											)}
+													? "font-heading font-medium text-[26px] leading-[1.2]"
+													: "font-heading font-medium text-[22px] leading-[1.2]"
+											}
 										>
 											{style.label}
 										</strong>
@@ -206,7 +203,7 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 									</span>
 									<svg
 										aria-hidden="true"
-										className="absolute right-4 bottom-6 h-5 w-5 fill-none stroke-slate transition-transform group-hover:translate-x-1 motion-reduce:transition-none [stroke-width:1.5]"
+										className="absolute right-0 bottom-7 h-5 w-5 fill-none stroke-slate transition-transform [stroke-width:1.5] group-data-[open=true]:right-6 group-hover:translate-x-1 motion-reduce:transition-none"
 										focusable="false"
 										viewBox="0 0 24 24"
 									>

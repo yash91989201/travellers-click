@@ -45,19 +45,19 @@ export function HomeComponent() {
 	function chooseDestination(place: string) {
 		setDestination(place);
 		setSelectedTrip(
-			`Trip idea: ${place}. Change the destination below at any time.`,
+			`Trip idea: ${place}. Change the destination below at any time.`
 		);
 	}
 
 	function selectStyle(style: string) {
 		setSelectedTrip(
-			`Travel style: ${style}. Share your destination below, or ask for ideas.`,
+			`Travel style: ${style}. Share your destination below, or ask for ideas.`
 		);
 	}
 
 	return (
 		<div
-			className="overflow-x-clip bg-background font-sans text-[16px] text-foreground leading-[1.6] [color-scheme:light] [text-wrap:pretty]"
+			className="overflow-x-clip bg-background font-sans text-[16px] text-foreground leading-[1.6] [color-scheme:light] [&_p]:text-pretty"
 			data-home
 		>
 			<PrototypeBar />

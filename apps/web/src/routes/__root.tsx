@@ -1,10 +1,10 @@
 import type { QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
+	createRootRouteWithContext,
 	HeadContent,
 	Outlet,
 	Scripts,
-	createRootRouteWithContext,
 	useRouterState,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
@@ -17,7 +17,6 @@ import type { orpc } from "@/utils/orpc";
 import Header from "../components/header";
 
 import appCss from "../index.css?url";
-import ImpeccableLiveRoot from '../impeccable/ImpeccableLiveRoot';
 export interface RouterAppContext {
 	orpc: typeof orpc;
 	queryClient: QueryClient;
@@ -57,7 +56,7 @@ function RootDocument() {
 		select: (state) => state.location.pathname === "/",
 	});
 	return (
-		<html lang="en" className={isHome ? undefined : "dark"}>
+		<html className={isHome ? undefined : "dark"} lang="en">
 			<head>
 				<HeadContent />
 			</head>
@@ -69,12 +68,11 @@ function RootDocument() {
 				<Toaster richColors />
 				{!isHome && <TanStackRouterDevtools position="bottom-left" />}
 				{!isHome && (
-					<ReactQueryDevtools position="bottom" buttonPosition="bottom-right" />
+					<ReactQueryDevtools buttonPosition="bottom-right" position="bottom" />
 				)}
 				{/* impeccable-live-tanstack-start */}
-        <ImpeccableLiveRoot />
-        {/* impeccable-live-tanstack-end */}
-        <Scripts />
+				{/* impeccable-live-tanstack-end */}
+				<Scripts />
 			</body>
 		</html>
 	);

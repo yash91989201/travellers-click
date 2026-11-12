@@ -111,7 +111,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 	return (
 		<section
 			aria-labelledby="hero-title"
-			className="group relative grid grid-cols-[minmax(0,1fr)] grid-rows-[var(--hero-height)_1fr_1fr] bg-[linear-gradient(to_bottom,transparent_var(--hero-height),var(--muted)_var(--hero-height))] [--hero-height:max(480px,calc(85vh_-_160px))] max-[600px]:[--hero-height:max(570px,calc(85vh_-_230px))]"
+			className="group relative grid grid-cols-[minmax(0,1fr)] grid-rows-[var(--hero-height)_1fr_1fr] bg-[linear-gradient(to_bottom,transparent_var(--hero-height),var(--background)_var(--hero-height))] [--hero-height:clamp(500px,calc(85svh_-_160px),660px)] max-[600px]:[--hero-height:clamp(570px,calc(85svh_-_230px),620px)]"
 			data-paused={heroPaused}
 			data-running={heroRunning}
 			data-static={reducedMotion}
@@ -185,12 +185,12 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							width={960}
 						/>
 					</div>
-					<div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,27,31,0.78)_0%,rgba(8,27,31,0.55)_36%,rgba(8,27,31,0.08)_72%),linear-gradient(0deg,rgba(8,27,31,0.58),transparent_42%)] max-[600px]:bg-[linear-gradient(180deg,rgba(8,27,31,0.82),rgba(8,27,31,0.18)_50%,rgba(8,27,31,0.66))]" />
+					<div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,24,28,0.80)_0%,rgba(12,24,28,0.55)_36%,rgba(12,24,28,0.04)_76%),linear-gradient(0deg,rgba(12,24,28,0.42),transparent_35%)] max-[600px]:bg-[linear-gradient(180deg,rgba(12,24,28,0.78),rgba(12,24,28,0.18)_60%,rgba(12,24,28,0.48))]" />
 				</div>
 				<div className={cn(PAGE_WIDTH, "relative h-full")}>
-					<div className="relative z-[1] max-w-[650px] pt-[72px] max-[600px]:max-w-full max-[960px]:max-w-[58%] max-[600px]:pt-[44px]">
+					<div className="relative z-[1] max-w-[650px] pt-[80px] max-[600px]:max-w-full max-[960px]:max-w-[58%] max-[600px]:pt-12">
 						<h1
-							className="m-0 text-balance font-semibold text-[clamp(36px,4.4vw,64px)] text-white leading-[1.08] tracking-[-0.025em]"
+							className="m-0 text-balance font-normal text-[clamp(40px,4.4vw,64px)] text-white leading-[1.08] tracking-[-0.025em] max-[600px]:text-[clamp(32px,10vw,40px)]"
 							id="hero-title"
 						>
 							What’s your next
@@ -198,7 +198,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							destination?
 						</h1>
 						<p
-							className="m-0 mt-3 font-heading text-[clamp(48px,5vw,72px)] text-primary italic leading-[1.05] tracking-[-0.015em] max-[600px]:mt-2 max-[600px]:text-[44px]"
+							className="m-0 mt-5 font-heading text-[clamp(44px,4.5vw,66px)] text-primary italic leading-[1.15] tracking-[-0.02em] max-[600px]:mt-3 max-[600px]:text-[44px]"
 							data-hero-destination
 						>
 							<span
@@ -213,7 +213,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 						aria-label={`Start planning a trip to ${activeDestination.name}`}
 						className={cn(
 							FOCUS_INK,
-							"absolute z-[1] top-[180px] left-[73%] grid justify-items-center gap-3 whitespace-nowrap font-semibold text-[18px] text-white no-underline focus-visible:outline-white max-[600px]:top-[242px] max-[600px]:right-2 max-[960px]:right-[4%] max-[960px]:left-auto max-[600px]:gap-2 max-[600px]:text-[15px]"
+							"absolute top-[180px] left-[73%] z-[1] grid justify-items-center gap-3 whitespace-nowrap font-semibold text-[18px] text-white no-underline focus-visible:outline-white max-[600px]:top-[242px] max-[600px]:right-2 max-[960px]:right-[4%] max-[960px]:left-auto max-[600px]:gap-2 max-[600px]:text-[15px]"
 						)}
 						href="#discovery"
 						onClick={() => setDiscoveryDestination(activeDestination.region)}
@@ -249,41 +249,10 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							</span>
 						</span>
 					</a>
-					<svg
-						aria-hidden="true"
-						className="pointer-events-none absolute inset-0 h-[var(--hero-height)] w-full overflow-visible [&_marker_path]:fill-none [&_marker_path]:stroke-primary [&_marker_path]:[stroke-linecap:round] [&_marker_path]:[stroke-linejoin:round] [&_marker_path]:[stroke-width:2]"
-						focusable="false"
-						preserveAspectRatio="none"
-						viewBox="0 0 1160 480"
-					>
-						<defs>
-							<marker
-								id="hero-arrow"
-								markerHeight="12"
-								markerUnits="userSpaceOnUse"
-								markerWidth="12"
-								orient="auto"
-								refX="9"
-								refY="6"
-							>
-								<path d="m2 2 7 4-7 4" />
-							</marker>
-						</defs>
-						<path
-							className="fill-none stroke-primary [stroke-dasharray:5_6] [stroke-linecap:round] [stroke-width:2] [vector-effect:non-scaling-stroke] max-[600px]:hidden"
-							d="M935 286 C1010 346 806 374 684 334 C570 296 612 230 710 260 C820 300 622 408 424 370 S128 340 128 462"
-							markerEnd="url(#hero-arrow)"
-						/>
-						<path
-							className="hidden fill-none stroke-primary [stroke-dasharray:5_6] [stroke-linecap:round] [stroke-width:2] [vector-effect:non-scaling-stroke] max-[600px]:block"
-							d="M935 338 C1030 388 760 406 600 360 S120 340 128 462"
-							markerEnd="url(#hero-arrow)"
-						/>
-					</svg>
 					<a
 						className={cn(
 							FOCUS_INK,
-							"absolute top-[calc(var(--hero-height)_-_64px)] left-[162px] font-semibold text-[18px] text-white no-underline focus-visible:outline-white max-[600px]:left-[70px] max-[600px]:text-[16px]"
+							"absolute top-[calc(var(--hero-height)_-_64px)] left-0 font-medium text-[15px] text-white underline underline-offset-8 focus-visible:outline-white max-[600px]:text-[14px]"
 						)}
 						href="#discovery"
 					>
@@ -318,7 +287,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 				)}
 			>
 				<form
-					className="grid grid-cols-[1.2fr_1.1fr_1fr_1fr_auto] items-end gap-[14px] border border-border bg-card p-6 shadow-[0_18px_36px_-18px_rgba(23,62,73,0.4)] max-[960px]:grid-cols-2 max-[600px]:gap-4 max-[600px]:p-[18px]"
+					className="grid grid-cols-[1.2fr_1.1fr_1fr_1fr_auto] items-end gap-[14px] rounded-[8px] bg-card p-7 shadow-[0_16px_40px_-16px_rgba(23,62,73,0.28)] max-[960px]:grid-cols-2 max-[600px]:gap-4 max-[600px]:p-[18px]"
 					id="discovery"
 					onSubmit={explorePackages}
 				>
@@ -390,7 +359,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							CONTROL,
 							BUTTON,
 							SLATE,
-							"min-h-12 px-4 py-3 text-[15px] max-[960px]:col-span-full"
+							"min-h-12 px-4 py-3 text-[14px] max-[960px]:col-span-full"
 						)}
 						type="submit"
 					>

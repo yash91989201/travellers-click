@@ -7,29 +7,28 @@ export const PAGE_WIDTH =
 // Section rhythm: one vertical pad for every band, with three title tiers.
 // Hero display > enquiry title > browsing sections > supporting bands, so
 // scale and weight separate sections before background tone does.
-export const SECTION_PAD = "py-24 max-[600px]:py-16";
+export const SECTION_PAD = "py-[104px] max-[600px]:py-16";
 
 // Browsing bands: benefits, travel styles, packages.
 export const SECTION_TITLE =
-	"text-balance font-semibold text-[clamp(30px,3vw,38px)] leading-[1.15] tracking-[-0.02em]";
+	"text-balance font-medium text-[clamp(32px,3.2vw,42px)] leading-[1.12] tracking-[-0.03em]";
+
+export const SECTION_LEDE = "text-[18px] text-muted-foreground leading-[1.6]";
 
 // Supporting bands: process, reviews, flights and FAQs.
 export const SECTION_TITLE_QUIET =
-	"text-balance font-semibold text-[clamp(26px,2.2vw,30px)] leading-[1.2] tracking-[-0.015em]";
+	"text-balance font-medium text-[clamp(26px,2.2vw,30px)] leading-[1.2] tracking-[-0.015em]";
 
 // The enquiry title, the page's second voice after the hero.
 export const SECTION_TITLE_LG =
-	"text-balance font-semibold text-[clamp(32px,3.4vw,44px)] leading-[1.1] tracking-[-0.02em]";
-
-export const SECTION_LEDE =
-	"text-[18px] leading-[1.55] text-muted-foreground";
+	"text-balance font-medium text-[clamp(36px,3.6vw,48px)] leading-[1.12] tracking-[-0.02em]";
 
 // Card and step titles: Lora at a mid weight, so photo captions, mosaic labels,
 // and form steps share one face. Set size and leading at the call site; the
 // class merger drops leading-* when it arrives alongside an arbitrary text size.
-export const CARD_TITLE = "font-heading font-semibold tracking-[-0.01em]";
+export const CARD_TITLE = "font-heading font-medium tracking-[-0.01em]";
 
-const FOCUS ="focus-visible:outline-[3px] focus-visible:outline-offset-[4px]";
+const FOCUS = "focus-visible:outline-[3px] focus-visible:outline-offset-[4px]";
 
 // Slate ring on light surfaces. Use FOCUS_PAPER on ink or slate surfaces.
 export const FOCUS_INK = `${FOCUS} focus-visible:outline-slate`;
@@ -37,7 +36,7 @@ export const FOCUS_INK = `${FOCUS} focus-visible:outline-slate`;
 export const FOCUS_PAPER = `${FOCUS} focus-visible:outline-card`;
 
 export const CONTROL =
-	"rounded-[3px] border border-input bg-card text-foreground";
+	"rounded-[6px] border border-input bg-card text-foreground";
 
 export const BUTTON = `cursor-pointer hover:bg-muted ${FOCUS_INK}`;
 

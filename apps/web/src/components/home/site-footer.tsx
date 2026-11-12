@@ -3,9 +3,9 @@ import { cn } from "@travellers-click/ui/lib/utils";
 import { BUTTON, CONTROL, FOCUS_PAPER, PAGE_WIDTH, PRIMARY } from "./classes";
 
 const columnHeading =
-	"mb-3 text-[12px] font-semibold uppercase leading-[1.3] tracking-[0.08em] text-border";
+	"mb-3 font-sans text-[14px] font-medium leading-[1.15] text-card/80";
 const line = "mb-2.5 block text-[14px]";
-const note = "text-[12px] leading-[1.55] text-border";
+const note = "text-[12px] leading-[1.6] text-card/75";
 const LINK_ON_INK = `${FOCUS_PAPER} underline underline-offset-4 hover:decoration-2`;
 
 export function SiteFooter() {
@@ -14,14 +14,14 @@ export function SiteFooter() {
 			<div
 				className={cn(
 					PAGE_WIDTH,
-					"grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-[70px] py-[70px] max-[960px]:grid-cols-1 max-[960px]:gap-8",
+					"grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-[70px] py-16 max-[960px]:grid-cols-1 max-[960px]:gap-8"
 				)}
 			>
 				<div>
-					<strong className="mb-3 block font-heading font-semibold text-[clamp(24px,2.2vw,28px)] leading-[1.15] tracking-[-0.01em]">
+					<strong className="mb-3 block font-heading font-medium text-[clamp(24px,2.2vw,28px)] leading-[1.15] tracking-[-0.01em]">
 						Travellers Click
 					</strong>
-					<p className="mb-5 text-[16px] text-muted leading-[1.5]">
+					<p className="mb-5 text-[16px] text-card/80 leading-[1.5]">
 						Trips planned around you.
 					</p>
 					<a
@@ -29,7 +29,7 @@ export function SiteFooter() {
 							CONTROL,
 							BUTTON,
 							PRIMARY,
-							"inline-block px-6 py-3 text-[15px] focus-visible:outline-card",
+							"inline-block px-6 py-3 text-[15px] focus-visible:outline-card"
 						)}
 						href="#plan"
 					>
@@ -37,8 +37,8 @@ export function SiteFooter() {
 					</a>
 					<p className={cn(note, "mt-5")}>Brand name and logo to confirm.</p>
 				</div>
-				<div className="grid content-start grid-cols-2 gap-x-10 max-[600px]:grid-cols-1">
-					<section className="py-[25px]">
+				<div className="grid grid-cols-2 content-start gap-x-10 max-[600px]:grid-cols-1">
+					<section className="py-5">
 						<h2 className={columnHeading}>Explore</h2>
 						<a className={cn(LINK_ON_INK, line)} href="#destinations">
 							Destinations
@@ -50,13 +50,13 @@ export function SiteFooter() {
 							Customize your trip
 						</a>
 					</section>
-					<section className="py-[25px]">
+					<section className="py-5">
 						<h2 className={columnHeading}>Contact</h2>
 						<p className={line}>Phone / WhatsApp: to confirm</p>
 						<p className={line}>Email and office: to confirm</p>
 						<p className={line}>Working hours: to confirm</p>
 					</section>
-					<section className="col-span-full py-[25px]">
+					<section className="col-span-full py-5">
 						<h2 className={columnHeading}>Policies &amp; social</h2>
 						<p className={line}>
 							Privacy · Terms · Cancellation &amp; refunds · Disclaimer
@@ -71,7 +71,7 @@ export function SiteFooter() {
 			<div
 				className={cn(
 					PAGE_WIDTH,
-					"border-slate border-t py-[18px] text-[12px] text-border",
+					"border-card/20 border-t py-[18px] text-[12px] text-card/75"
 				)}
 			>
 				Prototype · Sample content, no live bookings or enquiries.

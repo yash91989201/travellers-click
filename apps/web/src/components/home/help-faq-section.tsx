@@ -1,8 +1,7 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
 import {
-	BUTTON,
-	CONTROL,
+	LINK,
 	PAGE_WIDTH,
 	SECTION_LEDE,
 	SECTION_PAD,
@@ -41,13 +40,16 @@ export function HelpFaqSection() {
 	return (
 		<section
 			aria-labelledby="services-title"
-			className="bg-background"
+			className="scroll-mt-24 bg-background"
 			id="services"
 		>
 			<div className={cn(PAGE_WIDTH, SECTION_PAD, "grid gap-[50px]")}>
-				<div className="flex items-center justify-between gap-10 border-foreground border-b-2 pb-[43px] max-[860px]:flex-col max-[860px]:items-start">
+				<div className="flex items-center justify-between gap-10 border-border border-b pb-[43px] max-[860px]:flex-col max-[860px]:items-start">
 					<div>
-						<h2 className={cn(SECTION_TITLE_QUIET, "mb-4")} id="services-title">
+						<h2
+							className={cn(SECTION_TITLE_QUIET, "mb-4 font-medium")}
+							id="services-title"
+						>
 							Need help with flights or hotels?
 						</h2>
 						<p className={cn(SECTION_LEDE, "m-0 max-w-[48ch]")}>
@@ -56,18 +58,14 @@ export function HelpFaqSection() {
 						</p>
 					</div>
 					<a
-						className={cn(
-							CONTROL,
-							BUTTON,
-							"flex-none border-slate px-6 py-[14px] font-semibold text-[15px]",
-						)}
+						className={cn(LINK, "flex-none py-[14px] font-semibold")}
 						href="#plan"
 					>
 						Discuss travel needs
 					</a>
 				</div>
 				<h2
-					className="m-0 text-balance font-semibold text-[24px] leading-[1.2] tracking-[-0.01em]"
+					className={cn(SECTION_TITLE_QUIET, "m-0 mb-[-24px] font-medium")}
 					id="faq-title"
 				>
 					Before you plan
@@ -78,7 +76,7 @@ export function HelpFaqSection() {
 							className="group border-border border-t py-[22px]"
 							key={faq.question}
 						>
-							<summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-semibold text-[18px] leading-[1.35] after:h-[18px] after:w-[18px] after:flex-none after:transition-[transform] after:duration-[450ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] group-open:after:[transform:rotate(90deg)] [&::-webkit-details-marker]:hidden">
+							<summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-medium text-[18px] leading-[1.35] after:h-[18px] after:w-[18px] after:flex-none after:transition-[transform] after:duration-[450ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] [&::-webkit-details-marker]:hidden">
 								{faq.question}
 							</summary>
 							<p className="mt-[14px] mb-0 max-w-[52ch] text-base text-muted-foreground leading-[1.6]">
