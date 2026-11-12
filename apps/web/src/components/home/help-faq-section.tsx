@@ -1,6 +1,13 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import { BUTTON, CONTROL, PAGE_WIDTH, SECTION_PAD } from "./classes";
+import {
+	BUTTON,
+	CONTROL,
+	PAGE_WIDTH,
+	SECTION_LEDE,
+	SECTION_PAD,
+	SECTION_TITLE_QUIET,
+} from "./classes";
 
 const FAQS = [
 	{
@@ -40,13 +47,10 @@ export function HelpFaqSection() {
 			<div className={cn(PAGE_WIDTH, SECTION_PAD, "grid gap-[50px]")}>
 				<div className="flex items-center justify-between gap-10 border-foreground border-b-2 pb-[43px] max-[860px]:flex-col max-[860px]:items-start">
 					<div>
-						<h2
-							className="mb-[10px] text-balance font-bold text-[clamp(26px,2.8vw,36px)] leading-[1.15] tracking-[-0.02em]"
-							id="services-title"
-						>
+						<h2 className={cn(SECTION_TITLE_QUIET, "mb-4")} id="services-title">
 							Need help with flights or hotels?
 						</h2>
-						<p className="m-0 max-w-[46ch] text-[17px] text-muted-foreground">
+						<p className={cn(SECTION_LEDE, "m-0 max-w-[48ch]")}>
 							Include transport, stays, visa, or insurance questions in your
 							trip request.
 						</p>
@@ -55,7 +59,7 @@ export function HelpFaqSection() {
 						className={cn(
 							CONTROL,
 							BUTTON,
-							"flex-none border-slate px-6 py-[14px] font-semibold",
+							"flex-none border-slate px-6 py-[14px] font-semibold text-[15px]",
 						)}
 						href="#plan"
 					>
@@ -63,7 +67,7 @@ export function HelpFaqSection() {
 					</a>
 				</div>
 				<h2
-					className="m-0 mb-[-24px] text-balance font-bold text-[22px] leading-[1.15] tracking-[-0.02em]"
+					className="m-0 text-balance font-semibold text-[24px] leading-[1.2] tracking-[-0.01em]"
 					id="faq-title"
 				>
 					Before you plan
@@ -74,7 +78,7 @@ export function HelpFaqSection() {
 							className="group border-border border-t py-[22px]"
 							key={faq.question}
 						>
-							<summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-bold text-[18px] leading-[1.35] after:h-[18px] after:w-[18px] after:flex-none after:transition-[transform] after:duration-[450ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] group-open:after:[transform:rotate(90deg)] [&::-webkit-details-marker]:hidden">
+							<summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-semibold text-[18px] leading-[1.35] after:h-[18px] after:w-[18px] after:flex-none after:transition-[transform] after:duration-[450ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] group-open:after:[transform:rotate(90deg)] [&::-webkit-details-marker]:hidden">
 								{faq.question}
 							</summary>
 							<p className="mt-[14px] mb-0 max-w-[52ch] text-base text-muted-foreground leading-[1.6]">

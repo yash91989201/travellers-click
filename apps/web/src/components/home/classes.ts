@@ -4,15 +4,30 @@
 export const PAGE_WIDTH =
 	"mx-auto w-[min(1160px,calc(100%_-_64px))] max-[600px]:w-[calc(100%_-_36px)]";
 
-// Section rhythm: every major band shares one vertical pad and one title step,
-// so background tone, not scale, tells sections apart. The enquiry title and
-// hero sit above this step; the flights/FAQ band sits below it.
+// Section rhythm: one vertical pad for every band, with three title tiers.
+// Hero display > enquiry title > browsing sections > supporting bands, so
+// scale and weight separate sections before background tone does.
 export const SECTION_PAD = "py-24 max-[600px]:py-16";
 
+// Browsing bands: benefits, travel styles, packages.
 export const SECTION_TITLE =
-	"text-balance font-bold text-[clamp(30px,3.4vw,40px)] leading-[1.15] tracking-[-0.02em]";
+	"text-balance font-semibold text-[clamp(30px,3vw,38px)] leading-[1.15] tracking-[-0.02em]";
 
-export const SECTION_LEDE = "text-[17px] text-muted-foreground";
+// Supporting bands: process, reviews, flights and FAQs.
+export const SECTION_TITLE_QUIET =
+	"text-balance font-semibold text-[clamp(26px,2.2vw,30px)] leading-[1.2] tracking-[-0.015em]";
+
+// The enquiry title, the page's second voice after the hero.
+export const SECTION_TITLE_LG =
+	"text-balance font-semibold text-[clamp(32px,3.4vw,44px)] leading-[1.1] tracking-[-0.02em]";
+
+export const SECTION_LEDE =
+	"text-[18px] leading-[1.55] text-muted-foreground";
+
+// Card and step titles: Lora at a mid weight, so photo captions, mosaic labels,
+// and form steps share one face. Set size and leading at the call site; the
+// class merger drops leading-* when it arrives alongside an arbitrary text size.
+export const CARD_TITLE = "font-heading font-semibold tracking-[-0.01em]";
 
 const FOCUS ="focus-visible:outline-[3px] focus-visible:outline-offset-[4px]";
 

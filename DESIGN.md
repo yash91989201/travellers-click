@@ -13,16 +13,83 @@ colors:
   line: "#6B858C"
   line-soft: "#AABDC2"
 typography:
-  heading:
+  display:
     fontFamily: '"Lora Variable", serif'
+    fontSize: "4rem"
+    fontWeight: 600
+    lineHeight: 1.08
+    letterSpacing: "-0.025em"
+  hero-destination:
+    fontFamily: '"Lora Variable", serif'
+    fontSize: "4.5rem"
+    fontWeight: 400
+    lineHeight: 1.05
+    letterSpacing: "-0.015em"
+  headline-lg:
+    fontFamily: '"Lora Variable", serif'
+    fontSize: "2.75rem"
+    fontWeight: 600
+    lineHeight: 1.1
+    letterSpacing: "-0.02em"
+  headline:
+    fontFamily: '"Lora Variable", serif'
+    fontSize: "2.375rem"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.02em"
+  headline-sm:
+    fontFamily: '"Lora Variable", serif'
+    fontSize: "1.875rem"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "-0.015em"
+  title:
+    fontFamily: '"Lora Variable", serif'
+    fontSize: "1.5rem"
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: "-0.01em"
+  subtitle:
+    fontFamily: '"Lora Variable", serif'
+    fontSize: "1.25rem"
+    fontWeight: 600
+    lineHeight: 1.25
+    letterSpacing: "-0.01em"
+  lede:
+    fontFamily: '"Figtree Variable", sans-serif'
+    fontSize: "1.125rem"
+    fontWeight: 400
+    lineHeight: 1.55
   body:
     fontFamily: '"Figtree Variable", sans-serif'
     fontSize: "1rem"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.6
+  body-small:
+    fontFamily: '"Figtree Variable", sans-serif'
+    fontSize: "0.9375rem"
+    fontWeight: 400
+    lineHeight: 1.55
+  label:
+    fontFamily: '"Figtree Variable", sans-serif'
+    fontSize: "0.875rem"
+    fontWeight: 600
+    lineHeight: 1.4
+  meta:
+    fontFamily: '"Figtree Variable", sans-serif'
+    fontSize: "0.8125rem"
+    fontWeight: 400
+    lineHeight: 1.45
+  caption:
+    fontFamily: '"Figtree Variable", sans-serif'
+    fontSize: "0.75rem"
+    fontWeight: 400
+    lineHeight: 1.55
   button:
     fontFamily: '"Figtree Variable", sans-serif'
+    fontSize: "0.9375rem"
     fontWeight: 600
+    lineHeight: 1.4
 rounded:
   control: "3px"
   pin: "50%"
@@ -55,7 +122,7 @@ components:
 
 On 2026-11-11, the user chose palette 6, **slate and coral**, after comparing it with teal and sand on homepage previews. They liked its refreshing character but found the preview too generic ("vibe coded"). The palette is approved; the preview's visual treatment is not.
 
-This file merges that decision into the existing system. Its color tokens define the next implementation pass. Typography uses Lora headings and Figtree body text; shape and spacing tokens retain the current wireframe defaults until that pass resolves them. The live home page remains a grayscale wireframe with placeholder photos; these docs do not claim the palette has shipped.
+This file merges that decision into the existing system. The slate-and-coral palette is implemented on the live home page with placeholder photography. Typography uses Lora headings and Figtree body text on the documented role ramp; shape and spacing tokens retain the current wireframe defaults until a later pass resolves them.
 
 The intended expression is a carefully composed travel itinerary: clear information, memorable destination photography, confident type, and a restrained route-and-pin motif. The next pass should establish character through composition and image selection. Applying a uniform tint to the current wireframe is insufficient.
 
@@ -100,13 +167,32 @@ Verified solid-color pairings: ink on canvas 10.59:1, ink on coral 5.62:1, ink o
 
 **Font pairing:** Lora for headings; Figtree for body text, navigation, forms, and buttons. Both variable fonts are self-hosted through Fontsource, installed with shadcn's font registry items. The shared Tailwind stylesheet owns `--font-heading` and `--font-sans`; `components.json` points to that stylesheet rather than storing font-family fields.
 
-- **Heading:** Lora, using the existing heading sizes and weights.
-- **Body** (400, 1rem, 1.5): all copy.
-- **Button** (600): primary actions.
+The frontmatter ramp is normative. Its roles map to the page like this:
+
+| Role | Size | Weight | Use |
+| --- | --- | --- | --- |
+| display | clamp(40–64px) | 600 | Hero question only |
+| hero-destination | clamp(48–72px) | 400 italic | Coral destination name in the hero |
+| headline-lg | clamp(32–44px) | 600 | Enquiry title |
+| headline | clamp(30–38px) | 600 | Browsing sections: outcomes, travel styles, packages |
+| headline-sm | clamp(26–30px) | 600 | Supporting bands: process, reviews, flights and FAQs |
+| title | 24px | 600 | Featured card titles, process steps |
+| subtitle | 20px | 600 | Package cards, form steps |
+| lede | 18px | 400 | Section introductions |
+| body | 16px | 400 | Prose, answers, form values |
+| body-small | 15px | 400 | Card descriptions |
+| label | 14px | 600 | Form labels, navigation, footer links |
+| meta | 13px | 400 | Status lines, filters, badges |
+| caption | 12px | 400 | Sample-content notes, annotations |
+| button | 14–15px | 600 | Controls |
+
+Lora headings carry weight 600, not 700: the serif's bold reads heavier than Figtree's at the same number, and 600 keeps section titles distinct from the hero. Reserve the coral italic 400 for the hero destination name. Do not repeat that treatment elsewhere.
+
+**Measure and rhythm:** Ledes hold 30–62ch, card copy 44–46ch, and FAQ answers 52ch. Body line height is 1.6, ledes and card copy 1.55, headings 1.08–1.25. Section titles sit 16px above their lede, and content starts 40–48px below an intro block. Space above a section title is always larger than the space below it.
 
 Links are underlined with 4px offset; hover thickens to 2px.
 
-For the next pass, give the hero a deliberate display treatment and use clear steps between section headings, card titles, and body text. Keep supporting sections quieter than the hero. Avoid repeating oversized bold headings across every section or relying on slate text alone to establish hierarchy.
+Big serif numerals carry the process steps; they are the one place numerals exceed body scale. Form step headings stay at subtitle scale above their labels.
 
 ## Layout
 

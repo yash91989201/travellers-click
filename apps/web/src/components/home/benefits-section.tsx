@@ -1,6 +1,6 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import { LINK, PAGE_WIDTH, SECTION_TITLE } from "./classes";
+import { CARD_TITLE, LINK, PAGE_WIDTH, SECTION_LEDE, SECTION_TITLE } from "./classes";
 
 const POINTS = [
 	{
@@ -56,11 +56,11 @@ export function BenefitsSection() {
 					/>
 				</svg>
 				<div>
-					<h2 className={cn(SECTION_TITLE, "mb-5")} id="benefits-title">
+					<h2 className={cn(SECTION_TITLE, "mb-4")} id="benefits-title">
 						Here’s what
 						<br className="max-[600px]:hidden" /> comes next.
 					</h2>
-					<p className="mb-4 max-w-[30ch] text-[17px] text-muted-foreground">
+					<p className={cn(SECTION_LEDE, "mb-4 max-w-[32ch]")}>
 						Turn a travel idea into a plan that fits you.
 					</p>
 					<a
@@ -78,15 +78,15 @@ export function BenefitsSection() {
 						>
 							<span
 								aria-hidden="true"
-								className="font-heading font-semibold text-[26px] text-slate leading-none tabular-nums"
+								className="font-heading font-semibold text-[24px] text-slate leading-none tabular-nums"
 							>
 								{String(index + 1).padStart(2, "0")}
 							</span>
 							<div>
-								<h3 className="mb-[10px] text-balance font-bold text-[22px] leading-[1.15] max-[600px]:text-[21px]">
+								<h3 className={cn(CARD_TITLE, "mb-[10px] text-[24px] leading-[1.2]")}>
 									{point.title}
 								</h3>
-								<p className="m-0 max-w-[45ch] text-[15px] text-muted-foreground">
+								<p className="m-0 max-w-[46ch] text-[16px] text-muted-foreground leading-[1.6]">
 									{point.copy}
 								</p>
 							</div>

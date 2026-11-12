@@ -81,7 +81,7 @@ function Count({ front, index }: { front: boolean; index: number }) {
 	return (
 		<span
 			className={cn(
-				"font-bold text-[13px] text-slate tabular-nums transition-opacity duration-500",
+				"font-semibold text-[14px] text-slate tabular-nums transition-opacity duration-500",
 				front ? "opacity-100" : "opacity-0",
 			)}
 		>
@@ -122,9 +122,9 @@ function CardBody({
 				<p className="m-0 min-h-[5.25rem] text-[16px] text-foreground leading-[1.55] max-[600px]:min-h-0 max-[600px]:text-[15px]">
 					{review.quote}
 				</p>
-				<div className="flex items-end justify-between gap-3 border-slate border-t-2 border-dotted pt-4 text-[13px]">
-					<div className="grid gap-[2px]">
-						<span className="font-bold">{review.name}</span>
+				<div className="flex items-end justify-between gap-3 border-slate border-t-2 border-dotted pt-4 text-[14px]">
+					<div className="grid gap-[3px]">
+						<span className="font-semibold">{review.name}</span>
 						<span className="text-muted-foreground">{review.trip}</span>
 					</div>
 					<p className="m-0 text-[12px] text-muted-foreground uppercase tracking-[0.06em] max-[600px]:hidden">

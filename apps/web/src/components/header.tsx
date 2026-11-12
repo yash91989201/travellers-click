@@ -19,7 +19,7 @@ const FOCUS =
   "focus-visible:outline-[3px] focus-visible:outline-offset-[4px] focus-visible:outline-foreground";
 
 const CTA =
-  "inline-flex items-center justify-center whitespace-nowrap rounded-[3px] border border-primary bg-primary px-4 py-2.5 font-semibold text-[13px] text-primary-foreground no-underline transition-colors hover:border-primary-hover hover:bg-primary-hover";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-[3px] border border-primary bg-primary px-4 py-2.5 font-semibold text-[14px] text-primary-foreground no-underline transition-colors hover:border-primary-hover hover:bg-primary-hover";
 
 export default function Header({ account = true }: { account?: boolean }) {
   const [hidden, setHidden] = useState(false);
@@ -166,7 +166,7 @@ export default function Header({ account = true }: { account?: boolean }) {
             className={cn(FOCUS, "group shrink-0 justify-self-start no-underline")}
             to="/"
           >
-            <span className="whitespace-nowrap font-semibold text-[1.15rem] text-foreground tracking-[-0.02em]">
+            <span className="whitespace-nowrap font-heading font-semibold text-[1.25rem] text-foreground tracking-[-0.01em]">
               Travellers Click
             </span>
           </Link>
@@ -179,7 +179,7 @@ export default function Header({ account = true }: { account?: boolean }) {
               <Link
                 className={cn(
                   FOCUS,
-                  "relative whitespace-nowrap py-2 font-medium text-[13px] text-muted-foreground no-underline transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-foreground after:transition-transform after:duration-200 hover:text-foreground hover:after:scale-x-100"
+                  "relative whitespace-nowrap py-2 font-medium text-[14px] text-muted-foreground no-underline transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-foreground after:transition-transform after:duration-200 hover:text-foreground hover:after:scale-x-100"
                 )}
                 hash={hash}
                 key={hash}
@@ -211,7 +211,7 @@ export default function Header({ account = true }: { account?: boolean }) {
               aria-haspopup="dialog"
               className={cn(
                 FOCUS,
-                "inline-flex items-center gap-1.5 rounded-[3px] px-2 py-2 font-medium text-[13px] text-foreground transition-colors hover:text-muted-foreground lg:hidden"
+                "inline-flex items-center gap-1.5 rounded-[3px] px-2 py-2 font-medium text-[14px] text-foreground transition-colors hover:text-muted-foreground lg:hidden"
               )}
               onClick={openMenu}
               ref={menuButtonRef}
@@ -238,14 +238,14 @@ export default function Header({ account = true }: { account?: boolean }) {
               onClick={() => setMenuOpen(false)}
               to="/"
             >
-              <span className="font-semibold text-[1.05rem] text-foreground tracking-[-0.02em]">
+              <span className="font-heading font-semibold text-[1.15rem] text-foreground tracking-[-0.01em]">
                 Travellers Click
               </span>
             </Link>
             <button
               className={cn(
                 FOCUS,
-                "inline-flex items-center gap-1.5 rounded-[3px] px-2 py-2 font-medium text-[13px] text-foreground"
+                "inline-flex items-center gap-1.5 rounded-[3px] px-2 py-2 font-medium text-[14px] text-foreground"
               )}
               onClick={() => setMenuOpen(false)}
               type="button"
@@ -264,7 +264,7 @@ export default function Header({ account = true }: { account?: boolean }) {
               <Link
                 className={cn(
                   FOCUS,
-                  "group flex items-center justify-between border-border/70 border-b py-4 font-medium text-[1.35rem] text-foreground no-underline"
+                  "group flex items-center justify-between border-border/70 border-b py-4 font-medium text-[20px] text-foreground no-underline"
                 )}
                 hash={hash}
                 key={hash}

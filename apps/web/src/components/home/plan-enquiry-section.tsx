@@ -1,12 +1,22 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 import { type FormEvent, useState } from "react";
 
-import { BUTTON, CONTROL, PAGE_WIDTH, PRIMARY, SECTION_PAD } from "./classes";
+import {
+	BUTTON,
+	CARD_TITLE,
+	CONTROL,
+	PAGE_WIDTH,
+	PRIMARY,
+	SECTION_LEDE,
+	SECTION_PAD,
+	SECTION_TITLE_LG,
+} from "./classes";
 
 const INPUT =
 	"h-12 w-full min-w-0 rounded-[3px] border border-input bg-card px-4 py-[14px] font-normal text-base text-foreground transition-[border-color] duration-[250ms] placeholder:text-muted-foreground focus:border-slate focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-2";
 
-const NOTE = "m-0 border border-border bg-card px-4 py-[14px] text-[14px]";
+const NOTE =
+	"m-0 border border-border bg-card px-4 py-[14px] text-[14px] leading-[1.55]";
 
 interface PlanEnquirySectionProps {
 	destination: string;
@@ -42,14 +52,14 @@ export function PlanEnquirySection({
 			>
 				<div className="sticky top-8 grid gap-4 max-[860px]:static">
 					<h2
-						className="m-0 text-balance font-bold text-[clamp(34px,4vw,48px)] leading-[1.15] tracking-[-0.02em]"
+						className={cn(SECTION_TITLE_LG, "m-0")}
 						id="plan-title"
 					>
 						Your trip.
 						<br />
 						Your way.
 					</h2>
-					<p className="m-0 text-[17px] text-muted-foreground">
+					<p className={cn(SECTION_LEDE, "m-0")}>
 						Tell us a little about your plans. A travel adviser can help with
 						the details.
 					</p>
@@ -60,7 +70,7 @@ export function PlanEnquirySection({
 					>
 						{selectedTrip}
 					</p>
-					<p className="m-0 text-[12px] text-muted-foreground leading-[1.6]">
+					<p className="m-0 text-[12px] text-muted-foreground leading-[1.55]">
 						Prototype only. Do not enter real personal details. This form does
 						not send or save data.
 					</p>
@@ -82,13 +92,13 @@ export function PlanEnquirySection({
 							1
 						</span>
 						<h3
-							className="m-0 text-balance font-bold text-[22px] leading-8"
+							className={cn(CARD_TITLE, "m-0 text-balance text-[20px] leading-[1.3]")}
 							id="plan-step-1"
 						>
 							Where and when
 						</h3>
 						<div className="grid grid-cols-2 gap-5 max-[860px]:grid-cols-1">
-							<label className="grid min-w-0 gap-2 font-semibold text-[13px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Destination
 								<input
 									className={INPUT}
@@ -99,7 +109,7 @@ export function PlanEnquirySection({
 									value={destination}
 								/>
 							</label>
-							<label className="grid min-w-0 gap-2 font-semibold text-[13px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Approximate dates
 								<input
 									className={INPUT}
@@ -121,13 +131,13 @@ export function PlanEnquirySection({
 							2
 						</span>
 						<h3
-							className="m-0 text-balance font-bold text-[22px] leading-8"
+							className={cn(CARD_TITLE, "m-0 text-balance text-[20px] leading-[1.3]")}
 							id="plan-step-2"
 						>
 							Who is travelling
 						</h3>
 						<div className="grid grid-cols-2 gap-5 max-[860px]:grid-cols-1">
-							<label className="grid min-w-0 gap-2 font-semibold text-[13px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Number of travelers
 								<input
 									className={INPUT}
@@ -139,7 +149,7 @@ export function PlanEnquirySection({
 									type="number"
 								/>
 							</label>
-							<label className="grid min-w-0 gap-2 font-semibold text-[13px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Budget per person, excluding flights
 								<input
 									className={INPUT}
@@ -161,13 +171,13 @@ export function PlanEnquirySection({
 							3
 						</span>
 						<h3
-							className="m-0 text-balance font-bold text-[22px] leading-8"
+							className={cn(CARD_TITLE, "m-0 text-balance text-[20px] leading-[1.3]")}
 							id="plan-step-3"
 						>
 							How we reach you
 						</h3>
 						<div className="grid max-w-[420px] grid-cols-1 gap-5">
-							<label className="grid min-w-0 gap-2 font-semibold text-[13px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Contact number (required)
 								<input
 									autoComplete="off"
@@ -184,13 +194,13 @@ export function PlanEnquirySection({
 								CONTROL,
 								BUTTON,
 								PRIMARY,
-								"justify-self-start px-8 py-4 text-base focus-visible:outline-offset-[2px]",
+								"justify-self-start px-8 py-4 text-[15px] focus-visible:outline-offset-[2px]",
 							)}
 							type="submit"
 						>
 							Preview trip enquiry
 						</button>
-						<p className="m-0 text-[12px] text-muted-foreground leading-[1.6]">
+						<p className="m-0 text-[12px] text-muted-foreground leading-[1.55]">
 							Final form needs confirmed enquiry delivery and privacy terms.
 						</p>
 						<p

@@ -3,9 +3,9 @@ import { cn } from "@travellers-click/ui/lib/utils";
 import { BUTTON, CONTROL, FOCUS_PAPER, PAGE_WIDTH, PRIMARY } from "./classes";
 
 const columnHeading =
-	"mb-3 text-[13px] font-bold uppercase leading-[1.15] tracking-[0.06em] text-border";
-const line = "mb-2 block text-[13px]";
-const note = "text-[12px] leading-[1.6] text-border";
+	"mb-3 text-[12px] font-semibold uppercase leading-[1.3] tracking-[0.08em] text-border";
+const line = "mb-2.5 block text-[14px]";
+const note = "text-[12px] leading-[1.55] text-border";
 const LINK_ON_INK = `${FOCUS_PAPER} underline underline-offset-4 hover:decoration-2`;
 
 export function SiteFooter() {
@@ -18,16 +18,18 @@ export function SiteFooter() {
 				)}
 			>
 				<div>
-					<strong className="mb-2 block text-[32px] leading-[1.1] tracking-[-0.02em]">
+					<strong className="mb-3 block font-heading font-semibold text-[clamp(24px,2.2vw,28px)] leading-[1.15] tracking-[-0.01em]">
 						Travellers Click
 					</strong>
-					<p className="mb-5 text-[15px] text-muted">Trips planned around you.</p>
+					<p className="mb-5 text-[16px] text-muted leading-[1.5]">
+						Trips planned around you.
+					</p>
 					<a
 						className={cn(
 							CONTROL,
 							BUTTON,
 							PRIMARY,
-							"inline-block px-6 py-3 focus-visible:outline-card",
+							"inline-block px-6 py-3 text-[15px] focus-visible:outline-card",
 						)}
 						href="#plan"
 					>

@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { type FocusEvent, type PointerEvent, useEffect, useState } from "react";
 
 import {
+	CARD_TITLE,
 	LINK,
 	PAGE_WIDTH,
 	SECTION_LEDE,
@@ -45,8 +46,8 @@ const BADGE =
 	"whitespace-nowrap rounded-full border border-card px-[11px] py-[7px] text-[12px] font-semibold leading-none";
 
 const HOVER_QUERY = "(hover: hover) and (min-width: 901px)";
-const TITLE_REST = 21;
-const TITLE_OPEN_DEFAULT = 32;
+const TITLE_REST = 20;
+const TITLE_OPEN_DEFAULT = 26;
 const GROW_OPEN = 4;
 const SPRING = { type: "spring", visualDuration: 0.675, bounce: 0.28 } as const;
 const FADE = { duration: 0.315, ease: "easeOut" } as const;
@@ -78,7 +79,7 @@ function TripCard({ hidden, onChooseDestination, trip }: TripCardProps) {
 	}, []);
 
 	const open = () => {
-		setTitleOpen(Math.min(40, Math.max(26, window.innerWidth * 0.03)));
+		setTitleOpen(Math.min(30, Math.max(22, window.innerWidth * 0.026)));
 		setActive(true);
 	};
 	const close = () => setActive(false);
@@ -144,7 +145,10 @@ function TripCard({ hidden, onChooseDestination, trip }: TripCardProps) {
 							? { fontSize: interactive && active ? titleOpen : TITLE_REST }
 							: undefined
 					}
-					className="m-0 text-balance font-bold text-[21px] text-card leading-[1.15] tracking-[-0.03em]"
+					className={cn(
+						CARD_TITLE,
+						"m-0 text-balance text-[20px] leading-[1.25] text-card",
+					)}
 					initial={false}
 					transition={transition}
 				>
@@ -163,18 +167,18 @@ function TripCard({ hidden, onChooseDestination, trip }: TripCardProps) {
 					style={driven ? { maxHeight: "none" } : undefined}
 					transition={transition}
 				>
-					<p className="mt-[14px] mb-0 max-w-[44ch] text-[14px] text-muted">
+					<p className="mt-[14px] mb-0 max-w-[44ch] text-[15px] text-muted leading-[1.55]">
 						Stays, transfers, and activities: details to confirm.
 					</p>
 					<div className="mt-[18px] flex flex-wrap items-end justify-between gap-x-5 gap-y-[14px] border-card/35 border-t pt-4">
 						<p className="m-0 grid gap-[3px]">
-							<span className="font-normal text-[12px] text-border uppercase tracking-[0.06em]">
+							<span className="font-semibold text-[12px] text-border uppercase tracking-[0.08em]">
 								Starting price
 							</span>
-							<strong className="font-bold text-[17px] text-card">to confirm</strong>
+							<strong className="font-semibold text-[18px] text-card">to confirm</strong>
 						</p>
 						<a
-							className="inline-block cursor-pointer whitespace-nowrap rounded-[3px] border border-card bg-card px-[18px] py-[11px] font-bold text-[14px] text-foreground after:inline-block after:transition-[transform] after:duration-300 after:ease-[cubic-bezier(0.16,1,0.3,1)] after:content-['_→'] hover:bg-muted focus-visible:outline-[3px] focus-visible:outline-card focus-visible:outline-offset-[4px] hover:after:[transform:translateX(4px)]"
+							className="inline-block cursor-pointer whitespace-nowrap rounded-[3px] border border-card bg-card px-[18px] py-[11px] font-semibold text-[14px] text-foreground after:inline-block after:transition-[transform] after:duration-300 after:ease-[cubic-bezier(0.16,1,0.3,1)] after:content-['_→'] hover:bg-muted focus-visible:outline-[3px] focus-visible:outline-card focus-visible:outline-offset-[4px] hover:after:[transform:translateX(4px)]"
 							data-destination={trip.place}
 							href="#plan"
 							onClick={() => onChooseDestination(trip.place)}
@@ -216,12 +220,12 @@ export function PackagesSection({
 			id="packages"
 		>
 			<div className={cn(PAGE_WIDTH, SECTION_PAD)}>
-				<div className="mb-8 flex items-center justify-between gap-6 max-[600px]:block">
+				<div className="mb-10 flex items-center justify-between gap-6 max-[600px]:block">
 					<div>
-						<h2 className={cn(SECTION_TITLE, "mb-3")} id="packages-title">
+						<h2 className={cn(SECTION_TITLE, "mb-4")} id="packages-title">
 							Find a holiday that fits
 						</h2>
-						<p className={cn(SECTION_LEDE, "mb-0 max-w-[65ch]")}>
+						<p className={cn(SECTION_LEDE, "mb-0 max-w-[62ch]")}>
 							A starting point for your own itinerary.
 						</p>
 					</div>
@@ -253,7 +257,7 @@ export function PackagesSection({
 					))}
 				</div>
 				<p
-					className="mb-4 max-w-[65ch] text-[13px] text-muted-foreground"
+					className="mb-4 max-w-[65ch] text-[13px] text-muted-foreground leading-[1.45]"
 					id="package-status"
 					role="status"
 				>
@@ -269,7 +273,7 @@ export function PackagesSection({
 						/>
 					))}
 				</div>
-				<p className="mt-[18px] mb-0 max-w-[65ch] text-[12px] text-muted-foreground leading-[1.6]">
+				<p className="mt-[18px] mb-0 max-w-[65ch] text-[12px] text-muted-foreground leading-[1.55]">
 					Illustrative trips, durations, and inclusions. This wireframe does not
 					show live inventory.
 				</p>

@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { type FocusEvent, type PointerEvent, useRef, useState } from "react";
 
 import {
+	CARD_TITLE,
 	FOCUS_INK,
 	PAGE_WIDTH,
 	SECTION_LEDE,
@@ -107,7 +108,7 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 					<h2 className={cn(SECTION_TITLE, "m-0")} id="style-title">
 						What kind of trip do you have in mind?
 					</h2>
-					<p className={cn(SECTION_LEDE, "mt-4 mb-0 max-w-[44ch]")}>
+					<p className={cn(SECTION_LEDE, "mt-4 mb-0 max-w-[46ch]")}>
 						A change of pace. A shared adventure. A little time for yourself.
 					</p>
 				</div>
@@ -188,17 +189,18 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 											width={1200}
 										/>
 									</span>
-									<span className="grid gap-2 py-[25px] pr-11 pl-5">
+									<span className="grid gap-[6px] py-[25px] pr-11 pl-5">
 										<strong
-											className={
+											className={cn(
+												CARD_TITLE,
 												style.layout === "featured"
-													? "font-bold text-[28px] leading-[1.25]"
-													: "font-bold text-[20px] leading-[1.25]"
-											}
+													? "text-[24px] leading-[1.2]"
+													: "text-[20px] leading-[1.25]",
+											)}
 										>
 											{style.label}
 										</strong>
-										<span className="text-[14px] text-muted-foreground">
+										<span className="text-[15px] text-muted-foreground leading-[1.55]">
 											{style.copy}
 										</span>
 									</span>

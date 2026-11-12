@@ -190,7 +190,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 				<div className={cn(PAGE_WIDTH, "relative h-full")}>
 					<div className="relative z-[1] max-w-[650px] pt-[72px] max-[600px]:max-w-full max-[960px]:max-w-[58%] max-[600px]:pt-[44px]">
 						<h1
-							className="m-0 text-balance font-bold text-[clamp(40px,4.4vw,64px)] text-white leading-[1.1] tracking-[-0.03em] max-[600px]:text-[36px]"
+							className="m-0 text-balance font-semibold text-[clamp(36px,4.4vw,64px)] text-white leading-[1.08] tracking-[-0.025em]"
 							id="hero-title"
 						>
 							What’s your next
@@ -198,7 +198,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							destination?
 						</h1>
 						<p
-							className="m-0 mt-4 font-heading text-[clamp(48px,5vw,72px)] text-primary italic leading-[1.15] tracking-[-0.02em] max-[600px]:mt-3 max-[600px]:text-[46px]"
+							className="m-0 mt-3 font-heading text-[clamp(48px,5vw,72px)] text-primary italic leading-[1.05] tracking-[-0.015em] max-[600px]:mt-2 max-[600px]:text-[44px]"
 							data-hero-destination
 						>
 							<span
@@ -244,7 +244,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 									/>
 								</span>
 							</span>
-							<span className="bg-[rgba(8,27,31,0.72)] px-3 py-2 font-normal text-[13px]">
+							<span className="bg-[rgba(8,27,31,0.72)] px-3 py-2 font-normal text-[14px] leading-[1.4]">
 								{activeDestination.landmark}
 							</span>
 						</span>
@@ -283,14 +283,14 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 					<a
 						className={cn(
 							FOCUS_INK,
-							"absolute top-[calc(var(--hero-height)_-_64px)] left-[162px] font-semibold text-[20px] text-white no-underline focus-visible:outline-white max-[600px]:left-[70px] max-[600px]:text-[18px]"
+							"absolute top-[calc(var(--hero-height)_-_64px)] left-[162px] font-semibold text-[18px] text-white no-underline focus-visible:outline-white max-[600px]:left-[70px] max-[600px]:text-[16px]"
 						)}
 						href="#discovery"
 					>
 						Let’s start here.
 					</a>
 					<a
-						className="absolute top-[calc(var(--hero-height)_-_32px)] right-0 bg-[rgba(8,27,31,0.72)] px-2 py-1 text-[11px] text-white underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+						className="absolute top-[calc(var(--hero-height)_-_32px)] right-0 bg-[rgba(8,27,31,0.72)] px-2 py-1 text-[12px] text-white underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
 						href="/images/hero/credits.html"
 					>
 						Photo credits
@@ -322,13 +322,13 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 					id="discovery"
 					onSubmit={explorePackages}
 				>
-					<label className="grid min-w-0 gap-2 font-semibold text-[13px] max-[600px]:col-span-full">
+					<label className="grid min-w-0 gap-2 font-semibold text-[14px] max-[600px]:col-span-full">
 						Where to?
 						<select
 							className={cn(
 								CONTROL,
 								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]"
+								"h-12 w-full min-w-0 px-4 py-3 font-normal text-base"
 							)}
 							name="destination"
 							onChange={(event) => setDiscoveryDestination(event.target.value)}
@@ -339,25 +339,25 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							<option>International</option>
 						</select>
 					</label>
-					<label className="grid min-w-0 gap-2 font-semibold text-[13px]">
+					<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 						Departure date
 						<input
 							className={cn(
 								CONTROL,
 								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]"
+								"h-12 w-full min-w-0 px-4 py-3 font-normal text-base"
 							)}
 							name="date"
 							type="date"
 						/>
 					</label>
-					<label className="grid min-w-0 gap-2 font-semibold text-[13px]">
+					<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 						Duration
 						<select
 							className={cn(
 								CONTROL,
 								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]"
+								"h-12 w-full min-w-0 px-4 py-3 font-normal text-base"
 							)}
 							name="duration"
 						>
@@ -367,13 +367,13 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							<option>11+ days</option>
 						</select>
 					</label>
-					<label className="grid min-w-0 gap-2 font-semibold text-[13px] max-[600px]:col-span-full">
+					<label className="grid min-w-0 gap-2 font-semibold text-[14px] max-[600px]:col-span-full">
 						Trip type
 						<select
 							className={cn(
 								CONTROL,
 								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-[14px]"
+								"h-12 w-full min-w-0 px-4 py-3 font-normal text-base"
 							)}
 							name="type"
 						>
@@ -390,7 +390,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							CONTROL,
 							BUTTON,
 							SLATE,
-							"min-h-12 px-4 py-3 text-[14px] max-[960px]:col-span-full"
+							"min-h-12 px-4 py-3 text-[15px] max-[960px]:col-span-full"
 						)}
 						type="submit"
 					>

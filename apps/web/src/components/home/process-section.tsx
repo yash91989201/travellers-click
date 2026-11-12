@@ -1,6 +1,6 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import { PAGE_WIDTH, SECTION_PAD, SECTION_TITLE } from "./classes";
+import { CARD_TITLE, PAGE_WIDTH, SECTION_PAD, SECTION_TITLE_QUIET } from "./classes";
 
 const STEPS = [
 	{
@@ -34,11 +34,11 @@ export function ProcessSection() {
 				)}
 			>
 				<div className="sticky top-8 max-[860px]:static">
-					<h2 className={cn(SECTION_TITLE, "mb-[14px]")} id="how-title">
+					<h2 className={cn(SECTION_TITLE_QUIET, "mb-4")} id="how-title">
 						From an idea <br className="max-[600px]:hidden" />
 						to your itinerary
 					</h2>
-					<p className="m-0 text-base text-muted-foreground">
+					<p className="m-0 text-[18px] text-muted-foreground leading-[1.55]">
 						You can start without a fixed destination or exact dates.
 					</p>
 				</div>
@@ -55,14 +55,19 @@ export function ProcessSection() {
 						>
 							<span
 								aria-hidden="true"
-								className="col-span-1 row-span-2 font-bold text-[76px] text-slate tabular-nums leading-[0.85] tracking-[-0.05em] max-[860px]:text-[52px]"
+								className="col-span-1 row-span-2 font-heading font-medium text-[clamp(48px,6vw,64px)] text-slate tabular-nums leading-[0.9] tracking-[-0.02em]"
 							>
 								{index + 1}
 							</span>
-							<h3 className="m-0 self-end text-balance font-bold text-[24px] leading-[1.15]">
+							<h3
+								className={cn(
+									CARD_TITLE,
+									"m-0 self-end text-balance text-[24px] leading-[1.2]",
+								)}
+							>
 								{step.title}
 							</h3>
-							<p className="m-0 text-[15px] text-muted-foreground">
+							<p className="m-0 max-w-[52ch] text-[16px] text-muted-foreground leading-[1.6]">
 								{step.copy}
 							</p>
 						</li>
