@@ -173,7 +173,7 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 										className={cn(
 											"relative min-h-[165px] self-stretch overflow-hidden bg-muted",
 											style.layout === "wide"
-												? "min-h-[100px] flex-none basis-[30%] transition-[flex-basis] duration-[600ms] ease-[cubic-bezier(0.34,1.4,0.64,1)] group-data-[open=true]:basis-[60%] max-[800px]:min-h-[132px] max-[800px]:flex-1"
+												? "min-h-[100px] flex-none basis-[30%] transition-[flex-basis] duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-data-[open=true]:basis-[60%] max-[800px]:min-h-[132px] max-[800px]:flex-1"
 												: "flex-1",
 											style.layout === "featured" && "max-[800px]:min-h-[180px]"
 										)}

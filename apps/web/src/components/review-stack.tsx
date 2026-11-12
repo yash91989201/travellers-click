@@ -13,7 +13,7 @@ import { FOCUS_PAPER } from "./home/classes";
 const SLOT_COUNT = 5;
 const SLOTS = Array.from({ length: SLOT_COUNT }, (_, i) => `slot-${i + 1}`);
 const VISIBLE_CARDS = 3;
-const AUTOPLAY_MS = 5500;
+const AUTOPLAY_MS = 5000;
 const SWIPE_PX = 80;
 
 type Position = "0" | "1" | "2" | "gone" | "out";

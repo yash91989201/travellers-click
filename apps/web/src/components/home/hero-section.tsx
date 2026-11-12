@@ -198,7 +198,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							destination?
 						</h1>
 						<p
-							className="m-0 mt-5 font-heading text-[clamp(44px,4.5vw,66px)] text-primary italic leading-[1.15] tracking-[-0.02em] max-[600px]:mt-3 max-[600px]:text-[44px]"
+							className="m-0 mt-5 font-heading text-[clamp(44px,4.5vw,66px)] text-primary italic leading-[1.15] tracking-[-0.02em] max-[600px]:mt-3 max-[600px]:text-[2.625rem]"
 							data-hero-destination
 						>
 							<span

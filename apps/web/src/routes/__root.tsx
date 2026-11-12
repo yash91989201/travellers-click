@@ -70,8 +70,6 @@ function RootDocument() {
 				{!isHome && (
 					<ReactQueryDevtools buttonPosition="bottom-right" position="bottom" />
 				)}
-				{/* impeccable-live-tanstack-start */}
-				{/* impeccable-live-tanstack-end */}
 				<Scripts />
 			</body>
 		</html>
