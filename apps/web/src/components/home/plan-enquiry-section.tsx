@@ -94,14 +94,14 @@ export function PlanEnquirySection({
 						<h3
 							className={cn(
 								CARD_TITLE,
-								"m-0 text-balance text-[22px] font-medium leading-[1.3]"
+								"m-0 text-balance text-[22px] leading-[1.2]"
 							)}
 							id="plan-step-1"
 						>
 							Where and when
 						</h3>
 						<div className="grid grid-cols-2 gap-5 max-[860px]:grid-cols-1">
-							<label className="grid min-w-0 gap-2 font-medium text-[14px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Destination
 								<input
 									className={INPUT}
@@ -112,7 +112,7 @@ export function PlanEnquirySection({
 									value={destination}
 								/>
 							</label>
-							<label className="grid min-w-0 gap-2 font-medium text-[14px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Approximate dates
 								<input
 									className={INPUT}
@@ -136,14 +136,14 @@ export function PlanEnquirySection({
 						<h3
 							className={cn(
 								CARD_TITLE,
-								"m-0 text-balance text-[22px] font-medium leading-[1.3]"
+								"m-0 text-balance text-[22px] leading-[1.2]"
 							)}
 							id="plan-step-2"
 						>
 							Who is travelling
 						</h3>
 						<div className="grid grid-cols-2 gap-5 max-[860px]:grid-cols-1">
-							<label className="grid min-w-0 gap-2 font-medium text-[14px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Number of travelers
 								<input
 									className={INPUT}
@@ -155,7 +155,7 @@ export function PlanEnquirySection({
 									type="number"
 								/>
 							</label>
-							<label className="grid min-w-0 gap-2 font-medium text-[14px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Budget per person, excluding flights
 								<input
 									className={INPUT}
@@ -179,14 +179,14 @@ export function PlanEnquirySection({
 						<h3
 							className={cn(
 								CARD_TITLE,
-								"m-0 text-balance text-[22px] font-medium leading-[1.3]"
+								"m-0 text-balance text-[22px] leading-[1.2]"
 							)}
 							id="plan-step-3"
 						>
 							How we reach you
 						</h3>
 						<div className="grid max-w-[420px] grid-cols-1 gap-5">
-							<label className="grid min-w-0 gap-2 font-medium text-[14px]">
+							<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
 								Contact number (required)
 								<input
 									autoComplete="off"

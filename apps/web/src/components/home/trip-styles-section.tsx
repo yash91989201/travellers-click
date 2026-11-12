@@ -191,19 +191,19 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 										<strong
 											className={
 												style.layout === "featured"
-													? "font-heading font-medium text-[26px] leading-[1.2]"
-													: "font-heading font-medium text-[22px] leading-[1.2]"
+													? "font-heading font-medium text-[26px] leading-[1.2] tracking-[-0.01em]"
+													: "font-heading font-medium text-[22px] leading-[1.2] tracking-[-0.01em]"
 											}
 										>
 											{style.label}
 										</strong>
-										<span className="text-[15px] text-muted-foreground leading-[1.55]">
+										<span className="text-pretty text-[15px] text-muted-foreground leading-[1.55]">
 											{style.copy}
 										</span>
 									</span>
 									<svg
 										aria-hidden="true"
-										className="absolute right-0 bottom-7 h-5 w-5 fill-none stroke-slate transition-transform [stroke-width:1.5] group-data-[open=true]:right-6 group-hover:translate-x-1 motion-reduce:transition-none"
+										className="absolute right-0 bottom-7 h-5 w-5 fill-none stroke-slate transition-transform [stroke-width:1.5] group-hover:translate-x-1 group-data-[open=true]:right-6 motion-reduce:transition-none"
 										focusable="false"
 										viewBox="0 0 24 24"
 									>

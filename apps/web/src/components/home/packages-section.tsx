@@ -44,6 +44,15 @@ const FILTERS = [
 const BADGE =
 	"whitespace-nowrap rounded-[3px] px-2.5 py-1.5 text-xs font-medium leading-none";
 
+// The stacked card is wider and taller than the accordion column, so the photo
+// behind the caption stays bright far higher up; the scrim must reach further.
+const SCRIM = {
+	hover:
+		"bg-[linear-gradient(to_top,rgba(12,24,28,0.94)_0%,rgba(12,24,28,0.70)_36%,rgba(12,24,28,0)_78%)]",
+	stacked:
+		"max-[900px]:bg-[linear-gradient(to_top,rgba(12,24,28,0.96)_0%,rgba(12,24,28,0.88)_42%,rgba(12,24,28,0.44)_78%,rgba(12,24,28,0.16))] [@media(hover:none)]:bg-[linear-gradient(to_top,rgba(12,24,28,0.96)_0%,rgba(12,24,28,0.88)_42%,rgba(12,24,28,0.44)_78%,rgba(12,24,28,0.16))]",
+};
+
 const HOVER_QUERY = "(hover: hover) and (min-width: 901px)";
 const TITLE_REST = 22;
 const TITLE_OPEN_DEFAULT = 28;
@@ -135,7 +144,13 @@ function TripCard({ hidden, onChooseDestination, trip }: TripCardProps) {
 					width={1600}
 				/>
 			</motion.div>
-			<div className="absolute inset-0 flex flex-col justify-end bg-[linear-gradient(to_top,rgba(12,24,28,0.94)_0%,rgba(12,24,28,0.70)_36%,rgba(12,24,28,0)_78%)] p-[22px] text-card">
+			<div
+				className={cn(
+					"absolute inset-0 flex flex-col justify-end p-[22px] text-card",
+					SCRIM.hover,
+					SCRIM.stacked
+				)}
+			>
 				<div className="mb-3 flex flex-wrap gap-[6px]">
 					<span className={cn(BADGE, "bg-card text-foreground")}>
 						{trip.region}
@@ -150,7 +165,7 @@ function TripCard({ hidden, onChooseDestination, trip }: TripCardProps) {
 							? { fontSize: interactive && active ? titleOpen : TITLE_REST }
 							: undefined
 					}
-					className="m-0 text-balance font-medium text-[22px] text-card leading-[1.15] tracking-[-0.03em]"
+					className="m-0 text-balance font-medium text-[22px] text-card leading-[1.15] tracking-[-0.01em]"
 					initial={false}
 					transition={transition}
 				>
@@ -226,7 +241,7 @@ export function PackagesSection({
 			<div className={cn(PAGE_WIDTH, SECTION_PAD)}>
 				<div className="mb-8 flex items-center justify-between gap-6 max-[600px]:block">
 					<div>
-						<h2 className={cn(SECTION_TITLE, "mb-3")} id="packages-title">
+						<h2 className={cn(SECTION_TITLE, "mb-4")} id="packages-title">
 							Find a holiday that fits
 						</h2>
 						<p className={cn(SECTION_LEDE, "mb-0 max-w-[65ch]")}>
@@ -251,7 +266,7 @@ export function PackagesSection({
 					{FILTERS.map((filter) => (
 						<button
 							aria-pressed={region === filter.value}
-							className="cursor-pointer rounded-[6px] border border-input bg-card px-[18px] py-[9px] text-[14px] text-foreground hover:bg-muted focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] aria-pressed:border-slate aria-pressed:bg-slate aria-pressed:text-card"
+							className="cursor-pointer rounded-[6px] border border-input bg-card px-[18px] py-[9px] font-medium text-[14px] text-foreground hover:bg-muted focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] aria-pressed:border-slate aria-pressed:bg-slate aria-pressed:text-card"
 							key={filter.value}
 							onClick={() => onFilter(filter.value)}
 							type="button"

@@ -249,6 +249,37 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							</span>
 						</span>
 					</a>
+					<svg
+						aria-hidden="true"
+						className="pointer-events-none absolute inset-0 h-[var(--hero-height)] w-full overflow-visible [&_marker_path]:fill-none [&_marker_path]:stroke-primary [&_marker_path]:[stroke-linecap:round] [&_marker_path]:[stroke-linejoin:round] [&_marker_path]:[stroke-width:2]"
+						focusable="false"
+						preserveAspectRatio="none"
+						viewBox="0 0 1160 480"
+					>
+						<defs>
+							<marker
+								id="hero-arrow"
+								markerHeight="12"
+								markerUnits="userSpaceOnUse"
+								markerWidth="12"
+								orient="auto"
+								refX="9"
+								refY="6"
+							>
+								<path d="m2 2 7 4-7 4" />
+							</marker>
+						</defs>
+						<path
+							className="fill-none stroke-primary [stroke-dasharray:5_6] [stroke-linecap:round] [stroke-width:2] [vector-effect:non-scaling-stroke] max-[600px]:hidden"
+							d="M935 286 C1010 346 806 374 684 334 C570 296 612 230 710 260 C820 300 622 408 424 370 S128 340 128 462"
+							markerEnd="url(#hero-arrow)"
+						/>
+						<path
+							className="hidden fill-none stroke-primary [stroke-dasharray:5_6] [stroke-linecap:round] [stroke-width:2] [vector-effect:non-scaling-stroke] max-[600px]:block"
+							d="M935 338 C1030 388 760 406 600 360 S120 340 128 462"
+							markerEnd="url(#hero-arrow)"
+						/>
+					</svg>
 					<a
 						className={cn(
 							FOCUS_INK,

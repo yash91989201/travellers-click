@@ -43,8 +43,8 @@ export function HelpFaqSection() {
 			className="scroll-mt-24 bg-background"
 			id="services"
 		>
-			<div className={cn(PAGE_WIDTH, SECTION_PAD, "grid gap-[50px]")}>
-				<div className="flex items-center justify-between gap-10 border-border border-b pb-[43px] max-[860px]:flex-col max-[860px]:items-start">
+			<div className={cn(PAGE_WIDTH, SECTION_PAD, "grid gap-[46px]")}>
+				<div className="flex flex-wrap items-end justify-between gap-8 border-border border-b pb-10">
 					<div>
 						<h2
 							className={cn(SECTION_TITLE_QUIET, "mb-4 font-medium")}
@@ -64,22 +64,19 @@ export function HelpFaqSection() {
 						Discuss travel needs
 					</a>
 				</div>
-				<h2
-					className={cn(SECTION_TITLE_QUIET, "m-0 mb-[-24px] font-medium")}
-					id="faq-title"
-				>
+				<h2 className={cn(SECTION_TITLE_QUIET, "m-0 font-medium")}>
 					Before you plan
 				</h2>
-				<div className="grid grid-cols-2 gap-x-[72px] max-[860px]:grid-cols-1">
+				<div>
 					{FAQS.map((faq) => (
 						<details
-							className="group border-border border-t py-[22px]"
+							className="group border-slate/30 border-b border-dashed py-6"
 							key={faq.question}
 						>
-							<summary className="flex cursor-pointer list-none items-center justify-between gap-5 font-medium text-[18px] leading-[1.35] after:h-[18px] after:w-[18px] after:flex-none after:transition-[transform] after:duration-[450ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] [&::-webkit-details-marker]:hidden">
+							<summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-heading font-medium text-[20px] leading-[1.3] tracking-[-0.01em] after:h-[18px] after:w-[18px] after:flex-none after:transition-[background-size] after:duration-[400ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] [&::-webkit-details-marker]:hidden">
 								{faq.question}
 							</summary>
-							<p className="mt-[14px] mb-0 max-w-[52ch] text-base text-muted-foreground leading-[1.6]">
+							<p className="mt-[14px] mb-0 max-w-[68ch] text-pretty text-base text-muted-foreground leading-[1.65]">
 								{faq.answer}
 							</p>
 						</details>

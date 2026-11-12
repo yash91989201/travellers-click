@@ -11,7 +11,7 @@ export const SECTION_PAD = "py-[104px] max-[600px]:py-16";
 
 // Browsing bands: benefits, travel styles, packages.
 export const SECTION_TITLE =
-	"text-balance font-medium text-[clamp(32px,3.2vw,42px)] leading-[1.12] tracking-[-0.03em]";
+	"text-balance font-medium text-[clamp(32px,3.2vw,42px)] leading-[1.12] tracking-[-0.02em]";
 
 export const SECTION_LEDE = "text-[18px] text-muted-foreground leading-[1.6]";
 
