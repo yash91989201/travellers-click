@@ -1,7 +1,7 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
 import { ReviewStack } from "../review-stack";
-import { PAGE_WIDTH } from "./classes";
+import { PAGE_WIDTH, SECTION_TITLE } from "./classes";
 
 // The page's one deep slate break: it separates the browsing and process
 // sections above from the enquiry below. Paper-on-slate text is 7.73:1.
@@ -22,7 +22,10 @@ export function ReviewsSection() {
 			>
 				<div className="sticky top-[88px] grid gap-4 self-start max-[900px]:static">
 					<h2
-						className="m-0 max-w-[13ch] text-balance border-primary border-t-2 pt-5 font-heading font-medium text-[clamp(34px,3.4vw,46px)] text-card leading-[1.06] tracking-[-0.02em]"
+						className={cn(
+							SECTION_TITLE,
+							"m-0 max-w-[13ch] border-primary border-t-2 pt-5 text-card"
+						)}
 						id="reviews-title"
 					>
 						What travelers say

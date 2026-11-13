@@ -170,7 +170,7 @@ export default function Header({ account = true }: { account?: boolean }) {
 						)}
 						to="/"
 					>
-						<span className="whitespace-nowrap font-heading font-medium text-[1.35rem] text-foreground tracking-[-0.02em]">
+						<span className="whitespace-nowrap font-heading font-medium text-[22px] text-foreground tracking-[-0.02em]">
 							Travellers Click
 						</span>
 					</Link>
@@ -242,7 +242,7 @@ export default function Header({ account = true }: { account?: boolean }) {
 							onClick={() => setMenuOpen(false)}
 							to="/"
 						>
-							<span className="font-heading font-medium text-[1.375rem] text-foreground tracking-[-0.02em]">
+							<span className="font-heading font-medium text-[22px] text-foreground tracking-[-0.02em]">
 								Travellers Click
 							</span>
 						</Link>
@@ -268,7 +268,7 @@ export default function Header({ account = true }: { account?: boolean }) {
 							<Link
 								className={cn(
 									FOCUS,
-									"group flex items-center justify-between border-border/70 border-b py-4 font-medium text-[1.35rem] text-foreground no-underline"
+									"group flex items-center justify-between border-border/70 border-b py-4 font-medium text-[22px] text-foreground no-underline"
 								)}
 								hash={hash}
 								key={hash}

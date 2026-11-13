@@ -58,7 +58,7 @@ export function HomeComponent() {
 
 	return (
 		<div
-			className="overflow-x-clip bg-background font-sans text-[16px] text-foreground leading-[1.6] [color-scheme:light] [&_p]:text-pretty"
+			className="scheme-light overflow-x-clip bg-background font-sans text-[16px] text-foreground leading-[1.6] [&_p]:text-pretty"
 			data-home
 		>
 			<PrototypeBar />

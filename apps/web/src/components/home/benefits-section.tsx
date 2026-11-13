@@ -1,6 +1,6 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import { LINK, PAGE_WIDTH } from "./classes";
+import { LINK, PAGE_WIDTH, SECTION_LEDE, SECTION_TITLE } from "./classes";
 
 const POINTS = [
 	{
@@ -64,13 +64,13 @@ export function BenefitsSection() {
 				<OutcomeArrow />
 				<div className="flex flex-wrap items-end justify-between gap-8">
 					<h2
-						className="m-0 max-w-[11ch] text-balance font-semibold text-[clamp(40px,5vw,72px)] leading-[1.09] tracking-[-0.0325em] max-[600px]:max-w-[14ch]"
+						className={cn(SECTION_TITLE, "m-0 max-w-[18ch]")}
 						id="benefits-title"
 					>
 						Here’s what comes next.
 					</h2>
 					<div>
-						<p className="mb-[6px] max-w-[34ch] text-[22.5px] text-muted-foreground leading-[1.6]">
+						<p className={cn(SECTION_LEDE, "mb-[6px] max-w-[34ch]")}>
 							Turn a travel idea into a plan that fits you.
 						</p>
 						<a
@@ -100,7 +100,7 @@ export function BenefitsSection() {
 								aria-hidden="true"
 								className="mb-[18px] block h-[9px] w-[9px] rounded-full bg-primary transition-transform duration-500 ease-[cubic-bezier(0.34,1.8,0.64,1)] group-hover:-translate-y-1 group-hover:scale-[1.35]"
 							/>
-							<h3 className="relative mb-[10px] inline-block text-balance font-medium text-[27.5px] leading-[1.25] tracking-[-0.02em] transition-[letter-spacing] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:tracking-[-0.032em]">
+							<h3 className="relative mb-[10px] inline-block text-balance font-medium text-[26px] leading-[1.2] tracking-[-0.02em] transition-[letter-spacing] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:tracking-[-0.032em]">
 								{point.title}
 								<svg
 									aria-hidden="true"
@@ -110,13 +110,13 @@ export function BenefitsSection() {
 									viewBox="0 0 120 10"
 								>
 									<path
-										className="fill-none stroke-[2.4] stroke-primary transition-[stroke-dashoffset] duration-700 ease-out [stroke-dasharray:132] [stroke-dashoffset:132] [stroke-linecap:round] group-hover:[stroke-dashoffset:0]"
+										className="fill-none stroke-[2.4] stroke-primary opacity-0 transition-opacity duration-500 ease-out [stroke-linecap:round] group-hover:opacity-100"
 										d="M2 7 C 18 2, 32 9, 48 6 S 76 1, 92 6 S 110 3, 118 6"
 										vectorEffect="non-scaling-stroke"
 									/>
 								</svg>
 							</h3>
-							<p className="m-0 max-w-[45ch] text-pretty text-[19.4px] text-muted-foreground leading-[1.55] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[3px]">
+							<p className="m-0 max-w-[45ch] text-pretty text-[16px] text-muted-foreground leading-[1.6] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[3px]">
 								{point.copy}
 							</p>
 						</article>

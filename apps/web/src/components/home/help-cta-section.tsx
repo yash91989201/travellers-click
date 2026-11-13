@@ -1,6 +1,6 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import { PAGE_WIDTH } from "./classes";
+import { PAGE_WIDTH, SECTION_TITLE } from "./classes";
 
 export function HelpCtaSection() {
 	return (
@@ -29,12 +29,12 @@ export function HelpCtaSection() {
 					)}
 				>
 					<h2
-						className="m-0 max-w-[17ch] text-balance font-normal text-[clamp(38px,4.6vw,62px)] text-card leading-[1.03] tracking-[-0.028em]"
+						className={cn(SECTION_TITLE, "m-0 max-w-[17ch] text-card")}
 						id="services-title"
 					>
 						Need help with flights or hotels?
 					</h2>
-					<p className="m-0 max-w-[44ch] text-pretty text-[17px] text-card/88 leading-[1.6]">
+					<p className="m-0 max-w-[44ch] text-pretty text-[18px] text-card/88 leading-[1.65] tracking-[0.005em]">
 						Include transport, stays, visa, or insurance questions in your trip
 						request.
 					</p>

@@ -50,10 +50,10 @@ export function HelpFaqSection() {
 							className="group border-slate/30 border-b border-dashed py-6"
 							key={faq.question}
 						>
-							<summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-heading font-medium text-[20px] leading-[1.3] tracking-[-0.01em] after:h-[18px] after:w-[18px] after:flex-none after:transition-[background-size] after:duration-[400ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] [&::-webkit-details-marker]:hidden">
+							<summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-heading font-medium text-[22px] leading-[1.3] tracking-[-0.01em] after:h-[18px] after:w-[18px] after:flex-none after:transition-[background-size] after:duration-[400ms] after:ease-[cubic-bezier(0.22,0.9,0.3,1)] after:content-[''] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[4px] after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat,linear-gradient(currentColor,currentColor)_center/2px_100%_no-repeat] group-open:after:[background:linear-gradient(currentColor,currentColor)_center/100%_2px_no-repeat] [&::-webkit-details-marker]:hidden">
 								{faq.question}
 							</summary>
-							<p className="mt-[14px] mb-0 max-w-[68ch] text-pretty text-base text-muted-foreground leading-[1.65]">
+							<p className="mt-[14px] mb-0 max-w-[60ch] text-pretty text-base text-muted-foreground leading-[1.6]">
 								{faq.answer}
 							</p>
 						</details>

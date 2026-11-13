@@ -118,7 +118,7 @@ function CardBody({
 				src={review.photo}
 			/>
 			<div className="grid gap-5 p-7">
-				<p className="m-0 min-h-[5.25rem] font-heading text-[22px] text-foreground leading-[1.55] max-[600px]:min-h-0 max-[600px]:text-[18px]">
+				<p className="m-0 min-h-[5.25rem] font-heading text-[22px] text-foreground leading-[1.4] max-[600px]:min-h-0 max-[600px]:text-[18px] max-[600px]:leading-[1.45]">
 					{review.quote}
 				</p>
 				<div className="flex items-end justify-between gap-3 border-border border-t pt-4 text-[14px]">

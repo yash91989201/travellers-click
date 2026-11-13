@@ -198,7 +198,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							destination?
 						</h1>
 						<p
-							className="m-0 mt-5 font-heading text-[clamp(44px,4.5vw,66px)] text-primary italic leading-[1.15] tracking-[-0.02em] max-[600px]:mt-3 max-[600px]:text-[2.625rem]"
+							className="m-0 mt-5 font-heading text-[clamp(44px,4.5vw,66px)] text-primary italic leading-[1.05] tracking-[-0.02em] max-[600px]:mt-3 max-[600px]:text-[2.625rem]"
 							data-hero-destination
 						>
 							<span
@@ -281,7 +281,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 						/>
 					</svg>
 					<a
-						className="absolute top-[calc(var(--hero-height)_-_64px)] left-0 whitespace-nowrap font-heading text-[19px] text-white italic leading-[1.25] [text-shadow:0_1px_12px_rgba(8,27,31,0.55)] focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[4px] max-[600px]:text-[17px]"
+						className="absolute top-[calc(var(--hero-height)_-_64px)] left-0 whitespace-nowrap font-heading text-[18px] text-white italic leading-[1.25] [text-shadow:0_1px_12px_rgba(8,27,31,0.55)] focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[4px] max-[600px]:text-[16px]"
 						href="#discovery"
 					>
 						<span>Let’s start here.</span>
@@ -320,7 +320,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 					onSubmit={explorePackages}
 				>
 					<label className="grid min-w-0 flex-1 gap-1 px-5 py-[18px] max-[960px]:border-[#AABDC2] max-[960px]:border-t max-[600px]:px-[18px] max-[600px]:py-[14px] max-[960px]:first:border-t-0 [&+&]:border-[#AABDC2] [&+&]:border-l max-[960px]:[&+&]:border-l-0">
-						<span className="font-medium text-[12.5px] text-muted-foreground leading-[1.3]">
+						<span className="font-medium text-[13px] text-muted-foreground leading-[1.4]">
 							Where to?
 						</span>
 						<select
@@ -335,7 +335,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 						</select>
 					</label>
 					<label className="grid min-w-0 flex-1 gap-1 px-5 py-[18px] max-[960px]:border-[#AABDC2] max-[960px]:border-t max-[600px]:px-[18px] max-[600px]:py-[14px] [&+&]:border-[#AABDC2] [&+&]:border-l max-[960px]:[&+&]:border-l-0">
-						<span className="font-medium text-[12.5px] text-muted-foreground leading-[1.3]">
+						<span className="font-medium text-[13px] text-muted-foreground leading-[1.4]">
 							Departure date
 						</span>
 						<input
@@ -345,7 +345,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 						/>
 					</label>
 					<label className="grid min-w-0 flex-1 gap-1 px-5 py-[18px] max-[960px]:border-[#AABDC2] max-[960px]:border-t max-[600px]:px-[18px] max-[600px]:py-[14px] [&+&]:border-[#AABDC2] [&+&]:border-l max-[960px]:[&+&]:border-l-0">
-						<span className="font-medium text-[12.5px] text-muted-foreground leading-[1.3]">
+						<span className="font-medium text-[13px] text-muted-foreground leading-[1.4]">
 							Duration
 						</span>
 						<select
@@ -359,7 +359,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 						</select>
 					</label>
 					<label className="grid min-w-0 flex-1 gap-1 px-5 py-[18px] max-[960px]:border-[#AABDC2] max-[960px]:border-t max-[600px]:px-[18px] max-[600px]:py-[14px] [&+&]:border-[#AABDC2] [&+&]:border-l max-[960px]:[&+&]:border-l-0">
-						<span className="font-medium text-[12.5px] text-muted-foreground leading-[1.3]">
+						<span className="font-medium text-[13px] text-muted-foreground leading-[1.4]">
 							Trip type
 						</span>
 						<select

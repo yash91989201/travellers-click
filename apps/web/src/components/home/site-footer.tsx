@@ -3,7 +3,7 @@ import { cn } from "@travellers-click/ui/lib/utils";
 import { BUTTON, CONTROL, FOCUS_PAPER, PAGE_WIDTH, PRIMARY } from "./classes";
 
 const label =
-	"mb-[14px] font-sans text-[12px] font-semibold leading-[1.2] tracking-[0.01em] text-card/60";
+	"mb-[14px] font-sans text-[14px] font-semibold leading-[1.4] tracking-[0.01em] text-card/60";
 const line = "m-0 py-[7px] text-[14px] leading-[1.45]";
 const note = "text-[12px] leading-[1.6] text-card/75";
 const LINK_ON_INK = `${FOCUS_PAPER} block border-transparent border-b py-[7px] text-[14px] no-underline transition-colors hover:border-primary/70`;

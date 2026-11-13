@@ -165,7 +165,7 @@ function TripCard({ hidden, onChooseDestination, trip }: TripCardProps) {
 							? { fontSize: interactive && active ? titleOpen : TITLE_REST }
 							: undefined
 					}
-					className="m-0 text-balance font-medium text-[22px] text-card leading-[1.15] tracking-[-0.01em]"
+					className="m-0 text-balance font-medium text-[22px] text-card leading-[1.15] tracking-[-0.01em] max-[900px]:text-[26px] [@media(hover:none)]:text-[26px]"
 					initial={false}
 					transition={transition}
 				>
