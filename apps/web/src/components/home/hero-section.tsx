@@ -2,7 +2,7 @@ import { cn } from "@travellers-click/ui/lib/utils";
 import { Pause, Play } from "lucide-react";
 import { type FormEvent, useEffect, useRef, useState } from "react";
 
-import { BUTTON, CONTROL, FOCUS_INK, PAGE_WIDTH, SLATE } from "./classes";
+import { FOCUS_INK, PAGE_WIDTH } from "./classes";
 import type { DiscoverySelection, Region } from "./types";
 
 const HERO_DESTINATIONS = [
@@ -281,13 +281,10 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 						/>
 					</svg>
 					<a
-						className={cn(
-							FOCUS_INK,
-							"absolute top-[calc(var(--hero-height)_-_64px)] left-0 font-medium text-[15px] text-white underline underline-offset-8 focus-visible:outline-white max-[600px]:text-[14px]"
-						)}
+						className="absolute top-[calc(var(--hero-height)_-_64px)] left-0 whitespace-nowrap font-heading text-[19px] text-white italic leading-[1.25] [text-shadow:0_1px_12px_rgba(8,27,31,0.55)] focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[4px] max-[600px]:text-[17px]"
 						href="#discovery"
 					>
-						Let’s start here.
+						<span>Let’s start here.</span>
 					</a>
 					<a
 						className="absolute top-[calc(var(--hero-height)_-_32px)] right-0 bg-[rgba(8,27,31,0.72)] px-2 py-1 text-[12px] text-white underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
@@ -318,18 +315,16 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 				)}
 			>
 				<form
-					className="grid grid-cols-[1.2fr_1.1fr_1fr_1fr_auto] items-end gap-[14px] rounded-[8px] bg-card p-7 shadow-[0_16px_40px_-16px_rgba(23,62,73,0.28)] max-[960px]:grid-cols-2 max-[600px]:gap-4 max-[600px]:p-[18px]"
+					className="flex items-stretch overflow-hidden rounded-[8px] bg-card shadow-[0_16px_40px_-16px_rgba(23,62,73,0.28)] max-[960px]:grid max-[600px]:grid-cols-1 max-[960px]:grid-cols-2"
 					id="discovery"
 					onSubmit={explorePackages}
 				>
-					<label className="grid min-w-0 gap-2 font-semibold text-[14px] max-[600px]:col-span-full">
-						Where to?
+					<label className="grid min-w-0 flex-1 gap-1 px-5 py-[18px] max-[960px]:border-[#AABDC2] max-[960px]:border-t max-[600px]:px-[18px] max-[600px]:py-[14px] max-[960px]:first:border-t-0 [&+&]:border-[#AABDC2] [&+&]:border-l max-[960px]:[&+&]:border-l-0">
+						<span className="font-medium text-[12.5px] text-muted-foreground leading-[1.3]">
+							Where to?
+						</span>
 						<select
-							className={cn(
-								CONTROL,
-								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-base"
-							)}
+							className="w-full min-w-0 border-0 bg-transparent p-0 pr-5 font-medium text-base text-foreground leading-[1.35] [color-scheme:light] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[3px]"
 							name="destination"
 							onChange={(event) => setDiscoveryDestination(event.target.value)}
 							value={discoveryDestination}
@@ -339,26 +334,22 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							<option>International</option>
 						</select>
 					</label>
-					<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
-						Departure date
+					<label className="grid min-w-0 flex-1 gap-1 px-5 py-[18px] max-[960px]:border-[#AABDC2] max-[960px]:border-t max-[600px]:px-[18px] max-[600px]:py-[14px] [&+&]:border-[#AABDC2] [&+&]:border-l max-[960px]:[&+&]:border-l-0">
+						<span className="font-medium text-[12.5px] text-muted-foreground leading-[1.3]">
+							Departure date
+						</span>
 						<input
-							className={cn(
-								CONTROL,
-								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-base"
-							)}
+							className="w-full min-w-0 border-0 bg-transparent p-0 pr-5 font-medium text-base text-foreground leading-[1.35] [color-scheme:light] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[3px]"
 							name="date"
 							type="date"
 						/>
 					</label>
-					<label className="grid min-w-0 gap-2 font-semibold text-[14px]">
-						Duration
+					<label className="grid min-w-0 flex-1 gap-1 px-5 py-[18px] max-[960px]:border-[#AABDC2] max-[960px]:border-t max-[600px]:px-[18px] max-[600px]:py-[14px] [&+&]:border-[#AABDC2] [&+&]:border-l max-[960px]:[&+&]:border-l-0">
+						<span className="font-medium text-[12.5px] text-muted-foreground leading-[1.3]">
+							Duration
+						</span>
 						<select
-							className={cn(
-								CONTROL,
-								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-base"
-							)}
+							className="w-full min-w-0 border-0 bg-transparent p-0 pr-5 font-medium text-base text-foreground leading-[1.35] [color-scheme:light] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[3px]"
 							name="duration"
 						>
 							<option value="">Any duration</option>
@@ -367,14 +358,12 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 							<option>11+ days</option>
 						</select>
 					</label>
-					<label className="grid min-w-0 gap-2 font-semibold text-[14px] max-[600px]:col-span-full">
-						Trip type
+					<label className="grid min-w-0 flex-1 gap-1 px-5 py-[18px] max-[960px]:border-[#AABDC2] max-[960px]:border-t max-[600px]:px-[18px] max-[600px]:py-[14px] [&+&]:border-[#AABDC2] [&+&]:border-l max-[960px]:[&+&]:border-l-0">
+						<span className="font-medium text-[12.5px] text-muted-foreground leading-[1.3]">
+							Trip type
+						</span>
 						<select
-							className={cn(
-								CONTROL,
-								FOCUS_INK,
-								"h-12 w-full min-w-0 px-4 py-3 font-normal text-base"
-							)}
+							className="w-full min-w-0 border-0 bg-transparent p-0 pr-5 font-medium text-base text-foreground leading-[1.35] [color-scheme:light] focus-visible:outline-[3px] focus-visible:outline-slate focus-visible:outline-offset-[3px]"
 							name="type"
 						>
 							<option value="">Any trip type</option>
@@ -386,12 +375,7 @@ export function HeroSection({ onExplore }: HeroSectionProps) {
 						</select>
 					</label>
 					<button
-						className={cn(
-							CONTROL,
-							BUTTON,
-							SLATE,
-							"min-h-12 px-4 py-3 text-[14px] max-[960px]:col-span-full"
-						)}
+						className="min-h-[52px] min-w-[190px] shrink-0 cursor-pointer border-0 bg-slate px-7 font-semibold text-card text-sm hover:bg-foreground focus-visible:outline-[3px] focus-visible:outline-card focus-visible:outline-offset-[-6px] max-[960px]:col-span-full max-[960px]:min-h-[54px]"
 						type="submit"
 					>
 						Explore packages

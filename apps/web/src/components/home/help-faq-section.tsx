@@ -1,12 +1,6 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 
-import {
-	LINK,
-	PAGE_WIDTH,
-	SECTION_LEDE,
-	SECTION_PAD,
-	SECTION_TITLE_QUIET,
-} from "./classes";
+import { PAGE_WIDTH, SECTION_PAD, SECTION_TITLE_QUIET } from "./classes";
 
 const FAQS = [
 	{
@@ -39,32 +33,15 @@ const FAQS = [
 export function HelpFaqSection() {
 	return (
 		<section
-			aria-labelledby="services-title"
+			aria-labelledby="faq-title"
 			className="scroll-mt-24 bg-background"
-			id="services"
+			id="faq"
 		>
 			<div className={cn(PAGE_WIDTH, SECTION_PAD, "grid gap-[46px]")}>
-				<div className="flex flex-wrap items-end justify-between gap-8 border-border border-b pb-10">
-					<div>
-						<h2
-							className={cn(SECTION_TITLE_QUIET, "mb-4 font-medium")}
-							id="services-title"
-						>
-							Need help with flights or hotels?
-						</h2>
-						<p className={cn(SECTION_LEDE, "m-0 max-w-[48ch]")}>
-							Include transport, stays, visa, or insurance questions in your
-							trip request.
-						</p>
-					</div>
-					<a
-						className={cn(LINK, "flex-none py-[14px] font-semibold")}
-						href="#plan"
-					>
-						Discuss travel needs
-					</a>
-				</div>
-				<h2 className={cn(SECTION_TITLE_QUIET, "m-0 font-medium")}>
+				<h2
+					className={cn(SECTION_TITLE_QUIET, "m-0 font-medium")}
+					id="faq-title"
+				>
 					Before you plan
 				</h2>
 				<div>

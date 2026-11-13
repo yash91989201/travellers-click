@@ -1,6 +1,6 @@
 /*
  * Home page motion.
- * Only keyframes and descendant selection colors live here; Tailwind expresses
+ * Only keyframes, scroll-timeline rules and descendant selection colors live here; Tailwind expresses
  * every other declaration as a utility.
  */
 
@@ -178,8 +178,53 @@
 	}
 }
 
+/* Benefits items arrive staggered from the lower edge; the coral dot, drawn
+   underline and tilt run on hover through utilities. */
+@keyframes benefits-rise {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 22px, 0) rotate(-1.2deg);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.benefits-motion * {
+		transition: none !important;
+		animation: none !important;
+	}
+}
+
 /* ::selection must target descendants, which a root utility cannot do. */
 [data-home] ::selection {
 	color: var(--card);
 	background: var(--slate);
+}
+
+/* Scroll-linked depth for the services band; engines without scroll timelines
+   and reduced-motion readers keep the static crop. */
+@keyframes services-drift {
+	from {
+		transform: translate3d(0, -4%, 0) scale(1.14);
+	}
+	to {
+		transform: translate3d(0, 4%, 0) scale(1.14);
+	}
+}
+
+.services-parallax {
+	transform: scale(1.14);
+}
+
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.services-parallax {
+			animation: services-drift linear both;
+			animation-timeline: view();
+			animation-range: cover 0% cover 100%;
+		}
+	}
 }

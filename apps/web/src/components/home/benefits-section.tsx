@@ -17,7 +17,8 @@ const POINTS = [
 	},
 ] as const;
 
-const COLUMN = "pr-8 pt-[30px] max-[960px]:pr-0 max-[960px]:pt-[26px]";
+const ITEM =
+	"benefits-motion group pr-8 pt-[30px] max-[960px]:pr-0 max-[960px]:pt-[26px]";
 
 function OutcomeArrow() {
 	return (
@@ -83,27 +84,42 @@ export function BenefitsSection() {
 						</a>
 					</div>
 				</div>
-				<div className="mt-[52px] grid grid-cols-3 border-slate/25 border-t max-[600px]:mt-[34px] max-[960px]:grid-cols-1">
+				<div className="mt-[52px] grid grid-cols-3 border-slate/25 border-t max-[960px]:grid-cols-1">
 					{POINTS.map((point, index) => (
-						<div
+						<article
 							className={cn(
-								COLUMN,
+								ITEM,
+								"animate-[benefits-rise_0.75s_cubic-bezier(0.18,1.5,0.34,1)_both] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:rotate-[1.2deg]",
 								index > 0 &&
 									"border-slate/25 border-l pl-8 max-[960px]:border-t max-[960px]:border-l-0 max-[960px]:pl-0"
 							)}
 							key={point.title}
+							style={{ animationDelay: `${index * 50}ms` }}
 						>
-							<div
+							<span
 								aria-hidden="true"
-								className="mb-[18px] h-[2px] w-[22px] bg-primary"
+								className="mb-[18px] block h-[9px] w-[9px] rounded-full bg-primary transition-transform duration-500 ease-[cubic-bezier(0.34,1.8,0.64,1)] group-hover:-translate-y-1 group-hover:scale-[1.35]"
 							/>
-							<h3 className="mb-2 text-balance font-medium text-[27.5px] leading-[1.25] tracking-[-0.02em]">
+							<h3 className="relative mb-[10px] inline-block text-balance font-medium text-[27.5px] leading-[1.25] tracking-[-0.02em] transition-[letter-spacing] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:tracking-[-0.032em]">
 								{point.title}
+								<svg
+									aria-hidden="true"
+									className="pointer-events-none absolute -bottom-[7px] left-0 h-[10px] w-full overflow-visible"
+									focusable="false"
+									preserveAspectRatio="none"
+									viewBox="0 0 120 10"
+								>
+									<path
+										className="fill-none stroke-[2.4] stroke-primary transition-[stroke-dashoffset] duration-700 ease-out [stroke-dasharray:132] [stroke-dashoffset:132] [stroke-linecap:round] group-hover:[stroke-dashoffset:0]"
+										d="M2 7 C 18 2, 32 9, 48 6 S 76 1, 92 6 S 110 3, 118 6"
+										vectorEffect="non-scaling-stroke"
+									/>
+								</svg>
 							</h3>
-							<p className="m-0 max-w-[45ch] text-pretty text-[19.4px] text-muted-foreground leading-[1.55]">
+							<p className="m-0 max-w-[45ch] text-pretty text-[19.4px] text-muted-foreground leading-[1.55] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[3px]">
 								{point.copy}
 							</p>
-						</div>
+						</article>
 					))}
 				</div>
 			</div>

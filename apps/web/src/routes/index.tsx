@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Header from "../components/header";
 import { BenefitsSection } from "../components/home/benefits-section";
+import { HelpCtaSection } from "../components/home/help-cta-section";
 import { HelpFaqSection } from "../components/home/help-faq-section";
 import { HeroSection } from "../components/home/hero-section";
 import { PackagesSection } from "../components/home/packages-section";
@@ -79,6 +80,7 @@ export function HomeComponent() {
 					onDestinationChange={setDestination}
 					selectedTrip={selectedTrip}
 				/>
+				<HelpCtaSection />
 				<HelpFaqSection />
 			</main>
 			<SiteFooter />

@@ -1,6 +1,12 @@
 import { cn } from "@travellers-click/ui/lib/utils";
 import { motion } from "motion/react";
-import { type FocusEvent, type PointerEvent, useRef, useState } from "react";
+import {
+	type FocusEvent,
+	type PointerEvent,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 
 import {
 	FOCUS_INK,
@@ -74,10 +80,30 @@ const EXPAND_TRANSITION = {
 	opacity: FADE,
 	boxShadow: FADE,
 } as const;
+// A card that keeps growing while the pointer rests on it blocks the rest of
+// the grid, so a still hover returns it to its cell after this delay.
+const HOVER_RESET_MS = 5000;
 
 export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 	const gridRef = useRef<HTMLDivElement>(null);
 	const [expansion, setExpansion] = useState<Expansion | null>(null);
+	const resetTimer = useRef<number | null>(null);
+
+	const clearReset = () => {
+		if (resetTimer.current !== null) {
+			window.clearTimeout(resetTimer.current);
+			resetTimer.current = null;
+		}
+	};
+
+	useEffect(
+		() => () => {
+			if (resetTimer.current !== null) {
+				window.clearTimeout(resetTimer.current);
+			}
+		},
+		[]
+	);
 
 	// Face insets that stretch a card's cell out to the grid's edges.
 	const expand = (cell: HTMLElement, label: string) => {
@@ -95,7 +121,10 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 			bottom: c.bottom - g.bottom,
 		});
 	};
-	const collapse = () => setExpansion(null);
+	const collapse = () => {
+		clearReset();
+		setExpansion(null);
+	};
 
 	return (
 		<section
@@ -141,9 +170,15 @@ export function TripStylesSection({ onSelectStyle }: TripStylesSectionProps) {
 									}
 								}}
 								onPointerEnter={(e: PointerEvent<HTMLAnchorElement>) => {
-									if (e.pointerType === "mouse") {
-										expand(e.currentTarget, style.label);
+									if (e.pointerType !== "mouse") {
+										return;
 									}
+									clearReset();
+									expand(e.currentTarget, style.label);
+									resetTimer.current = window.setTimeout(
+										collapse,
+										HOVER_RESET_MS
+									);
 								}}
 								onPointerLeave={collapse}
 							>
